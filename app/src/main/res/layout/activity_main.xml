@@ -12,19 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigation"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:defaultNavHost="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:background="#37B899"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>

@@ -9,5 +9,5 @@
         android:id="@+id/homeFragment"
         android:name="uz.texnopos.paziylet.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home" />
 </navigation>
