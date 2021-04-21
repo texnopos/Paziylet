@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "804127464879",
+    "project_id": "paziylet-3e232",
+    "storage_bucket": "paziylet-3e232.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804127464879:android:bec27a4c25932ee8e7635a",
+        "android_client_info": {
+          "package_name": "uz.texnopos.paziylet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804127464879-44i1o26e1c3npq0mr9c1kojealdvbsj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFIcuUKAGnUIkj9nKcyrR1ImLMBFd88Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804127464879-44i1o26e1c3npq0mr9c1kojealdvbsj4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
