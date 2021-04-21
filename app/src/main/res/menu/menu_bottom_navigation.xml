@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/news"
+        android:title="@string/news"
+        android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/rawiyat"
+        android:title="@string/news"
+        android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/questions"
+        android:title="@string/news"
+        android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/namaz_time"
+        android:title="@string/news"
+        android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/compass"
+        android:title="@string/news"
+        android:icon="@drawable/ic_baseline_article_24"/>
+
+</menu>
