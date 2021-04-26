@@ -1,13 +1,13 @@
-package uz.texnopos.paziylet.ui.questions.viewPager1
+package uz.texnopos.paziylet.ui.questions.questionsCategories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import uz.texnopos.paziylet.data.model.FirebaseHelper
+import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.data.model.QuestionCategories
 import uz.texnopos.paziylet.di.Resource
 
-class ViewPagerViewModel(private val firebaseHelper: FirebaseHelper): ViewModel() {
+class QuestionsCategoriesFragmentViewModel(private val firebaseHelper: FirebaseHelper): ViewModel() {
 
         private var _questionCategories: MutableLiveData<Resource<List<QuestionCategories>>> = MutableLiveData()
         val questionCategories: LiveData<Resource<List<QuestionCategories>>>

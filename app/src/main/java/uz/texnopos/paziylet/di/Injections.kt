@@ -6,10 +6,10 @@ import com.google.firebase.storage.FirebaseStorage
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import uz.texnopos.paziylet.data.model.FirebaseHelper
-import uz.texnopos.paziylet.ui.questions.ViewPagerAdapter
-import uz.texnopos.paziylet.ui.questions.viewPager1.ViewPager1Adapter
-import uz.texnopos.paziylet.ui.questions.viewPager1.ViewPagerViewModel
+import uz.texnopos.paziylet.firebase.FirebaseHelper
+import uz.texnopos.paziylet.ui.questions.QuestionsAdapter
+import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionsCategoriesAdapter
+import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionsCategoriesFragmentViewModel
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
@@ -19,11 +19,10 @@ val firebaseModule = module {
 }
 
 val adapterModule = module {
-    single { ViewPagerAdapter(get(),get(),get()) }
-    single { ViewPager1Adapter() }
+    single { QuestionsCategoriesAdapter() }
 }
 val viewModelModule = module {
-    viewModel { ViewPagerViewModel(get()) }
+    viewModel { QuestionsCategoriesFragmentViewModel(get()) }
    }
 
 

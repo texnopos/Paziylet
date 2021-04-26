@@ -8,8 +8,8 @@ import androidx.navigation.Navigation
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_questions.*
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.ui.questions.viewPager1.ViewPager1Fragment
-import uz.texnopos.paziylet.ui.questions.viewPager2.ViewPager2Fragment
+import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionCategoriesFragment
+import uz.texnopos.paziylet.ui.questions.myQuestions.ViewPager2Fragment
 
 class QuestionsFragment: Fragment(R.layout.fragment_questions) {
     private lateinit var navController: NavController
@@ -17,18 +17,18 @@ class QuestionsFragment: Fragment(R.layout.fragment_questions) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         val fragmentList = arrayListOf(
-            ViewPager1Fragment(),
+            QuestionCategoriesFragment(),
             ViewPager2Fragment()
         )
 
-        val adapter= ViewPagerAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+        val adapter= QuestionsAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
         viewPager.adapter=adapter
         val tabLayoutMediator =
             TabLayoutMediator(tabs,viewPager
             ) { tab, position ->
                 when (position) {
-                    0 -> tab.text = "Сораўлар"
-                    1 -> tab.text = "Мениң сораўларым"
+                    0 -> tab.text = getString(R.string.questions_answers)
+                    1 -> tab.text = getString(R.string.my_questions)
                 }
             }
         tabLayoutMediator.attach()

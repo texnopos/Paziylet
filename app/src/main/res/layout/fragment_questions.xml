@@ -17,7 +17,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#37b899"
+            android:background="@color/colorAppBar"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/white"
             app:tabInlineLabel="true"
@@ -28,7 +28,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/margin_standard"
             android:background="@drawable/ic_nagis"
             app:layout_constraintBottom_toTopOf="@id/tabs"
             app:layout_constraintStart_toStartOf="parent"
