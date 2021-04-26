@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Paziylet</string>
     <string name="news">Jańalıqlar</string>
+    <string name="home">Бас бет</string>
+    <string name="favourite">Сайландылар</string>
+    <string name="questions">Сорау-Жуап</string>
+    <string name="time_namaz">Намаз уакты</string>
+    <string name="compass">Компас</string>
+    <string name="question_answer">Сораў жуўап</string>
 </resources>

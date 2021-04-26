@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/news"
-        android:title="@string/news"
-        android:icon="@drawable/ic_baseline_article_24"/>
-    <item android:id="@+id/rawiyat"
-        android:title="@string/news"
-        android:icon="@drawable/ic_baseline_article_24"/>
-    <item android:id="@+id/questions"
-        android:title="@string/news"
-        android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"/>
+    <item android:id="@+id/questionsFragment"
+        android:title="@string/questions"
+        android:icon="@drawable/ic_question"/>
     <item android:id="@+id/namaz_time"
-        android:title="@string/news"
-        android:icon="@drawable/ic_baseline_article_24"/>
+        android:title="@string/time_namaz"
+        android:icon="@drawable/ic_timenamaz"/>
     <item android:id="@+id/compass"
-        android:title="@string/news"
-        android:icon="@drawable/ic_baseline_article_24"/>
+        android:title="@string/compass"
+        android:icon="@drawable/ic_compos"/>
+    <item android:id="@+id/favourite"
+        android:title="@string/favourite"
+        android:icon="@drawable/ic_favourite"/>
 
 </menu>
