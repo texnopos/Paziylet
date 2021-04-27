@@ -10,4 +10,9 @@
         android:name="uz.texnopos.paziylet.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.QuestionsFragment"
+        android:label="QuestionsFragment"
+        tools:layout="@layout/fragment_questions"/>
 </navigation>
