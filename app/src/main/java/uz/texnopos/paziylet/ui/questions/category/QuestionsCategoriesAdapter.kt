@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_questions_categories.view.*
+import kotlinx.android.synthetic.main.item_questions_category.view.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.data.model.QuestionCategories
 
