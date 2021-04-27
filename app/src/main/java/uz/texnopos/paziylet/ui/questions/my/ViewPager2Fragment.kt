@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.questions.myQuestions
+package uz.texnopos.paziylet.ui.questions.my
 
 import android.os.Bundle
 import android.view.View

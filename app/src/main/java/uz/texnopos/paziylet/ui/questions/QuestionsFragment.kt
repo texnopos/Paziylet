@@ -8,8 +8,8 @@ import androidx.navigation.Navigation
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_questions.*
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionCategoriesFragment
-import uz.texnopos.paziylet.ui.questions.myQuestions.ViewPager2Fragment
+import uz.texnopos.paziylet.ui.questions.category.QuestionCategoriesFragment
+import uz.texnopos.paziylet.ui.questions.my.ViewPager2Fragment
 
 class QuestionsFragment: Fragment(R.layout.fragment_questions) {
     private lateinit var navController: NavController

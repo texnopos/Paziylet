@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.questions.questionsCategories
+package uz.texnopos.paziylet.ui.questions.category
 
 import android.os.Bundle
 import android.view.View

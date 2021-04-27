@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.questions.questionsCategories
+package uz.texnopos.paziylet.ui.questions.category
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +24,7 @@ class QuestionsCategoriesAdapter: RecyclerView.Adapter<QuestionsCategoriesAdapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsCategoriesViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_questions_categories,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_questions_category,parent,false)
         return QuestionsCategoriesViewHolder(itemView)
     }
 

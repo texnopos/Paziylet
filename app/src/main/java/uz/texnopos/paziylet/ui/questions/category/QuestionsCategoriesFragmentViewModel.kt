@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.questions.questionsCategories
+package uz.texnopos.paziylet.ui.questions.category
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

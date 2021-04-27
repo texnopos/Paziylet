@@ -7,9 +7,8 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import uz.texnopos.paziylet.firebase.FirebaseHelper
-import uz.texnopos.paziylet.ui.questions.QuestionsAdapter
-import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionsCategoriesAdapter
-import uz.texnopos.paziylet.ui.questions.questionsCategories.QuestionsCategoriesFragmentViewModel
+import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
+import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesFragmentViewModel
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
