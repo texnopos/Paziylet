@@ -9,7 +9,7 @@
     <item android:id="@+id/namaz_time"
         android:title="@string/time_namaz"
         android:icon="@drawable/ic_timenamaz"/>
-    <item android:id="@+id/compass"
+    <item android:id="@+id/compassFragment"
         android:title="@string/compass"
         android:icon="@drawable/ic_compos"/>
     <item android:id="@+id/favourite"
