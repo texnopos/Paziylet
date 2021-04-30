@@ -9,6 +9,7 @@ import org.koin.dsl.module
 import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesFragmentViewModel
+import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
@@ -22,6 +23,7 @@ val adapterModule = module {
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesFragmentViewModel(get()) }
+    viewModel { QuestionFragmentViewModel(get()) }
    }
 
 

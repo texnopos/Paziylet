@@ -19,8 +19,14 @@ class QuestionsCategoriesAdapter: RecyclerView.Adapter<QuestionsCategoriesAdapte
     inner class QuestionsCategoriesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun populateModel(model: QuestionCategories){
             itemView.tvCategoryName.text = model.name
+            itemView.setOnClickListener { onQuestionCategoryItemClicked.invoke(model.id) }
         }
 
+    }
+
+    private var onQuestionCategoryItemClicked: (questionCategoryItemClicked: String)-> Unit ={}
+    fun setOnQuestionCategoryItemClicked(onQuestionCategoryItemClicked: (questionCategoryItemClicked: String)-> Unit) {
+        this.onQuestionCategoryItemClicked = onQuestionCategoryItemClicked
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsCategoriesViewHolder {

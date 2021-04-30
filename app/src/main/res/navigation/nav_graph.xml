@@ -14,5 +14,24 @@
         android:id="@+id/questionsFragment"
         android:name="uz.texnopos.paziylet.ui.questions.QuestionsFragment"
         android:label="QuestionsFragment"
-        tools:layout="@layout/fragment_questions"/>
+        tools:layout="@layout/fragment_questions">
+        <action
+            android:id="@+id/action_questionsFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionCategoriesFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.category.QuestionCategoriesFragment"
+        android:label="QuestionCategoriesFragment"
+        tools:layout="@layout/fragment_questions_categories">
+        <action
+            android:id="@+id/action_questionCategoriesFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.question.QuestionFragment"
+        android:label="QuestionFragment"
+        tools:layout="@layout/fragment_question"/>
+
 </navigation>
