@@ -21,7 +21,7 @@ class QuestionAdapter : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>
     inner class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(model: Question) {
             itemView.tvSoraw.text = Html.fromHtml(model.soraw)
-            itemView.ivMore.setOnClickListener {
+            itemView.setOnClickListener {
                 onQuestionMoreClicked.invoke(model.id, model.soraw, model.juwap)
             }
 

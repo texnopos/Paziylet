@@ -29,8 +29,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        recViewQuestionFragment.adapter = adapter
-        recViewQuestionFragment.addVertDivider(requireContext())
+        rvQuestion.adapter = adapter
+        rvQuestion.addVertDivider(requireContext())
         setUpObserver()
         val categoryName = arguments?.getString("categoryName")!!.toString()
         adapter.setOnQuestionMoreClicked { i, q, a ->
@@ -39,8 +39,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
             Navigation.findNavController(view)
                 .navigate(R.id.action_questionFragment_to_questionAnswerFragment, bundle)
         }
-        toolbar.tvNameOfCategory.text = categoryName
-        toolbar.ivQAnsBackspace.setOnClickListener {
+        toolbar.ivCategoryName.text = categoryName
+        toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }
 

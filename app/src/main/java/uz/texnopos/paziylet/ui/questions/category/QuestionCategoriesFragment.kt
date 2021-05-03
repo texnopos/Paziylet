@@ -2,7 +2,6 @@ package uz.texnopos.paziylet.ui.questions.category
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
@@ -14,7 +13,7 @@ import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.di.ResourceState
 
 class QuestionCategoriesFragment : Fragment(R.layout.fragment_questions_categories) {
-    private val viewModel: QuestionsCategoriesFragmentViewModel by viewModel()
+    private val viewModel: QuestionsCategoriesViewModel by viewModel()
     private val adapter: QuestionsCategoriesAdapter by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

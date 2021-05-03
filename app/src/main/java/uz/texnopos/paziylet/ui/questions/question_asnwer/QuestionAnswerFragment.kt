@@ -6,13 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import io.grpc.internal.SharedResourceHolder
 import kotlinx.android.synthetic.main.fragment_question_answer.*
 import kotlinx.android.synthetic.main.toolbar.view.*
-import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.data.model.Question
-import uz.texnopos.paziylet.di.ResourceState
 
 class QuestionAnswerFragment : Fragment(R.layout.fragment_question_answer) {
     private lateinit var navController: NavController
@@ -25,8 +21,8 @@ class QuestionAnswerFragment : Fragment(R.layout.fragment_question_answer) {
         val categoryName = arguments?.getString("categoryName")!!.toString()
         tvQuestion.text = Html.fromHtml(question)
         tvAnswer.text = Html.fromHtml(answer)
-        toolbar.tvNameOfCategory.text = categoryName
-        toolbar.ivQAnsBackspace.setOnClickListener {
+        toolbar.ivCategoryName.text = categoryName
+        toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }
     }
