@@ -16,10 +16,14 @@ import uz.texnopos.paziylet.di.ResourceState
 class QuestionCategoriesFragment : Fragment(R.layout.fragment_questions_categories) {
     private val viewModel: QuestionsCategoriesFragmentViewModel by viewModel()
     private val adapter: QuestionsCategoriesAdapter by inject()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getAllQuestionCategories()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recViewQuestionsCategories.adapter = adapter
-        viewModel.getAllQuestionCategories()
         setUpObserver()
         adapter.setOnQuestionCategoryItemClicked { i, n ->
             val bundle = bundleOf("categoryId" to i, "categoryName" to n)

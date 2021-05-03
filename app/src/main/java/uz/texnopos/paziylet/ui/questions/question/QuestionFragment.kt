@@ -19,6 +19,13 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     private lateinit var navController: NavController
     private val viewModel: QuestionFragmentViewModel by viewModel()
     private val adapter: QuestionAdapter by inject()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val categoryId = arguments?.getString("categoryId")!!.toString()
+        if (categoryId.isNotEmpty()) viewModel.getAllQuestionByCategoryId(categoryId)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
@@ -37,8 +44,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
             navController.popBackStack()
         }
 
-        val categoryId = arguments?.getString("categoryId")!!.toString()
-        if (categoryId.isNotEmpty()) viewModel.getAllQuestionByCategoryId(categoryId)
+
     }
 
     private fun setUpObserver() {
