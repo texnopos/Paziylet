@@ -8,14 +8,14 @@ import uz.texnopos.paziylet.data.model.QuestionCategories
 import uz.texnopos.paziylet.di.Resource
 import uz.texnopos.paziylet.firebase.FirebaseHelper
 
-class QuestionFragmentViewModel(private val firebaseHelper: FirebaseHelper): ViewModel() {
+class QuestionFragmentViewModel(private val firebaseHelper: FirebaseHelper) : ViewModel() {
     private var _question: MutableLiveData<Resource<List<Question>>> = MutableLiveData()
     val question: LiveData<Resource<List<Question>>>
         get() = _question
 
-    fun getAllQuestionByCategoryId(){
+    fun getAllQuestionByCategoryId(id: String) {
         _question.value = Resource.loading()
-        firebaseHelper.getQuestions({
+        firebaseHelper.getQuestions(id, {
             _question.value = Resource.success(it)
         },
             {

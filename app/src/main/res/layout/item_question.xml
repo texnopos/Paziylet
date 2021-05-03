@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvSoraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:layout_toStartOf="@id/ivMore"
+        android:padding="@dimen/margin_4dp"
+        android:text="Ассалаума алейкум устазлар,агалар бир сорауым бар еди. Мен тренер болып ислеп хам октябрь айында Озбекстан чемпионаты болды кушли жарыс еди соган менде бир шакиртим акша тауалмай калды тек 300.000сум тауды калганын мен бир бизнесмен агадан жардем сорадым ол агада намаз окыйды жардем болса колыннан келгенин береди мен закат деп алганым карыз есапланбайма соо балага жардем деп 500.000сум берди хам сол жардем берген бала чемпион болды жардем берген бизнесмен агага апарып усы аган жардем дегеним на дурыс болдыма"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivMore"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+</RelativeLayout>

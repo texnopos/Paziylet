@@ -32,6 +32,15 @@
         android:id="@+id/questionFragment"
         android:name="uz.texnopos.paziylet.ui.questions.question.QuestionFragment"
         android:label="QuestionFragment"
-        tools:layout="@layout/fragment_question"/>
+        tools:layout="@layout/fragment_question">
+        <action
+            android:id="@+id/action_questionFragment_to_questionAnswerFragment"
+            app:destination="@id/questionAnswerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionAnswerFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.question_asnwer.QuestionAnswerFragment"
+        android:label="QuestionAnswerFragment"
+        tools:layout="@layout/fragment_question_answer"/>
 
 </navigation>

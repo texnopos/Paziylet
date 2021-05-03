@@ -17,8 +17,8 @@ class FirebaseHelper(private val context: Context,private val db: FirebaseFirest
                 onFailure.invoke(it.localizedMessage)
             }
     }
-    fun getQuestions(onSuccess: (list: List<Question>) -> Unit, onFailure: (msg: String?) -> Unit){
-        db.collection("questions").whereEqualTo("categoryId", String()).get()
+    fun getQuestions(id: String,onSuccess: (list: List<Question>) -> Unit, onFailure: (msg: String?) -> Unit){
+        db.collection("questions").whereEqualTo("categoryId", id).get()
             .addOnSuccessListener {
                 onSuccess.invoke(it.documents.map { doc->
                     doc.toObject(Question::class.java)!!
