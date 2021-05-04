@@ -8,7 +8,9 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
-import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesFragmentViewModel
+import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
+import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
+import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
@@ -19,9 +21,11 @@ val firebaseModule = module {
 
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
+    single { QuestionAdapter() }
 }
 val viewModelModule = module {
-    viewModel { QuestionsCategoriesFragmentViewModel(get()) }
+    viewModel { QuestionsCategoriesViewModel(get()) }
+    viewModel { QuestionFragmentViewModel(get()) }
    }
 
 

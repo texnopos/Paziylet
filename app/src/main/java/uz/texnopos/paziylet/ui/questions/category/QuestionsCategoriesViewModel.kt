@@ -7,7 +7,7 @@ import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.data.model.QuestionCategories
 import uz.texnopos.paziylet.di.Resource
 
-class QuestionsCategoriesFragmentViewModel(private val firebaseHelper: FirebaseHelper): ViewModel() {
+class QuestionsCategoriesViewModel(private val firebaseHelper: FirebaseHelper): ViewModel() {
 
         private var _questionCategories: MutableLiveData<Resource<List<QuestionCategories>>> = MutableLiveData()
         val questionCategories: LiveData<Resource<List<QuestionCategories>>>
