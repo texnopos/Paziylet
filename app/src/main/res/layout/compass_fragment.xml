@@ -13,6 +13,7 @@
         android:background="#37B899"/>
 
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="286dp"
@@ -29,8 +30,6 @@
         android:text="3:34"
         android:textColor="@color/white"
         android:textSize="55dp"
-        android:format24Hour="hh:mm aa"
-        android:format12Hour="@null"
         android:layout_width="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,14 +79,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content"/>
 
-
-    <!--    <androidx.constraintlayout.widget.Guideline-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:id="@+id/gd1"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        app:layout_constraintGuide_percent="0.4"/>-->
-
     <ImageView
         app:layout_constraintTop_toBottomOf="@id/ivMechet"
         android:layout_width="match_parent"
@@ -95,16 +86,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp"
         android:src="@drawable/background_for_compass"/>
+    <ImageView
+        app:layout_constraintStart_toStartOf="@id/ivCompass"
+        app:layout_constraintEnd_toEndOf="@id/ivCompass"
+        app:layout_constraintBottom_toBottomOf="@id/ivCompass"
+        app:layout_constraintTop_toTopOf="@id/ivCompass"
+        android:src="@drawable/ic_group_283"
+        android:layout_width="155dp"
+        android:layout_marginTop="12dp"
+        android:layout_height="155dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:id="@+id/ivCompass"
+        android:paddingTop="8dp"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/compass"
+        android:src="@drawable/ic_group_282"
         app:layout_constraintTop_toTopOf="@id/ivBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="250dp"/>
     <ImageView
         android:id="@+id/ivStrelka"
         android:layout_width="wrap_content"
@@ -116,13 +118,21 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/tvDegree"
-        android:layout_height="wrap_content"
+        android:id="@+id/tvAzimuth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        android:text="x"
-        app:layout_constraintTop_toBottomOf="@id/ivMechet"/>
+        app:layout_constraintTop_toTopOf="@id/ivBackground"
+        app:layout_constraintBottom_toTopOf="@id/ivCompass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ivCompass"
+        android:src="@drawable/ic_kaaba_mecca"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
