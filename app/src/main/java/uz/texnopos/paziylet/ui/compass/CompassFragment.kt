@@ -50,15 +50,14 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
                 Animation.RELATIVE_TO_SELF,
                 .5f,
                 Animation.RELATIVE_TO_SELF,
-                .5f
-        )
+                .5f)
         if (hasLocationPermission()) {
             initLocationListener()
         } else {
             requestLocationPermission()
         }
-    }
 
+    }
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -125,7 +124,7 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
                 )
                 needleAnimation.fillAfter = true
                 needleAnimation.duration = 200
-                ivStrelka.startAnimation(needleAnimation)
+                ivStrelka?.startAnimation(needleAnimation)
                 currentNeedleDegree = direction
                 currentDegree = -degree
             }
