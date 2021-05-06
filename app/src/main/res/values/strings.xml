@@ -8,9 +8,9 @@
     <string name="question_answer">Сораў жуўап</string>
     <string name="questions">Сораўлар</string>
     <string name="my_questions">Мениң сораўларым</string>
-    <string name="your_location">asd</string>
     <string name="location_permission_title">Permission_title</string>
     <string name="location_permission_message">permission_message</string>
-    <string name="permission_granted">Рухсат берилди</string>
-    <string name="dont_work_without_permission">Компас Location рухсатысыз ислемейди</string>
+    <string name="permission_is_required">Бул бөлим керекли руқсатларсыз толық ислемеўи мүмкин.</string>
+    <string name="permission_required_title">Руқсат керек</string>
+    <string name="go_to_settings">Сазламалар айнасын ашу</string>
 </resources>
