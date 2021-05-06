@@ -139,7 +139,7 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
-        if (EasyPermissions.somePermissionDenied(this, perms.first())) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
         } else {
             requestLocationPermission()
@@ -153,6 +153,6 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
     private fun getCountryName(context: Context?, latitude: Double, longitude: Double): String {
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
-        return "${addresses[0].locality!!} , ${addresses[0].countryName!!}"
+        return "${addresses[0].locality} , ${addresses[0].countryName}"
     }
 }
