@@ -30,8 +30,8 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
 
     companion object {
         const val TAG = "MainActivity"
-        const val QIBLA_LATITUDE = 21.3891
-        const val QIBLA_LONGITUDE = 39.8579
+        const val QIBLA_LATITUDE = 21.38908
+        const val QIBLA_LONGITUDE = 39.85791
     }
 
     var currentDegree: Float = 0f
@@ -85,7 +85,6 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
         userLocation = Location("User Location")
         userLocation.latitude = latitude
         userLocation.longitude = longitude
-
         sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
         sensorManager.registerListener(object : SensorEventListener {
@@ -118,18 +117,17 @@ class CompassFragment: Fragment(R.layout.compass_fragment), EasyPermissions.Perm
                         currentNeedleDegree,
                         direction,
                         Animation.RELATIVE_TO_SELF,
-                        0.5f,
+                        .5f,
                         Animation.RELATIVE_TO_SELF,
-                        0.5f
+                        .5f
                 )
                 needleAnimation.fillAfter = true
-                needleAnimation.duration = 200
+                needleAnimation.duration = 500
                 ivStrelka?.startAnimation(needleAnimation)
                 currentNeedleDegree = direction
                 currentDegree = -degree
             }
         }, sensor, SensorManager.SENSOR_DELAY_GAME)
-
     }
 
     private fun hasLocationPermission() =
