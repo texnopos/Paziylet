@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
@@ -36,7 +37,6 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
         const val QIBLA_LATITUDE = 21.38908
         const val QIBLA_LONGITUDE = 39.85791
         const val FINE_LOCATION = 101
-        const val LOCATION = "location"
     }
 
     var currentDegree: Float = 0f
@@ -45,7 +45,7 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
     private lateinit var sensor: Sensor
     lateinit var userLocation: Location
     lateinit var needleAnimation: RotateAnimation
-
+    lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,15 +57,23 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
                 Animation.RELATIVE_TO_SELF,
                 .5f)
         checkForPermissions()
+    }
+
+    override fun onStart() {
+        super.onStart()
         initLocationListener()
     }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
     private fun initLocationListener() {
-        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener {
-            Log.d(TAG, "User Location : Lat : ${it.latitude} Long : ${it.longitude}")
             initQiblaDirection(it.latitude, it.longitude)
             tvRegion.text = getCountryName(requireContext(), it.latitude, it.longitude)
         }
@@ -84,7 +92,6 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
             override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
             }
 
-            @SuppressLint("SetTextI18n")
             override fun onSensorChanged(sensorEvent: SensorEvent?) {
                 val degree: Float = sensorEvent?.values?.get(0)?.roundToInt()?.toFloat()!!
                 var head: Float = sensorEvent.values?.get(0)?.roundToInt()?.toFloat()!!
@@ -128,12 +135,14 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
         return "${addresses[0].locality} , ${addresses[0].countryName}"
     }
 
-    @SuppressLint("StringFormatInvalid")
-    private fun showDialog(name: String) {
+    private fun showDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.apply {
-            setMessage(getString(R.string.permission_is_required, name))
+            setMessage(getString(R.string.permission_is_required))
             setTitle(getString(R.string.permission_required_title))
+            setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
             setPositiveButton(getString(R.string.go_to_settings)) { _, _ ->
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 val uri: Uri = Uri.fromParts("package", activity?.packageName, null)
@@ -155,13 +164,13 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        fun innerCheck(name: String) {
+        fun innerCheck() {
             if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                showDialog(name)
+                showDialog()
             }
         }
         when (requestCode) {
-            FINE_LOCATION -> innerCheck(LOCATION)
+            FINE_LOCATION -> innerCheck()
         }
     }
 }
