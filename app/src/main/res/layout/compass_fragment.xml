@@ -78,44 +78,34 @@
     <ImageView
         app:layout_constraintStart_toStartOf="@id/ivCompass"
         app:layout_constraintEnd_toEndOf="@id/ivCompass"
-        app:layout_constraintBottom_toBottomOf="@id/ivCompass"
-        app:layout_constraintTop_toTopOf="@id/ivCompass"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivStrelka"
+        app:layout_constraintTop_toTopOf="@id/ivStrelka"
         android:src="@drawable/ic_group_283"
         android:layout_width="155dp"
-        android:layout_marginTop="12dp"
         android:layout_height="155dp"/>
 
     <ImageView
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:id="@+id/ivCompass"
         android:paddingTop="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_group_280"
+        android:src="@drawable/ic_group_292"
         app:layout_constraintTop_toTopOf="@id/ivBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="250dp"/>
+        android:layout_height="300dp"/>
     <ImageView
         android:id="@+id/ivStrelka"
         android:layout_width="wrap_content"
         android:layout_marginEnd="2dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="@id/ivCompass"
         app:layout_constraintEnd_toEndOf="@id/ivCompass"
         app:layout_constraintTop_toTopOf="@id/ivCompass"
         app:layout_constraintBottom_toBottomOf="@id/ivCompass"
-        android:src="@drawable/ic_strelka"
+        android:src="@drawable/ic_group_strelka"
         android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvAzimuth"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivBackground"
-        app:layout_constraintBottom_toTopOf="@id/ivCompass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
