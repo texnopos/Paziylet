@@ -1,7 +1,6 @@
 package uz.texnopos.paziylet.ui.compass
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,7 +12,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
@@ -26,6 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -33,7 +32,6 @@ import kotlin.math.roundToInt
 class CompassFragment: Fragment(R.layout.compass_fragment){
 
     companion object {
-        const val TAG = "MainActivity"
         const val QIBLA_LATITUDE = 21.38908
         const val QIBLA_LONGITUDE = 39.85791
         const val FINE_LOCATION = 101
@@ -45,7 +43,7 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
     private lateinit var sensor: Sensor
     lateinit var userLocation: Location
     lateinit var needleAnimation: RotateAnimation
-    lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,12 +62,9 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
         initLocationListener()
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     private fun initLocationListener() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        tvDate.text = getCurrentDateAndTime().toString()
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return
         }
@@ -172,5 +167,11 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
         when (requestCode) {
             FINE_LOCATION -> innerCheck()
         }
+    }
+
+    private fun getCurrentDateAndTime(): Any {
+        val c = Calendar.getInstance().time
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+        return simpleDateFormat.format(c)
     }
 }
