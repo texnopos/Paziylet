@@ -112,17 +112,16 @@ class CompassFragment: Fragment(R.layout.compass_fragment){
                         Animation.RELATIVE_TO_SELF,
                         .5f,
                         Animation.RELATIVE_TO_SELF,
-                        .5f
+                        .6f
                 )
                 needleAnimation.fillAfter = true
                 needleAnimation.duration = 500
-                ivStrelka?.startAnimation(needleAnimation)
+                ivCompass?.startAnimation(needleAnimation)
                 currentNeedleDegree = direction
                 currentDegree = -degree
             }
         }, sensor, SensorManager.SENSOR_DELAY_GAME)
     }
-
     private fun getCountryName(context: Context?, latitude: Double, longitude: Double): String {
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
