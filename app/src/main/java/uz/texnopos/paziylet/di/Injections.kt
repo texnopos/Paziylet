@@ -1,5 +1,6 @@
 package uz.texnopos.paziylet.di
 
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -11,6 +12,13 @@ import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
+
+val sharedPreferencesModule = module {
+    single { androidApplication().applicationContext.getSharedPreferences(
+            "uz.texnopos.paziylet-uz.preferences",
+            Context.MODE_PRIVATE)
+    }
+}
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }

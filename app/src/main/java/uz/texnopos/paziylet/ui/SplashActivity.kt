@@ -6,16 +6,27 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.setting.Setting
+import uz.texnopos.paziylet.ui.mAuth.LoginActivity
+
 
 class SplashActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+        lateinit var setting: Setting
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         supportActionBar?.hide()
+        setting = Setting(this)
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (setting.isAppFirstLaunched()) {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }, 3000)
     }
 }
