@@ -102,7 +102,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="64dp"
                 android:background="@drawable/shape"
-                android:text="Дизимнен отту"
+                android:text="Дизимнен өтиў"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +117,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="64dp"
                 android:background="@drawable/shape"
-                android:text="Дизимнен оту"
+                android:text="Дизимнен өтиў"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etPhoneNumber" />
@@ -131,7 +131,7 @@
                 android:layout_marginEnd="64dp"
                 android:background="@drawable/shape"
                 android:backgroundTint="#37b899"
-                android:text="Аноним оту"
+                android:text="Анонимно өтиў"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnSignIn" />

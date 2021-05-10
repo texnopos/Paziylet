@@ -15,7 +15,6 @@ class MyQuestionsAdapter:RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsView
     inner class MyQuestionsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         fun populateModel(model:Question){
             itemView.tvSoraw.text=Html.fromHtml(model.soraw)
-            itemView.tvJuwap.text=Html.fromHtml(model.juwap)
         }
     }
 

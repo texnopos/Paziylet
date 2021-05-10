@@ -18,6 +18,7 @@ import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCall
 import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
@@ -32,6 +33,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setting = Setting(this)
+        btnAnonymous.onClick {
+            val mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
+            finish()
+        }
         btnSignIn.setOnClickListener {
             val user = auth.currentUser
             if (user != null) {
