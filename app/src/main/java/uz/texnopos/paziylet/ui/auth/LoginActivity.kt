@@ -1,6 +1,5 @@
 package uz.texnopos.paziylet.ui.auth
 
-
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -22,7 +21,6 @@ import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
-
 
 class LoginActivity : AppCompatActivity() {
     lateinit var setting: Setting
@@ -50,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 btnSignIn.isEnabled = false
                 btnAnonymous.isEnabled = false
             } else {
-                Toast.makeText(this, "Telefon nomerinizdi toliq kiritin'", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Telefon nomerińizdi tolıq kiritiń", Toast.LENGTH_LONG).show()
                 processText.visibility = View.GONE
                 btnSignIn.isEnabled = true
                 btnAnonymous.isEnabled = true
