@@ -5,11 +5,13 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.hardware.*
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,17 +20,16 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.google.android.gms.common.api.internal.ConnectionCallbacks
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.data.model.location.GpsUtils
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -40,7 +41,6 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
         const val QIBLA_LONGITUDE = 39.85791
         const val FINE_LOCATION = 101
     }
-    private var isGPSEnabled = false
     var currentDegree: Float = 0f
     var currentNeedleDegree: Float = 0f
     private lateinit var sensor: Sensor
@@ -60,26 +60,41 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
         super.onViewCreated(view, savedInstanceState)
         checkForPermissions()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        GpsUtils(requireContext()).turnGPSOn(object : GpsUtils.OnGpsListener {
-            override fun gpsStatus(isGPSEnable: Boolean) {
-                isGPSEnabled = isGPSEnable
-            }
-        })
     }
 
     @SuppressLint("MissingPermission")
     override fun onStart() {
         super.onStart()
-        initLocationListener()
+        checkGpsStatus()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 101) {
-                isGPSEnabled = true
-                initLocationListener()
-            }
+    private fun checkGpsStatus() {
+         val settingsClient: SettingsClient = LocationServices.getSettingsClient(requireActivity())
+         val locationSettingsRequest: LocationSettingsRequest?
+         val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val builder = LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest)
+            locationSettingsRequest = builder.build()
+            builder.setAlwaysShow(true)
+
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        initLocationListener()
+        } else {
+            settingsClient
+                .checkLocationSettings(locationSettingsRequest)
+                .addOnSuccessListener(context as Activity) {
+                    initLocationListener()
+                }
+                .addOnFailureListener(requireActivity()) { e ->
+                    when ((e as ApiException).statusCode) {
+                        LocationSettingsStatusCodes.RESOLUTION_REQUIRED ->
+                            try {
+                                val rae = e as ResolvableApiException
+                                rae.startResolutionForResult(requireActivity(), 101)
+                            } catch (sie: IntentSender.SendIntentException) {
+                            }
+                    }
+                }
         }
     }
 

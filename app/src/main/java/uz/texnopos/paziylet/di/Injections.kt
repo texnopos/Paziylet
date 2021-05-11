@@ -6,7 +6,6 @@ import com.google.firebase.storage.FirebaseStorage
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import uz.texnopos.paziylet.data.model.location.LocationViewModel
 import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
@@ -27,7 +26,6 @@ val adapterModule = module {
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
-    viewModel { LocationViewModel(get()) }
    }
 
 
