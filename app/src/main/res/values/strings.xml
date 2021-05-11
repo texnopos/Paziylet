@@ -8,4 +8,11 @@
     <string name="question_answer">Сораў жуўап</string>
     <string name="questions">Сораўлар</string>
     <string name="my_questions">Мениң сораўларым</string>
+    <string name="location_permission_title">Permission_title</string>
+    <string name="location_permission_message">permission_message</string>
+    <string name="permission_is_required">Бул бөлим керекли руқсатларсыз толық ислемеўи мүмкин. Сазламалар айнасын ашып руқсат бериң.</string>
+    <string name="permission_required_title">Руқсат керек</string>
+    <string name="go_to_settings">Сазламалар</string>
+    <string name="cancel">Бийкарлаў</string>
+    <string name="no_permission_for_location">Локация ушын руқсат берилмеген</string>
 </resources>

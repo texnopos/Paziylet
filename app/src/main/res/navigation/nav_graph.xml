@@ -42,5 +42,10 @@
         android:name="uz.texnopos.paziylet.ui.questions.question_asnwer.QuestionAnswerFragment"
         android:label="QuestionAnswerFragment"
         tools:layout="@layout/fragment_question_answer"/>
-
+        tools:layout="@layout/fragment_questions"/>
+    <fragment
+        android:id="@+id/compassFragment"
+        tools:layout="@layout/compass_fragment"
+        android:name="uz.texnopos.paziylet.ui.compass.CompassFragment"
+        android:label="CompassFragment" />
 </navigation>
