@@ -1,10 +1,11 @@
-package uz.texnopos.paziylet.ui.mAuth
+package uz.texnopos.paziylet.ui.auth
 
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                 sendToMain()
             }
             val phone = etPhoneNumber.text.toString()
-            if (phone.isNotEmpty()) {
+            if (phone.isNotEmpty() && phone.length >= 13) {
                 val options = PhoneAuthOptions.newBuilder(auth)
                     .setPhoneNumber(phone)
                     .setTimeout(60L, TimeUnit.SECONDS)
@@ -46,16 +47,20 @@ class LoginActivity : AppCompatActivity() {
                     .setCallbacks(mCallBacks)
                     .build()
                 PhoneAuthProvider.verifyPhoneNumber(options)
+                btnSignIn.isEnabled = false
+                btnAnonymous.isEnabled = false
             } else {
-                processText.text = "Telefon nomer"
-                processText.setTextColor(Color.RED)
-                processText.visibility = View.VISIBLE
+                Toast.makeText(this, "Telefon nomerinizdi toliq kiritin'", Toast.LENGTH_LONG).show()
+                processText.visibility = View.GONE
+                btnSignIn.isEnabled = true
+                btnAnonymous.isEnabled = true
             }
         }
 
-        btnSignInMain.setOnClickListener{
-            val verificationCode = etCodeType.text.toString()
-            if (verificationCode.isNotEmpty()) {
+        btnSignInMain.setOnClickListener {
+            val verificationCode =
+                etFirstNumber.text.toString() + etSecondNumber.text.toString() + etThirdNumber.text.toString() + etFourthNumber.text.toString() + etFifthNumber.text.toString() + etSixthNumber.text.toString()
+            if (etFirstNumber.text.isNotEmpty() || etSecondNumber.text.isNotEmpty() || etThirdNumber.text.isNotEmpty() || etFourthNumber.text.isNotEmpty() || etFifthNumber.text.isNotEmpty() || etSixthNumber.text.isNotEmpty()) {
                 val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode)
                 signIn(credential)
             } else {
@@ -68,22 +73,27 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                processText.text = e.message
-                processText.setTextColor(Color.RED)
-                processText.visibility = View.VISIBLE
+                btnSignIn.isEnabled = true
+                btnAnonymous.isEnabled = true
+                Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_SHORT).show()
             }
 
             override fun onCodeSent(s: String, forceResendingToken: ForceResendingToken) {
                 super.onCodeSent(s, forceResendingToken)
                 mCodeS = s
-                    Handler().postDelayed({
-                   processText.visibility = View.VISIBLE
-                   btnSignIn.visibility = View.GONE
-                   btnAnonymous.visibility = View.GONE
-                   etPhoneNumber.visibility = View.GONE
-                   etCodeType.visibility = View.VISIBLE
-                   btnSignInMain.visibility = View.VISIBLE
-                }, 6000)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    processText.visibility = View.VISIBLE
+                    btnSignIn.visibility = View.GONE
+                    btnAnonymous.visibility = View.GONE
+                    etPhoneNumber.visibility = View.GONE
+                    etFirstNumber.visibility = View.VISIBLE
+                    etSecondNumber.visibility = View.VISIBLE
+                    etThirdNumber.visibility = View.VISIBLE
+                    etFourthNumber.visibility = View.VISIBLE
+                    etFifthNumber.visibility = View.VISIBLE
+                    etSixthNumber.visibility = View.VISIBLE
+                    btnSignInMain.visibility = View.VISIBLE
+                }, 5000)
             }
         }
     }
@@ -100,11 +110,10 @@ class LoginActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 sendToMain()
             } else {
-                processText!!.text = task.exception!!.message
+                processText!!.text = "Kirtilgen sanlardi tekserip shig'in"
                 processText!!.setTextColor(Color.RED)
                 processText!!.visibility = View.VISIBLE
             }
-
         }
     }
 }

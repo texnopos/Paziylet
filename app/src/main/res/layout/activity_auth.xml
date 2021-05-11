@@ -29,10 +29,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivB"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="64dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/paziyletlogo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,27 +70,102 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etCodeType"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="128dp"
-                android:layout_marginEnd="128dp"
+                android:id="@+id/etFirstNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="64dp"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/shape_for_phone_number"
-                android:drawableStart="@drawable/ic_forward_sms"
-                android:drawablePadding="12dp"
-                android:hint="******"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="6"
-                android:padding="12dp"
-                android:textColorHint="#A3A8A2A2"
+                android:maxLength="1"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/processText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+
+            <EditText
+                android:id="@+id/etSecondNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/processText"
-                app:layout_constraintVertical_chainStyle="packed"
-                />
+                app:layout_constraintStart_toEndOf="@id/etFirstNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <EditText
+                android:id="@+id/etThirdNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/processText"
+                app:layout_constraintStart_toEndOf="@id/etSecondNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <EditText
+                android:id="@+id/etFourthNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/processText"
+                app:layout_constraintStart_toEndOf="@id/etThirdNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <EditText
+                android:id="@+id/etFifthNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/processText"
+                app:layout_constraintStart_toEndOf="@id/etFourthNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <EditText
+                android:id="@+id/etSixthNumber"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/processText"
+                app:layout_constraintStart_toEndOf="@id/etFifthNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <Button
                 android:id="@+id/btnSignInMain"
@@ -106,7 +179,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etCodeType" />
+                app:layout_constraintTop_toBottomOf="@id/etFirstNumber" />
 
 
             <Button
@@ -140,13 +213,13 @@
                 android:id="@+id/processText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
                 android:padding="12dp"
-                android:layout_marginStart="128dp"
-                android:text="Kodti kirirtin"
-                android:visibility="gone"
-                app:layout_constraintVertical_chainStyle="packed"
+                android:text=""
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etCodeType"/>
+                app:layout_constraintTop_toBottomOf="@id/etFirstNumber"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <ImageView
                 android:layout_width="wrap_content"
