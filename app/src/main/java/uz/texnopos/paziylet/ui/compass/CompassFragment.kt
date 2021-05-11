@@ -1,7 +1,6 @@
 package uz.texnopos.paziylet.ui.compass
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -15,75 +14,66 @@ import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Looper
 import android.provider.Settings
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.ui.location.LocationFragment
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-
-class CompassFragment : Fragment(R.layout.compass_fragment){
+class CompassFragment : LocationFragment(R.layout.compass_fragment) {
     companion object {
         const val QIBLA_LATITUDE = 21.38908
         const val QIBLA_LONGITUDE = 39.85791
         const val FINE_LOCATION = 101
     }
+
     var currentDegree: Float = 0f
     var currentNeedleDegree: Float = 0f
     private lateinit var sensor: Sensor
     lateinit var userLocation: Location
     lateinit var needleAnimation: RotateAnimation
-    private val mutableLocation = MutableLiveData<Location>()
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val trackingInterval: Long = 2000
     private val locationRequest: LocationRequest = LocationRequest.create().apply {
         interval = trackingInterval
         fastestInterval = trackingInterval / 2
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
-    private val trackingInterval: Long = 2000
 
-    @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkForPermissions()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-    }
-
-    @SuppressLint("MissingPermission")
-    override fun onStart() {
-        super.onStart()
-        checkGpsStatus()
+        tvDate.text = getCurrentDateAndTime().toString()
+        location.observe(viewLifecycleOwner, {
+            it?.let { location ->
+                initQiblaDirection(location.latitude, location.longitude)
+                tvRegion.text = getCountryName(requireContext(), it.latitude, it.longitude)
+            }
+        })
     }
 
     private fun checkGpsStatus() {
-         val settingsClient: SettingsClient = LocationServices.getSettingsClient(requireActivity())
-         val locationSettingsRequest: LocationSettingsRequest?
-         val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val builder = LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest)
-            locationSettingsRequest = builder.build()
-            builder.setAlwaysShow(true)
+        val settingsClient: SettingsClient = LocationServices.getSettingsClient(requireActivity())
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+        val locationManager =
+            activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val locationSettingsRequest: LocationSettingsRequest = builder.build()
+        builder.setAlwaysShow(true)
 
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-        initLocationListener()
-        } else {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             settingsClient
                 .checkLocationSettings(locationSettingsRequest)
                 .addOnSuccessListener(context as Activity) {
-                    initLocationListener()
+
                 }
                 .addOnFailureListener(requireActivity()) { e ->
                     when ((e as ApiException).statusCode) {
@@ -96,27 +86,6 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
                     }
                 }
         }
-    }
-
-    private fun initLocationListener() {
-        tvDate.text = getCurrentDateAndTime().toString()
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        mutableLocation.observe(this, {
-            it?.let { location->
-                initQiblaDirection(location.latitude, location.longitude)
-                tvRegion.text = getCountryName(requireContext(), it.latitude, it.longitude)
-                fusedLocationClient.removeLocationUpdates(locationCallback)
-            }
-        })
     }
 
     private fun initQiblaDirection(latitude: Double, longitude: Double) {
@@ -199,8 +168,10 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
                 != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), FINE_LOCATION)
+            } else {
+                checkGpsStatus()
             }
-        }
+        } else checkGpsStatus()
     }
 
     override fun onRequestPermissionsResult(
@@ -213,7 +184,7 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
             if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 showDialog()
             } else {
-                initLocationListener()
+                checkGpsStatus()
             }
         }
         when (requestCode) {
@@ -224,31 +195,13 @@ class CompassFragment : Fragment(R.layout.compass_fragment){
     private fun getCurrentDateAndTime(): Any {
         val c = Calendar.getInstance().time
         val simpleDateFormat =
-            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().time)
+            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Calendar.getInstance().time)
                 .toString()
         return simpleDateFormat.format(c)
     }
 
-    private val locationCallback: LocationCallback = object : LocationCallback() {
-        override fun onLocationResult(locationResult: LocationResult) {
-            for (location in locationResult.locations) {
-                mutableLocation.postValue(location)
-            }
-        }
-    }
-
-    override fun onPause() {
-        fusedLocationClient.removeLocationUpdates(locationCallback)
-        super.onPause()
-    }
-
-    @SuppressLint("MissingPermission")
-    override fun onResume() {
-        super.onResume()
-        fusedLocationClient.requestLocationUpdates(
-            locationRequest,
-            locationCallback,
-            Looper.getMainLooper()
-        )
+    override fun onStart() {
+        super.onStart()
+        checkForPermissions()
     }
 }
