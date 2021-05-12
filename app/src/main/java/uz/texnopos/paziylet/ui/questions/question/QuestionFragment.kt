@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.addVertDivider
 import uz.texnopos.paziylet.core.extentions.visibility
-import uz.texnopos.paziylet.di.ResourceState
 
 class QuestionFragment : Fragment(R.layout.fragment_question) {
     private lateinit var navController: NavController
