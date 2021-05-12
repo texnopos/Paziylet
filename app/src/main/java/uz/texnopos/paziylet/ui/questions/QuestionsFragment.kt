@@ -7,13 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_questions.*
-import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.ui.MainActivity
-import uz.texnopos.paziylet.ui.home.HomeFragment
 import uz.texnopos.paziylet.ui.questions.category.QuestionCategoriesFragment
-import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
-import uz.texnopos.paziylet.ui.questions.my.ViewPager2Fragment
+import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsFragment
 
 class QuestionsFragment: Fragment(R.layout.fragment_questions) {
     private lateinit var navController: NavController
@@ -22,7 +18,7 @@ class QuestionsFragment: Fragment(R.layout.fragment_questions) {
         navController = Navigation.findNavController(view)
         val fragmentList = arrayListOf(
             QuestionCategoriesFragment(),
-            ViewPager2Fragment()
+            MyQuestionsFragment()
         )
         val adapter= QuestionsAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
         viewPager.adapter=adapter
