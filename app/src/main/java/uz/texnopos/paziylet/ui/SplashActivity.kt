@@ -9,7 +9,6 @@ import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.auth.LoginActivity
 
-
 class SplashActivity : AppCompatActivity() {
         lateinit var setting: Setting
         override fun onCreate(savedInstanceState: Bundle?) {
