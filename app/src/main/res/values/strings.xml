@@ -8,6 +8,12 @@
     <string name="question_answer">Сораў жуўап</string>
     <string name="questions">Сораўлар</string>
     <string name="my_questions">Мениң сораўларым</string>
+    <string name="phone_number">Телефон номер</string>
+    <string name="sign_in_dialog_title">Дизимнен өтиң</string>
+    <string name="sign_in_dialog_message">Сизиң сораўларыңыз усы бөлимде жыйналып турыўы ушын дизимнен өтиўиңиз керек. Егер дизимнен өтпесеңиз сораўларыңызды "Сораў-жуўап" бөлиминен излеп тапсаңыз болады.</string>
+    <string name="sign_in_dialog_positive_button">Дизимнен өтиў</string>
+    <string name="sign_in_dialog_negative_button">Анонимно сораў бериў</string>
+    <string name="please_fill_all_the_fields">Илтимас барлық майданларды толтырың</string>
     <string name="location_permission_title">Permission_title</string>
     <string name="location_permission_message">permission_message</string>
     <string name="permission_is_required">Бул бөлим керекли руқсатларсыз толық ислемеўи мүмкин. Сазламалар айнасын ашып руқсат бериң.</string>

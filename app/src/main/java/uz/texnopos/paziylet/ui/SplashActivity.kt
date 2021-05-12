@@ -7,7 +7,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.setting.Setting
-import uz.texnopos.paziylet.ui.mAuth.LoginActivity
+import uz.texnopos.paziylet.ui.auth.LoginActivity
 
 
 class SplashActivity : AppCompatActivity() {

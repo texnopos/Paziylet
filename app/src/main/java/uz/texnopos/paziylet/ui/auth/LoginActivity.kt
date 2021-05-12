@@ -1,5 +1,4 @@
-package uz.texnopos.paziylet.ui.mAuth
-
+package uz.texnopos.paziylet.ui.auth
 
 import android.content.Intent
 import android.graphics.Color
@@ -22,7 +21,6 @@ import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
-
 
 class LoginActivity : AppCompatActivity() {
     lateinit var setting: Setting
@@ -53,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     .build()
                 PhoneAuthProvider.verifyPhoneNumber(options)
             } else {
-                processText.text = "Telefon nomer"
+                processText.text = getString(R.string.phone_number)
                 processText.setTextColor(Color.RED)
                 processText.visibility = View.VISIBLE
             }

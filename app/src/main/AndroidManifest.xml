@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity"/>
-    <activity android:name=".ui.mAuth.LoginActivity"/>
-        <activity android:name=".ui.mAuth.OtpActivity"/>
+    <activity android:name=".ui.auth.LoginActivity"/>
+        <activity android:name=".ui.auth.OtpActivity"/>
     </application>
 </manifest>

@@ -15,7 +15,7 @@ import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.di.ResourceState
 import uz.texnopos.paziylet.setting.Setting
-import uz.texnopos.paziylet.ui.mAuth.LoginActivity
+import uz.texnopos.paziylet.ui.auth.LoginActivity
 import java.util.*
 
 class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
@@ -31,13 +31,13 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
         recyclerView.adapter=adapter
         if (settings.isAppFirstLaunched()){
             val dialog=AlertDialog.Builder(requireContext())
-            dialog.setTitle("Дыққат")
-                .setMessage("Сораў бериў ушин дизимнен өтиң!")
-                .setPositiveButton("Дизимнен өтиў"){_,_->
+            dialog.setTitle(getString(R.string.sign_in_dialog_title))
+                .setMessage(getString(R.string.sign_in_dialog_message))
+                .setPositiveButton(getString(R.string.sign_in_dialog_positive_button)){ _, _->
                     val intent=Intent(requireContext(),LoginActivity::class.java)
                     startActivity(intent)
                 }
-                .setNegativeButton("Анонимно сораў бериў"){_,_->
+                .setNegativeButton(getString(R.string.sign_in_dialog_negative_button)){ _, _->
                     userId= UUID.randomUUID().toString()
                 }
             dialog.setCancelable(false).show()
@@ -54,7 +54,7 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
                 etSoraw.text.clear()
                 viewModel.getAllMyQuestions(userId)
             }else{
-                etSoraw.error="please fill the field"
+                etSoraw.error=getString(R.string.please_fill_all_the_fields)
             }
         }
     }
