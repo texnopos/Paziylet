@@ -96,4 +96,19 @@
         android:src="@drawable/ic_group_strelka"
         android:layout_height="wrap_content"/>
 
+    <com.tuyenmonkey.mkloader.MKLoader
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:elevation="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mk_color="@color/colorAppBar"
+        app:mk_type="LineSpinner" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
