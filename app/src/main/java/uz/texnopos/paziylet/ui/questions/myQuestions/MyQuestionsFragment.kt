@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
@@ -24,7 +25,7 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
     private val adapter:MyQuestionsAdapter by inject()
     private val settings: Setting by inject()
     private var userId=""
-    private val mAuth:FirebaseAuth by inject()
+    private val auth:FirebaseAuth by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,10 +43,10 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
                 }
             dialog.setCancelable(false).show()
         }else{
-            userId=mAuth.currentUser!!.uid
+            userId=auth.currentUser!!.uid
         }
-        recyclerView.addVertDivider(requireContext())
         setUpObserver()
+        setUpObserverAddQuestion()
         viewModel.getAllMyQuestions(userId)
         btnSend.onClick {
             if (etSoraw.text.isNotEmpty()){
@@ -70,6 +71,19 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
                     }
                 }
                 ResourceState.ERROR -> progressBarQuestion.visibility(false)
+            }
+        })
+    }
+
+    private fun setUpObserverAddQuestion() {
+        viewModel.addQuestion.observe(viewLifecycleOwner, {
+            when (it.status) {
+                ResourceState.LOADING -> progressBarQuestion.visibility(true)
+                ResourceState.SUCCESS -> progressBarQuestion.visibility(false)
+                ResourceState.ERROR -> {
+                    progressBarQuestion.visibility(false)
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
