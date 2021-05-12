@@ -1,3 +1,4 @@
+/*
 package uz.texnopos.paziylet.ui.questions.myQuestions
 
 import android.app.AlertDialog
@@ -93,4 +94,4 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
             }
         })
     }
-}
+}*/

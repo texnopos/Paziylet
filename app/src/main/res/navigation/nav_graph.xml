@@ -45,9 +45,13 @@
         tools:layout="@layout/fragment_questions"/>
     <fragment
         android:id="@+id/namazwaqtiFragment"
-        android:name="uz.texnopos.paziylet.ui.namazwaqti.NamazwaqtiFragment"
+        android:name="uz.texnopos.paziylet.ui.praytime.PrayTimeFragment"
         android:label="NamazwaqtiFragment"
-        tools:layout="@layout/fragment_namazwaqti"/>
+        tools:layout="@layout/fragment_namazwaqti">
+        <action
+            android:id="@+id/action_namazwaqtiFragment_to_compassFragment"
+            app:destination="@id/compassFragment" />
+    </fragment>
     <fragment
         android:id="@+id/compassFragment"
         tools:layout="@layout/compass_fragment"
