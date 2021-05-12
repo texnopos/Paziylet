@@ -10,4 +10,5 @@
     <string name="my_questions">Мениң сораўларым</string>
     <string name="sign_in">Дизимнен отиў</string>
     <string name="anonymous_sign_in">Аноним отиў</string>
+    <string name="example_phone_number">+998 91 123 45 67</string>
 </resources>
