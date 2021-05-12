@@ -11,11 +11,10 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_my_questions.*
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.core.extentions.addVertDivider
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.di.ResourceState
-import uz.texnopos.paziylet.setting.Setting
+import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.auth.LoginActivity
 import java.util.*
 
@@ -23,7 +22,7 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
 
     private val viewModel:MyQuestionsViewModel by viewModel()
     private val adapter:MyQuestionsAdapter by inject()
-    private val settings: Setting by inject()
+    private val settings: Settings by inject()
     private var userId=""
     private val auth:FirebaseAuth by inject()
 

@@ -18,19 +18,19 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
-import uz.texnopos.paziylet.setting.Setting
+import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var setting: Setting
+    lateinit var settings: Settings
     private val auth: FirebaseAuth by inject()
     private lateinit var mCallBacks: OnVerificationStateChangedCallbacks
     lateinit var mCodeS: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-        setting = Setting(this)
+        settings = Settings(this)
         btnAnonymous.onClick {
             val mainIntent = Intent(this, MainActivity::class.java)
             startActivity(mainIntent)
@@ -93,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun sendToMain() {
-        setting.setFirstLaunched()
+        settings.setFirstLaunched()
         val mainIntent = Intent(this, MainActivity::class.java)
         startActivity(mainIntent)
         finish()
