@@ -17,7 +17,6 @@ import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
-import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesFragmentViewModel
 import java.util.concurrent.TimeUnit
 
 private const val baseUrl: String = "http://api.paziylet.texnopos.uz/sample.php"
