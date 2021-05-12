@@ -44,6 +44,11 @@
         tools:layout="@layout/fragment_question_answer"/>
         tools:layout="@layout/fragment_questions"/>
     <fragment
+        android:id="@+id/namazwaqtiFragment"
+        android:name="uz.texnopos.paziylet.ui.namazwaqti.NamazwaqtiFragment"
+        android:label="NamazwaqtiFragment"
+        tools:layout="@layout/fragment_namazwaqti"/>
+    <fragment
         android:id="@+id/compassFragment"
         tools:layout="@layout/compass_fragment"
         android:name="uz.texnopos.paziylet.ui.compass.CompassFragment"
