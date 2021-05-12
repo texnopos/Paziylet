@@ -8,4 +8,6 @@
     <string name="question_answer">Сораў жуўап</string>
     <string name="questions">Сораўлар</string>
     <string name="my_questions">Мениң сораўларым</string>
+    <string name="sign_in">Дизимнен отиў</string>
+    <string name="anonymous_sign_in">Аноним отиў</string>
 </resources>

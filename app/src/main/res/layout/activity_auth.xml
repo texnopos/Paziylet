@@ -168,14 +168,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etFirstNumber" />
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/shape"
-            android:text="Дизимнен оту"
+            android:text="@string/sign_in"
+            app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
             app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
             app:layout_constraintTop_toBottomOf="@id/etPhoneNumber" />
@@ -183,11 +182,11 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAnonymous"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:background="@drawable/shape"
+            android:layout_height="58dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:backgroundTint="#37b899"
-            android:text="Аноним оту"
+            app:cornerRadius="10dp"
+            android:text="@string/anonymous_sign_in"
             app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
             app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
             app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
