@@ -13,13 +13,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.texnopos.paziylet.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.namazwaqti.ApiInterface
+import uz.texnopos.paziylet.ui.namazwaqti.NamazwaqtiViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
 import java.util.concurrent.TimeUnit
 
-private const val baseUrl: String = "http://api.paziylet.texnopos.uz/sample.php"
+private const val baseUrl: String = "http://api.paziylet.texnopos.uz/"
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
@@ -27,6 +28,7 @@ val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseHelper(androidApplication().applicationContext,get()) }
 }
+
 val remoteModule = module {
     single {
         GsonBuilder().setLenient().create()
@@ -49,6 +51,7 @@ val remoteModule = module {
     }
     single { get<Retrofit>().create(ApiInterface::class.java) }
 }
+
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
@@ -56,6 +59,7 @@ val adapterModule = module {
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { NamazwaqtiViewModel(get()) }
    }
 
 
