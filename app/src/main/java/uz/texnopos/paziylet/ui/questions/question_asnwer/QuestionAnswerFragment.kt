@@ -18,10 +18,10 @@ class QuestionAnswerFragment : Fragment(R.layout.fragment_question_answer) {
         val id = arguments?.getString("id")!!.toString()
         val question = arguments?.getString("question")!!.toString()
         val answer = arguments?.getString("answer")!!.toString()
-        val categoryName = arguments?.getString("categoryName")!!.toString()
+       // val categoryName = arguments?.getString("categoryName")!!.toString()
         tvQuestion.text = Html.fromHtml(question)
         tvAnswer.text = Html.fromHtml(answer)
-        toolbar.ivCategoryName.text = categoryName
+       // toolbar.ivCategoryName.text = categoryName
         toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_questionsFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_questionsFragment_to_myQuestionsFragment"
+            app:destination="@id/myQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionCategoriesFragment"
@@ -53,5 +56,14 @@
         android:name="uz.texnopos.paziylet.ui.signin.SignInFragment"
         android:label="SignInFragment"
         tools:layout="@layout/activity_auth"/>
+    <fragment
+        android:id="@+id/myQuestionsFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsFragment"
+        android:label="MyQuestionsFragment"
+        tools:layout="@layout/fragment_my_questions">
+        <action
+            android:id="@+id/action_myQuestionsFragment_to_questionAnswerFragment"
+            app:destination="@id/questionAnswerFragment" />
+    </fragment>
 
 </navigation>
