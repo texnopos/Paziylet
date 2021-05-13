@@ -6,7 +6,7 @@
     <item android:id="@+id/questionsFragment"
         android:title="@string/questions"
         android:icon="@drawable/ic_question"/>
-    <item android:id="@+id/namaz_time"
+    <item android:id="@+id/namazwaqtiFragment"
         android:title="@string/time_namaz"
         android:icon="@drawable/ic_timenamaz"/>
     <item android:id="@+id/compassFragment"

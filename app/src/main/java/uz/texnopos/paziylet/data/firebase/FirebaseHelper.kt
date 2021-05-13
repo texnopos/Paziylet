@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.firebase
+package uz.texnopos.paziylet.data.firebase
 
 import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore

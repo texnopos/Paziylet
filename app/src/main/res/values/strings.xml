@@ -15,4 +15,5 @@
     <string name="go_to_settings">Сазламалар</string>
     <string name="cancel">Бийкарлаў</string>
     <string name="no_permission_for_location">Локация ушын руқсат берилмеген</string>
+    <string name="success_add_question">Сораў берилди</string>
 </resources>

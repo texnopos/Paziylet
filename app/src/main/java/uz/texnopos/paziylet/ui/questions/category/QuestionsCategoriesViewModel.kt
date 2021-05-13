@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import uz.texnopos.paziylet.core.Resource
 import uz.texnopos.paziylet.data.model.QuestionCategories
-import uz.texnopos.paziylet.firebase.FirebaseHelper
+import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 
 class QuestionsCategoriesViewModel(private val firebaseHelper: FirebaseHelper) : ViewModel() {
 
