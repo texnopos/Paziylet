@@ -31,9 +31,13 @@ class FirebaseHelper(private val context: Context,private val db: FirebaseFirest
             }
     }
 
-    fun auth(credential: PhoneAuthCredential){
+    fun auth(credential: PhoneAuthCredential, onSuccess: (boolean: Boolean) -> Unit, onFailure: (msg: String?) -> Unit){
         auth.signInWithCredential(credential).addOnCompleteListener {
-
+            if (it.isSuccessful){
+                onSuccess.invoke(true)
+            }else{
+                onFailure.invoke(it.exception!!.message)
+            }
         }
     }
 

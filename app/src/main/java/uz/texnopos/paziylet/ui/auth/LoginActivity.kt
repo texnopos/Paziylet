@@ -17,6 +17,8 @@ import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCall
 import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.core.extentions.visibility
+import uz.texnopos.paziylet.di.ResourceState
 import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
@@ -27,11 +29,14 @@ class LoginActivity : AppCompatActivity() {
     private val auth: FirebaseAuth by inject()
     private lateinit var mCallBacks: OnVerificationStateChangedCallbacks
     lateinit var mCodeS: String
+    private val viewModel: LoginModelView by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        setUpObserver()
         setting = Setting(this)
         btnSignIn.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
             val user = auth.currentUser
             if (user != null) {
                 sendToMain()
@@ -51,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Telefon nomerińizdi tolıq kiritiń", Toast.LENGTH_LONG).show()
                 btnSignIn.isEnabled = true
                 btnAnonymous.isEnabled = true
+                progressBar.visibility =View.GONE
             }
         }
 
@@ -59,14 +65,14 @@ class LoginActivity : AppCompatActivity() {
                 etFirstNumber.text.toString() + etSecondNumber.text.toString() + etThirdNumber.text.toString() + etFourthNumber.text.toString() + etFifthNumber.text.toString() + etSixthNumber.text.toString()
             if (etFirstNumber.text!!.isNotEmpty() || etSecondNumber.text!!.isNotEmpty() || etThirdNumber.text!!.isNotEmpty() || etFourthNumber.text!!.isNotEmpty() || etFifthNumber.text!!.isNotEmpty() || etSixthNumber.text!!.isNotEmpty()) {
                 val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode)
-                signIn(credential)
+                viewModel.signIn(credential)
             } else {
                 Toast.makeText(this, "Kod kiritin", Toast.LENGTH_SHORT).show()
             }
         }
         mCallBacks = object : OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                signIn(phoneAuthCredential)
+                viewModel.signIn(phoneAuthCredential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -79,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                 super.onCodeSent(s, forceResendingToken)
                 mCodeS = s
                 Handler(Looper.getMainLooper()).postDelayed({
+                    progressBar.visibility = View.GONE
                     btnSignIn.visibility = View.GONE
                     btnAnonymous.visibility = View.GONE
                     etPhoneNumber.visibility = View.GONE
@@ -101,13 +108,20 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun signIn(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                sendToMain()
-            } else {
-                Toast.makeText(this, "Kiritilgen sanlardi tekserip shig'in", Toast.LENGTH_SHORT).show()
-            }
-        }
+    private fun setUpObserver() {
+        viewModel.registration.observe(this, {
+            when (it.status) {
+                ResourceState.LOADING -> progressBar.visibility(true)
+                ResourceState.SUCCESS -> {
+                    sendToMain()
+                    progressBar.visibility(false)
+                }
+                ResourceState.ERROR -> {
+                    progressBar.visibility(false)
+                    Toast.makeText(this, "Kiritilgen sanlardi tekserip shig'in", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                }
+        })
     }
 }

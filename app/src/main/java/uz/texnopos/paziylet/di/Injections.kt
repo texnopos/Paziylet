@@ -35,7 +35,7 @@ val adapterModule = module {
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
-    viewModel { LoginModelView() }
+    viewModel { LoginModelView(get()) }
    }
 
 
