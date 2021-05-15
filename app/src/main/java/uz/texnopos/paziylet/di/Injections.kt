@@ -16,6 +16,7 @@ import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.data.retrofit.ApiInterface
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.data.retrofit.NetworkHelper
+import uz.texnopos.paziylet.ui.auth.LoginModelView
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
@@ -35,7 +36,7 @@ val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { FirebaseAuth.getInstance() }
-    single { FirebaseHelper(androidApplication().applicationContext,get()) }
+    single { FirebaseHelper(androidApplication().applicationContext,get(),get()) }
 }
 
 val remoteModule = module {
@@ -69,6 +70,7 @@ val adapterModule = module {
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { LoginModelView(get()) }
     viewModel { PrayTimeViewModel(get()) }
    }
 

@@ -18,4 +18,5 @@
     <string name="cancel">Бийкарлаў</string>
     <string name="no_permission_for_location">Локация ушын руқсат берилмеген</string>
     <string name="success_add_question">Сораў берилди</string>
+    <string name="example_phone_number">+998 91 123 45 67</string>
 </resources>

@@ -36,6 +36,16 @@
         android:layout_height="0dp"
         android:layout_weight="0.6">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp"
+            android:visibility="gone"/>
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etPhoneNumber"
             android:layout_width="0dp"
@@ -46,7 +56,7 @@
             android:background="@drawable/shape_for_phone_number"
             android:drawableStart="@drawable/ic_forward_sms"
             android:drawablePadding="12dp"
-            android:hint="+998 91 123 45 67"
+            android:hint="@string/example_phone_number"
             android:inputType="phone"
             android:maxLength="13"
             android:paddingStart="12dp"
@@ -56,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@id/btnSignIn"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etFirstNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -68,13 +78,12 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSecondNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -85,12 +94,11 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toEndOf="@id/etFirstNumber"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etThirdNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -101,12 +109,11 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toEndOf="@id/etSecondNumber"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etFourthNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -117,12 +124,11 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toEndOf="@id/etThirdNumber"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etFifthNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -133,12 +139,11 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toEndOf="@id/etFourthNumber"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSixthNumber"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -149,20 +154,19 @@
             android:inputType="number"
             android:maxLength="1"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/processText"
             app:layout_constraintStart_toEndOf="@id/etFifthNumber"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignInMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="64dp"
-            android:background="@drawable/shape"
-            android:text="Дизимнен отту"
+            app:cornerRadius="10dp"
+            android:text="@string/sign_in"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,26 +188,14 @@
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_marginTop="@dimen/margin_small"
-            android:backgroundTint="#37b899"
-            app:cornerRadius="10dp"
             android:text="@string/anonymous_sign_in"
+            app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
             app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
             app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
 
-        <TextView
-            android:id="@+id/processText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:padding="12dp"
-            android:text=""
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFirstNumber"
-            app:layout_constraintVertical_chainStyle="packed" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_mechet"
