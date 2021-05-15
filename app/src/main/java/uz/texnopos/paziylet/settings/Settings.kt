@@ -1,9 +1,9 @@
-package uz.texnopos.paziylet.setting
+package uz.texnopos.paziylet.settings
 
 import android.content.Context
 import android.content.SharedPreferences
 
-class Setting(context: Context) {
+class Settings(context: Context) {
     companion object {
         const val IS_APP_FIRST_LAUNCHED = "isAppFirstLaunched"
     }

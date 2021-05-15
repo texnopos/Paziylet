@@ -19,13 +19,13 @@ import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.visibility
-import uz.texnopos.paziylet.setting.Setting
+import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.MainActivity
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var setting: Setting
+    lateinit var settings: Settings
     private val auth: FirebaseAuth by inject()
     private lateinit var mCallBacks: OnVerificationStateChangedCallbacks
     lateinit var mCodeS: String
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setUpObserver()
-        setting = Setting(this)
+        settings = Settings(this)
         btnSignIn.setOnClickListener {
             progressBar.visibility = View.VISIBLE
             val user = auth.currentUser
@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun sendToMain() {
-        setting.setFirstLaunched()
+        settings.setFirstLaunched()
         val mainIntent = Intent(this, MainActivity::class.java)
         startActivity(mainIntent)
         finish()
