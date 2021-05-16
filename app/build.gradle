@@ -96,4 +96,7 @@ dependencies {
 
     //httpLoggingInterceptor
     implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
+    //automatically moves your text to next line
+    implementation "com.github.fraggjkee:sms-confirmation-view:1.2"
 }

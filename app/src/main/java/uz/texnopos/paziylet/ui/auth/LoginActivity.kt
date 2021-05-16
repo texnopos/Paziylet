@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isNotEmpty
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -42,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 sendToMain()
             }
             val phone = etPhoneNumber.text.toString()
-            if (phone.isNotEmpty() && phone.length >= 13) {
+            if (phone.isNotEmpty()) {
                 val options = PhoneAuthOptions.newBuilder(auth)
                     .setPhoneNumber(phone)
                     .setTimeout(60L, TimeUnit.SECONDS)
@@ -53,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 btnSignIn.isEnabled = false
                 btnAnonymous.isEnabled = false
             } else {
-                Toast.makeText(this, "Telefon nomerińizdi tolıq kiritiń", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Телефон номериңизди толық киритиң", Toast.LENGTH_LONG).show()
                 btnSignIn.isEnabled = true
                 btnAnonymous.isEnabled = true
                 progressBar.visibility =View.GONE
@@ -61,13 +62,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnSignInMain.setOnClickListener {
-            val verificationCode =
-                etFirstNumber.text.toString() + etSecondNumber.text.toString() + etThirdNumber.text.toString() + etFourthNumber.text.toString() + etFifthNumber.text.toString() + etSixthNumber.text.toString()
-            if (etFirstNumber.text!!.isNotEmpty() || etSecondNumber.text!!.isNotEmpty() || etThirdNumber.text!!.isNotEmpty() || etFourthNumber.text!!.isNotEmpty() || etFifthNumber.text!!.isNotEmpty() || etSixthNumber.text!!.isNotEmpty()) {
-                val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode)
+            val verificationCode = sms_code_view
+                           if (sms_code_view.isNotEmpty()) {
+                val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode.enteredCode)
                 viewModel.signIn(credential)
             } else {
-                Toast.makeText(this, "Kod kiritin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Смс кодты киритиң", Toast.LENGTH_SHORT).show()
             }
         }
         mCallBacks = object : OnVerificationStateChangedCallbacks() {
@@ -78,7 +78,8 @@ class LoginActivity : AppCompatActivity() {
             override fun onVerificationFailed(e: FirebaseException) {
                 btnSignIn.isEnabled = true
                 btnAnonymous.isEnabled = true
-                Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_LONG).show()
+                progressBar.visibility = View.GONE
             }
 
             override fun onCodeSent(s: String, forceResendingToken: ForceResendingToken) {
@@ -89,14 +90,9 @@ class LoginActivity : AppCompatActivity() {
                     btnSignIn.visibility = View.GONE
                     btnAnonymous.visibility = View.GONE
                     etPhoneNumber.visibility = View.GONE
-                    etFirstNumber.visibility = View.VISIBLE
-                    etSecondNumber.visibility = View.VISIBLE
-                    etThirdNumber.visibility = View.VISIBLE
-                    etFourthNumber.visibility = View.VISIBLE
-                    etFifthNumber.visibility = View.VISIBLE
-                    etSixthNumber.visibility = View.VISIBLE
+                    sms_code_view.visibility = View.VISIBLE
                     btnSignInMain.visibility = View.VISIBLE
-                }, 5000)
+                }, 7000)
             }
         }
     }
@@ -118,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 ResourceState.ERROR -> {
                     progressBar.visibility(false)
-                    Toast.makeText(this, "Kiritilgen sanlardi tekserip shig'in", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Киритилген санларды тескерип шығың", Toast.LENGTH_SHORT)
                         .show()
                 }
                 }

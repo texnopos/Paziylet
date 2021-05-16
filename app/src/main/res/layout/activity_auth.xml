@@ -59,7 +59,7 @@
             android:drawablePadding="12dp"
             android:hint="@string/example_phone_number"
             android:inputType="phone"
-            android:maxLength="13"
+            android:maxLength="16"
             android:paddingStart="12dp"
             android:textColorHint="#A3A8A2A2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,96 +67,25 @@
             app:layout_constraintTop_toBottomOf="@id/btnSignIn"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etFirstNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="64dp"
+        <com.fraggjkee.smsconfirmationview.SmsConfirmationView
+            android:id="@+id/sms_code_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:scv_codeLength="6"
             android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etSecondNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/etFirstNumber"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etThirdNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/etSecondNumber"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etFourthNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/etThirdNumber"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etFifthNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/etFourthNumber"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etSixthNumber"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="1"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/etFifthNumber"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:scv_symbolBackgroundColor="@android:color/white"
+            app:scv_symbolBorderColor="#5C000000"
+            app:scv_symbolBorderCornerRadius="8dp"
+            app:scv_symbolBorderWidth="2dp"
+            app:scv_symbolHeight="40dp"
+            app:scv_symbolTextColor="#5C000000"
+            app:scv_symbolTextSize="24sp"
+            app:scv_symbolWidth="40dp"
+            android:visibility="gone"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignInMain"
@@ -170,7 +99,7 @@
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFirstNumber" />
+            app:layout_constraintTop_toBottomOf="@id/sms_code_view" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
