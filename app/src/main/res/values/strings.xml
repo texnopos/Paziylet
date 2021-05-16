@@ -19,4 +19,7 @@
     <string name="no_permission_for_location">Локация ушын руқсат берилмеген</string>
     <string name="success_add_question">Сораў берилди</string>
     <string name="example_phone_number">+998 91 123 45 67</string>
+    <string name="confirmation_code_error">Киритилген санларды тескерип шығың</string>
+    <string name="input_sms_code">Смс кодты киритиң</string>
+    <string name="input_phone_number">Телефон номериңизди толық киритиң</string>
 </resources>

@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     private val auth: FirebaseAuth by inject()
     private lateinit var mCallBacks: OnVerificationStateChangedCallbacks
     lateinit var mCodeS: String
-    private val viewModel: LoginModelView by inject()
+    private val viewModel: LoginViewModel by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
@@ -56,20 +56,25 @@ class LoginActivity : AppCompatActivity() {
                 btnSignIn.isEnabled = false
                 btnAnonymous.isEnabled = false
             } else {
-                Toast.makeText(this, "Телефон номериңизди толық киритиң", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.input_phone_number), Toast.LENGTH_LONG).show()
                 btnSignIn.isEnabled = true
                 btnAnonymous.isEnabled = true
-                progressBar.visibility =View.GONE
+                progressBar.visibility = View.GONE
             }
         }
 
         btnSignInMain.setOnClickListener {
             val verificationCode = smsCodeView
-                           if (smsCodeView.isNotEmpty()) {
-                val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode.enteredCode)
+            if (smsCodeView.isNotEmpty()) {
+                val credential =
+                    PhoneAuthProvider.getCredential(mCodeS, verificationCode.enteredCode)
                 viewModel.signIn(credential)
             } else {
-                Toast.makeText(this, "Смс кодты киритиң", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.input_sms_code),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         mCallBacks = object : OnVerificationStateChangedCallbacks() {
@@ -116,10 +121,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 ResourceState.ERROR -> {
                     progressBar.visibility(false)
-                    Toast.makeText(this, "Киритилген санларды тескерип шығың", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, getString(R.string.confirmation_code_error), Toast.LENGTH_SHORT)
                         .show()
                 }
-                }
+            }
         })
     }
 }
