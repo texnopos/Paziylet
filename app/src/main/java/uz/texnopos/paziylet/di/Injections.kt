@@ -1,5 +1,6 @@
 package uz.texnopos.paziylet.di
 
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -13,8 +14,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.data.retrofit.ApiInterface
-import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.data.retrofit.NetworkHelper
+import uz.texnopos.paziylet.ui.auth.LoginViewModel
+import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
@@ -23,11 +25,20 @@ import java.util.concurrent.TimeUnit
 
 private const val baseUrl: String = "http://api.paziylet.texnopos.uz/"
 
+val sharedPreferencesModule = module {
+    single {
+        androidApplication().applicationContext.getSharedPreferences(
+            "uz.texnopos.paziylet-uz.preferences",
+            Context.MODE_PRIVATE
+        )
+    }
+}
+
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { FirebaseAuth.getInstance() }
-    single { FirebaseHelper(androidApplication().applicationContext,get()) }
+    single { FirebaseHelper(androidApplication().applicationContext, get(), get()) }
 }
 
 val remoteModule = module {
@@ -38,17 +49,17 @@ val remoteModule = module {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
-                .connectTimeout(25, TimeUnit.SECONDS)
-                .readTimeout(25, TimeUnit.SECONDS)
-                .writeTimeout(25, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(false)
-                .build()
+            .addInterceptor(loggingInterceptor)
+            .connectTimeout(25, TimeUnit.SECONDS)
+            .readTimeout(25, TimeUnit.SECONDS)
+            .writeTimeout(25, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(false)
+            .build()
 
     }
     single {
         Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create(get()))
-                .client(get()).build()
+            .client(get()).build()
     }
     single { get<Retrofit>().create(ApiInterface::class.java) }
     single { NetworkHelper(get()) }
@@ -61,7 +72,8 @@ val adapterModule = module {
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel(get()) }
-   }
+}
 
 

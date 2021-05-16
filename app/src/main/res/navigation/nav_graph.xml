@@ -42,6 +42,12 @@
         android:name="uz.texnopos.paziylet.ui.questions.question_asnwer.QuestionAnswerFragment"
         android:label="QuestionAnswerFragment"
         tools:layout="@layout/fragment_question_answer"/>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="uz.texnopos.paziylet.ui.signin.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/activity_auth"/>
+
         tools:layout="@layout/fragment_questions"/>
     <fragment
         android:id="@+id/namazwaqtiFragment"

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivA"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivB"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/paziyletlogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="46dp"
+            android:background="@drawable/shape_for_phone_number"
+            android:digits="0123456789+"
+            android:drawableStart="@drawable/ic_forward_sms"
+            android:drawablePadding="12dp"
+            android:hint="@string/example_phone_number"
+            android:inputType="phone"
+            android:maxLength="16"
+            android:paddingStart="12dp"
+            android:textColorHint="#A3A8A2A2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.fraggjkee.smsconfirmationview.SmsConfirmationView
+            android:id="@+id/smsCodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:scv_codeLength="6"
+            app:scv_symbolBackgroundColor="@android:color/white"
+            app:scv_symbolBorderColor="#5C000000"
+            app:scv_symbolBorderCornerRadius="8dp"
+            app:scv_symbolBorderWidth="2dp"
+            app:scv_symbolHeight="40dp"
+            app:scv_symbolTextColor="#5C000000"
+            app:scv_symbolTextSize="24sp"
+            app:scv_symbolWidth="40dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignInMain"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="64dp"
+            android:text="@string/sign_in"
+            android:visibility="gone"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/smsCodeView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignIn"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/sign_in"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
+            app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@id/etPhoneNumber" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnonymous"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/anonymous_sign_in"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
+            app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mechet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

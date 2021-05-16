@@ -70,6 +70,7 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
 
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -95,4 +96,7 @@ dependencies {
 
     //httpLoggingInterceptor
     implementation("com.squareup.okhttp3:logging-interceptor:3.9.0")
+
+    //automatically moves your text to next line
+    implementation "com.github.fraggjkee:sms-confirmation-view:1.2"
 }
