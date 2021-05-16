@@ -68,7 +68,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.fraggjkee.smsconfirmationview.SmsConfirmationView
-            android:id="@+id/sms_code_view"
+            android:id="@+id/smsCodeView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -90,7 +90,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignInMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
             android:layout_marginStart="64dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="64dp"
@@ -99,7 +99,7 @@
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sms_code_view" />
+            app:layout_constraintTop_toBottomOf="@id/smsCodeView" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
@@ -122,7 +122,6 @@
             app:layout_constraintEnd_toEndOf="@id/etPhoneNumber"
             app:layout_constraintStart_toStartOf="@id/etPhoneNumber"
             app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

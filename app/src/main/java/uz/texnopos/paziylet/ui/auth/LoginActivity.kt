@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.hideKeyboard
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.MainActivity
@@ -38,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         settings = Settings(this)
         btnSignIn.setOnClickListener {
             progressBar.visibility = View.VISIBLE
+            hideKeyboard()
             val user = auth.currentUser
             if (user != null) {
                 sendToMain()
@@ -62,8 +64,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnSignInMain.setOnClickListener {
-            val verificationCode = sms_code_view
-                           if (sms_code_view.isNotEmpty()) {
+            val verificationCode = smsCodeView
+                           if (smsCodeView.isNotEmpty()) {
                 val credential = PhoneAuthProvider.getCredential(mCodeS, verificationCode.enteredCode)
                 viewModel.signIn(credential)
             } else {
@@ -90,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                     btnSignIn.visibility = View.GONE
                     btnAnonymous.visibility = View.GONE
                     etPhoneNumber.visibility = View.GONE
-                    sms_code_view.visibility = View.VISIBLE
+                    smsCodeView.visibility(true)
                     btnSignInMain.visibility = View.VISIBLE
                 }, 7000)
             }
