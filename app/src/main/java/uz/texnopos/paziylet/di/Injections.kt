@@ -13,8 +13,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uz.texnopos.paziylet.data.firebase.FirebaseHelper
-import uz.texnopos.paziylet.data.retrofit.ApiInterface
-import uz.texnopos.paziylet.data.retrofit.NetworkHelper
 import uz.texnopos.paziylet.ui.auth.LoginViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
@@ -41,30 +39,6 @@ val firebaseModule = module {
     single { FirebaseHelper(androidApplication().applicationContext, get(), get()) }
 }
 
-val remoteModule = module {
-    single {
-        GsonBuilder().setLenient().create()
-    }
-    single {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .connectTimeout(25, TimeUnit.SECONDS)
-            .readTimeout(25, TimeUnit.SECONDS)
-            .writeTimeout(25, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(false)
-            .build()
-
-    }
-    single {
-        Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create(get()))
-            .client(get()).build()
-    }
-    single { get<Retrofit>().create(ApiInterface::class.java) }
-    single { NetworkHelper(get()) }
-}
-
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
@@ -73,7 +47,7 @@ val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
     viewModel { LoginViewModel(get()) }
-    viewModel { PrayTimeViewModel(get()) }
+    viewModel { PrayTimeViewModel() }
 }
 
 

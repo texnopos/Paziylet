@@ -5,12 +5,9 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_namazwaqti.*
-import kotlinx.android.synthetic.main.fragment_namazwaqti.progressBar
-import kotlinx.android.synthetic.main.fragment_namazwaqti.tvRegion
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
@@ -30,20 +27,26 @@ class PrayTimeFragment : LocationFragment(R.layout.fragment_namazwaqti) {
         navController = Navigation.findNavController(view)
         setUpObserver()
         btnCompass.onClick {
-            val action=PrayTimeFragmentDirections.actionNamazwaqtiFragmentToCompassFragment()
+            val action = PrayTimeFragmentDirections.actionNamazwaqtiFragmentToCompassFragment()
             navController.navigate(action)
         }
-        tvDate.text = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+        val timezone =
+            SimpleDateFormat("Z", Locale.getDefault()).format(Calendar.getInstance().time)
+                .toInt() / 100
+        tvDate.text =
+            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Calendar.getInstance().time)
+                .toString()
         location.observe(viewLifecycleOwner, {
-            when(it.status) {
+            when (it.status) {
                 ResourceState.LOADING -> progressBar.visibility(true)
                 ResourceState.SUCCESS -> {
-                    viewModel.getTimes(it.data!!.latitude,it.data.longitude)
+                    viewModel.getTimes(timezone, it.data!!.latitude, it.data.longitude)
                     tvRegion.text =
                         getCountryName(requireContext(), it.data.latitude, it.data.longitude)
                     progressBar.visibility(false)
                 }
-                else -> {}
+                else -> {
+                }
             }
         })
     }
@@ -51,27 +54,19 @@ class PrayTimeFragment : LocationFragment(R.layout.fragment_namazwaqti) {
     private fun getCountryName(context: Context?, latitude: Double, longitude: Double): String {
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
-        return "${addresses[0].locality} , ${addresses[0].countryName}"
+        return "${addresses[0].locality}, ${addresses[0].countryName}"
     }
 
     private fun setUpObserver() {
         viewModel.prayTime.observe(viewLifecycleOwner, {
-            when (it.status) {
-                ResourceState.LOADING -> progressBar.visibility(true)
-                ResourceState.SUCCESS -> {
-                    progressBar.visibility(false)
-                    tvTimeTan.text = it.data!!.tan
-                    tvTimeQuyash.text = it.data.quyash
-                    tvTimePesin.text = it.data.pesin
-                    tvTimeNamazliger.text = it.data.asr
-                    tvTimeSham.text = it.data.sham
-                    tvTimeQuptan.text = it.data.quftan
-                }
-                ResourceState.ERROR -> {
-                    progressBar.visibility(false)
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                }
-            }
+            progressBar.visibility(false)
+            tvTimeTan.text = it.fajr
+            tvTimeQuyash.text = it.sunrise
+            tvTimePesin.text = it.dhuhr
+            tvTimeNamazliger.text = it.asr
+            tvTimeSham.text = it.maghrib
+            tvTimeQuptan.text = it.isha
+
         })
     }
 }

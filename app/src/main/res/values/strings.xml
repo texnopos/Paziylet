@@ -22,4 +22,10 @@
     <string name="confirmation_code_error">Киритилген санларды тескерип шығың</string>
     <string name="input_sms_code">Смс кодты киритиң</string>
     <string name="input_phone_number">Телефон номериңизди толық киритиң</string>
+    <string name="fajr">Tań</string>
+    <string name="sunrise">Quyash</string>
+    <string name="dhuhr">Pesin</string>
+    <string name="asr">Namazlıger</string>
+    <string name="maghrib">Sham</string>
+    <string name="isha">Quptan</string>
 </resources>

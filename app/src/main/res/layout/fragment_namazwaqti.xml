@@ -100,7 +100,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="40dp"
             android:layout_marginStart="32dp"
-            android:text="Tan"
+            android:text="@string/fajr"
             android:background="@drawable/background_tv"
             android:padding="12dp"
             android:textSize="20sp"/>
@@ -127,10 +127,10 @@
             app:layout_constraintTop_toBottomOf="@id/tvTan"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            android:text="Quyash"
+            android:text="@string/sunrise"
             android:background="@drawable/background_tv"
             android:padding="12dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/tvTimeQuyash"
             android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvQuyash"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            android:text="Pesin"
+            android:text="@string/dhuhr"
             android:background="@drawable/background_tv"
             android:padding="12dp"
             android:textSize="20sp"/>
@@ -181,7 +181,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvPesin"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            android:text="Namazliger"
+            android:text="@string/asr"
             android:background="@drawable/background_tv"
             android:padding="12dp"
             android:textSize="20sp"/>
@@ -208,7 +208,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvNamazliger"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            android:text="Sham"
+            android:text="@string/maghrib"
             android:background="@drawable/background_tv"
             android:padding="12dp"
             android:textSize="20sp"/>
@@ -235,7 +235,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvSham"
             android:layout_marginTop="16dp"
             android:layout_marginStart="32dp"
-            android:text="Quptan"
+            android:text="@string/isha"
             android:background="@drawable/background_tv"
             android:padding="12dp"
             android:textSize="20sp"/>
