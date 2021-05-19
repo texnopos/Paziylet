@@ -18,8 +18,6 @@ import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
 
-private const val baseUrl: String = "http://api.paziylet.texnopos.uz/"
-
 val sharedPreferencesModule = module {
     single {
         androidApplication().applicationContext.getSharedPreferences(

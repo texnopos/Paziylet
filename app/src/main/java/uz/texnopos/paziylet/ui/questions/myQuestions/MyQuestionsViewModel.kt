@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import uz.texnopos.paziylet.core.Resource
-import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.data.model.Question
+import uz.texnopos.paziylet.firebase.FirebaseHelper
 
 class MyQuestionsViewModel(private val firebaseHelper: FirebaseHelper) : ViewModel() {
     private val _myQuestion: MutableLiveData<Resource<List<Question>>> = MutableLiveData()

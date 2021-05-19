@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_my_questions.*
 import org.koin.android.ext.android.inject
@@ -44,6 +47,10 @@ class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
             dialog.setCancelable(false).show()
         } else {
             userId = auth.currentUser!!.uid
+        }
+        adapter.setOnClickQuestion {  q, a,id ->
+            val bundle = bundleOf( "question" to q, "answer" to a,"id" to id)
+            Navigation.findNavController(view).navigate(R.id.action_myQuestionsFragment_to_questionAnswerFragment, bundle)
         }
         setUpObserver()
         viewModel.getAllMyQuestions(userId)

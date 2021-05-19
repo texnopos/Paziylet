@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_questionsFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_questionsFragment_to_myQuestionsFragment"
+            app:destination="@id/myQuestionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionCategoriesFragment"
@@ -41,14 +44,7 @@
         android:id="@+id/questionAnswerFragment"
         android:name="uz.texnopos.paziylet.ui.questions.question_asnwer.QuestionAnswerFragment"
         android:label="QuestionAnswerFragment"
-        tools:layout="@layout/fragment_question_answer"/>
-    <fragment
-        android:id="@+id/signInFragment"
-        android:name="uz.texnopos.paziylet.ui.signin.SignInFragment"
-        android:label="SignInFragment"
-        tools:layout="@layout/activity_auth"/>
-
-        tools:layout="@layout/fragment_questions"/>
+        tools:layout="@layout/fragment_question_answer" />
     <fragment
         android:id="@+id/namazwaqtiFragment"
         android:name="uz.texnopos.paziylet.ui.praytime.PrayTimeFragment"
@@ -60,13 +56,22 @@
     </fragment>
     <fragment
         android:id="@+id/compassFragment"
-        tools:layout="@layout/compass_fragment"
         android:name="uz.texnopos.paziylet.ui.compass.CompassFragment"
-        android:label="CompassFragment" />
+        android:label="CompassFragment"
+        tools:layout="@layout/compass_fragment" />
     <fragment
         android:id="@+id/signInFragment"
         android:name="uz.texnopos.paziylet.ui.signin.SignInFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/activity_auth"/>
+        tools:layout="@layout/activity_auth" />
+    <fragment
+        android:id="@+id/myQuestionsFragment"
+        android:name="uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsFragment"
+        android:label="MyQuestionsFragment"
+        tools:layout="@layout/fragment_my_questions">
+        <action
+            android:id="@+id/action_myQuestionsFragment_to_questionAnswerFragment"
+            app:destination="@id/questionAnswerFragment" />
+    </fragment>
 
 </navigation>
