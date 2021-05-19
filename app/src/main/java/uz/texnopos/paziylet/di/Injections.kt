@@ -34,6 +34,13 @@ val sharedPreferencesModule = module {
     }
 }
 
+val sharedPreferencesModule = module {
+    single { androidApplication().applicationContext.getSharedPreferences(
+            "uz.texnopos.paziylet-uz.preferences",
+            Context.MODE_PRIVATE)
+    }
+}
+
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
