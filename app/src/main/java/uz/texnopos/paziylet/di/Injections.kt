@@ -17,6 +17,8 @@ import uz.texnopos.paziylet.ui.auth.LoginViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
+import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsAdapter
+import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
 import java.util.concurrent.TimeUnit
@@ -42,10 +44,12 @@ val firebaseModule = module {
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
+    single { MyQuestionsAdapter() }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { MyQuestionsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel() }
 }
