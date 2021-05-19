@@ -12,7 +12,7 @@
     <string name="sign_in_dialog_title">Дизимнен өтиң</string>
     <string name="sign_in_dialog_message">Сизиң сораўларыңыз усы бөлимде жыйналып турыўы ушын дизимнен өтиўиңиз керек. Егер дизимнен өтпесеңиз сораўларыңызды "Сораў-жуўап" бөлиминен излеп тапсаңыз болады.</string>
     <string name="sign_in_dialog_positive_button">Дизимнен өтиў</string>
-    <string name="sign_in_dialog_negative_button">Анонимно сораў бериў</string>
+    <string name="sign_in_dialog_negative_button">Аноним сораў бериў</string>
     <string name="please_fill_all_the_fields">Илтимас барлық майданларды толтырың</string>
     <string name="set_question">Сораў бериң</string>
     <string name="sign_in">Дизимнен отиў</string>
@@ -24,7 +24,7 @@
     <string name="go_to_settings">Сазламалар</string>
     <string name="cancel">Бийкарлаў</string>
     <string name="no_permission_for_location">Локация ушын руқсат берилмеген</string>
-    <string name="success_add_question">Сораў берилди</string>
+    <string name="your_questions_sended">Сизиң сораўыңыз жиберилди</string>
     <string name="example_phone_number">+998 91 123 45 67</string>
     <string name="confirmation_code_error">Киритилген санларды тескерип шығың</string>
     <string name="input_sms_code">Смс кодты киритиң</string>

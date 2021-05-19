@@ -5,27 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_myquestions.view.*
-import kotlinx.android.synthetic.main.item_question.view.tvSoraw
+import kotlinx.android.synthetic.main.item_question.view.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.data.model.Question
 
-class MyQuestionsAdapter:RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
+class MyQuestionsAdapter : RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
 
-    inner class MyQuestionsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        fun populateModel(model:Question){
-            itemView.tvSoraw.text=Html.fromHtml(model.soraw)
+    inner class MyQuestionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun populateModel(model: Question) {
+            itemView.tvSoraw.text = Html.fromHtml(model.soraw)
         }
     }
 
-    var models:List<Question> = listOf()
-    set(value){
-        field=value
-        notifyDataSetChanged()
-    }
+    var models: List<Question> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyQuestionsViewHolder {
-        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.item_myquestions,parent,false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_myquestions, parent, false)
         return MyQuestionsViewHolder(itemView)
     }
 

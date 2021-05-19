@@ -28,14 +28,14 @@ class FirebaseHelper(private val db: FirebaseFirestore) {
                 onFailure.invoke(it.localizedMessage)
             }
     }
-    fun addQuestion(question:String,userId:String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit){
+    fun addQuestion(question:String,userId:String, onSuccess: (msg: String) -> Unit, onFailure: (msg: String?) -> Unit){
         val map:MutableMap<String,Any> = mutableMapOf()
         map["soraw"]=question
         map["userId"]=userId
         map["id"] = UUID.randomUUID().toString()
         db.collection("questions").document(map["id"].toString()).set(map)
             .addOnSuccessListener {
-                onSuccess.invoke()
+                onSuccess.invoke("Success")
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
