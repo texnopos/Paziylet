@@ -19,8 +19,8 @@
             android:id="@+id/action_questionsFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
         <action
-            android:id="@+id/action_questionsFragment_to_myQuestionsFragment"
-            app:destination="@id/myQuestionsFragment" />
+            android:id="@+id/action_questionsFragment_to_questionAnswerFragment"
+            app:destination="@id/questionAnswerFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionCategoriesFragment"

@@ -35,4 +35,8 @@
     <string name="asr">Namazlıger</string>
     <string name="maghrib">Sham</string>
     <string name="isha">Quptan</string>
+    <string name="answer_waiting">Жуўап кутилмекте</string>
+    <string name="answer_show">Жуўапты көриў</string>
+    <string name="answer_no">Жуўап жоқ</string>
+    <string name="full_answer">Толық жуўап</string>
 </resources>

@@ -6,6 +6,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.texnopos.paziylet.data.model.Question
 import uz.texnopos.paziylet.data.model.QuestionCategories
+import java.text.SimpleDateFormat
 import java.util.*
 
 class FirebaseHelper(
@@ -53,6 +54,10 @@ class FirebaseHelper(
         val map: MutableMap<String, Any> = mutableMapOf()
         map["soraw"] = question
         map["userId"] = userId
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val date:Date=sdf.parse(sdf.format(Calendar.getInstance().time).toString())
+        map["createdAt"]=(date.time)/1000
+        map["rejected"]=false
         map["id"] = UUID.randomUUID().toString()
         db.collection("questions").document(map["id"].toString()).set(map)
             .addOnSuccessListener {

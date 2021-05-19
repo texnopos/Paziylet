@@ -1,10 +1,13 @@
 package uz.texnopos.paziylet.ui.questions.myQuestions
 
+import android.content.Context
 import android.graphics.Color
+import android.provider.Settings.Global.getString
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_myquestions.view.*
 import kotlinx.android.synthetic.main.item_question.view.tvSoraw
@@ -12,30 +15,33 @@ import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.data.model.Question
 
-class MyQuestionsAdapter : RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
+class MyQuestionsAdapter(val context:Context) : RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
 
     inner class MyQuestionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(model: Question) {
-            itemView.tvSoraw.text = Html.fromHtml(model.soraw)
-            if (model.juwap.isNotEmpty()){
+            itemView.tvSoraw.text = HtmlCompat.fromHtml(model.soraw,HtmlCompat.FROM_HTML_MODE_LEGACY)
+            if (model.rejected){
                 itemView.tvCheck.setBackgroundResource(R.drawable.background_no_answer)
-                itemView.tvCheck.text="Жуап жок"
-                itemView.view.setBackgroundColor(Color.parseColor("#B94E4E"))
+                itemView.tvCheck.text=context.getString(R.string.answer_no)
             }else{
-                itemView.tvCheck.setBackgroundResource(R.drawable.background_yes_answer)
-                itemView.tvCheck.text="Жуапты кориу"
-                itemView.view.setBackgroundColor(Color.parseColor("#4EB9A0"))
-                itemView.onClick {
-                    onClickQuestion.invoke(model.soraw, model.juwap,model.id)
+                if (model.juwap.isNotEmpty()){
+                    itemView.tvCheck.setBackgroundResource(R.drawable.background_yes_answer)
+                    itemView.tvCheck.text=context.getString(R.string.answer_show)
+                    itemView.onClick {
+                        onClickQuestion.invoke(model.soraw, model.juwap)
+                    }
+                }else{
+                    itemView.tvCheck.setBackgroundResource(R.drawable.background_waiting_answer)
+                    itemView.tvCheck.text=context.getString(R.string.answer_waiting)
                 }
             }
         }
     }
 
-    private var onClickQuestion: (question: String, answer: String,id:String) -> Unit =
-        { _,_, _ -> }
+    private var onClickQuestion: (question: String, answer: String) -> Unit =
+        { _,_ -> }
 
-    fun setOnClickQuestion(onQuestionMoreClicked: ( question: String, answer: String,id:String) -> Unit) {
+    fun setOnClickQuestion(onQuestionMoreClicked: ( question: String, answer: String) -> Unit) {
         this.onClickQuestion = onQuestionMoreClicked
     }
 

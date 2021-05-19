@@ -48,9 +48,9 @@ class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
         } else {
             userId = auth.currentUser!!.uid
         }
-        adapter.setOnClickQuestion {  q, a,id ->
-            val bundle = bundleOf( "question" to q, "answer" to a,"id" to id)
-            Navigation.findNavController(view).navigate(R.id.action_myQuestionsFragment_to_questionAnswerFragment, bundle)
+        adapter.setOnClickQuestion { q, a ->
+            val bundle = bundleOf( "question" to q, "answer" to a)
+            Navigation.findNavController(view).navigate(R.id.action_questionsFragment_to_questionAnswerFragment, bundle)
         }
         setUpObserver()
         viewModel.getAllMyQuestions(userId)

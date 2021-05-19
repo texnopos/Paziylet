@@ -42,7 +42,7 @@ val firebaseModule = module {
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
-    single { MyQuestionsAdapter() }
+    single { MyQuestionsAdapter(androidApplication().applicationContext) }
     single { Settings(androidApplication().applicationContext) }
 }
 val viewModelModule = module {
