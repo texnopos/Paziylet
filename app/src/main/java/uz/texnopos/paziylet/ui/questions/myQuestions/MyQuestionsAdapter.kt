@@ -17,7 +17,7 @@ class MyQuestionsAdapter : RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsVi
     inner class MyQuestionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(model: Question) {
             itemView.tvSoraw.text = Html.fromHtml(model.soraw)
-            if (!model.juwap.isEmpty()){
+            if (model.juwap.isNotEmpty()){
                 itemView.tvCheck.setBackgroundResource(R.drawable.background_no_answer)
                 itemView.tvCheck.text="Жуап жок"
                 itemView.view.setBackgroundColor(Color.parseColor("#B94E4E"))
