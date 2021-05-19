@@ -15,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.auth.LoginViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
+import uz.texnopos.paziylet.firebase.FirebaseHelper
+import uz.texnopos.paziylet.setting.Setting
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsAdapter
@@ -34,24 +36,25 @@ val sharedPreferencesModule = module {
     }
 }
 
-val sharedPreferencesModule = module {
-    single { androidApplication().applicationContext.getSharedPreferences(
-            "uz.texnopos.paziylet-uz.preferences",
-            Context.MODE_PRIVATE)
-    }
-}
 
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { FirebaseAuth.getInstance() }
-    single { FirebaseHelper(androidApplication().applicationContext, get(), get()) }
+    single {
+        uz.texnopos.paziylet.data.firebase.FirebaseHelper(
+            androidApplication().applicationContext,
+            get(),
+            get()
+        )
+    }
 }
 
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
     single { MyQuestionsAdapter() }
+    single { Setting(androidApplication().applicationContext) }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }

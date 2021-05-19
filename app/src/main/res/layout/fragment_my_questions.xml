@@ -29,7 +29,7 @@
         app:mk_type="LineSpinner" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewPager2"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -55,7 +55,7 @@
         android:background="@drawable/background_edittext"
         android:layout_marginBottom="16dp"/>
 
-    <EditText
+    <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/background_button"
         app:layout_constraintTop_toTopOf="@id/etSoraw"
-        android:padding="12dp"
         android:textColor="@color/white"
         android:text="Жибериу"
         app:layout_constraintBottom_toBottomOf="@id/etSoraw"
