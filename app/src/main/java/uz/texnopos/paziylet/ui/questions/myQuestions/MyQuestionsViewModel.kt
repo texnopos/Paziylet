@@ -14,18 +14,18 @@ class MyQuestionsViewModel(private val firebaseHelper: FirebaseHelper) : ViewMod
     private val _addQuestion: MutableLiveData<Resource<String>> = MutableLiveData()
     val addQuestion: LiveData<Resource<String>> get() = _addQuestion
 
-    fun getAllMyQuestions(userId: String) {
+    fun getAllMyQuestions() {
         _myQuestion.value = Resource.loading()
-        firebaseHelper.getPrivateQuestion(userId, {
+        firebaseHelper.getPrivateQuestion({
             _myQuestion.value = Resource.success(it)
         }, {
             _myQuestion.value = Resource.error(it)
         })
     }
 
-    fun addQuestion(question: String, userId: String) {
+    fun addQuestion(question: String) {
         _addQuestion.value = Resource.loading()
-        firebaseHelper.addQuestion(question, userId,
+        firebaseHelper.addQuestion(question,
             {
                 _addQuestion.value = Resource.success(it)
             },

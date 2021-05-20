@@ -1,9 +1,6 @@
 package uz.texnopos.paziylet.ui.questions.myQuestions
 
 import android.content.Context
-import android.graphics.Color
-import android.provider.Settings.Global.getString
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,33 +12,35 @@ import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.data.model.Question
 
-class MyQuestionsAdapter(val context:Context) : RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
+class MyQuestionsAdapter(val context: Context) :
+    RecyclerView.Adapter<MyQuestionsAdapter.MyQuestionsViewHolder>() {
 
     inner class MyQuestionsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(model: Question) {
-            itemView.tvSoraw.text = HtmlCompat.fromHtml(model.soraw,HtmlCompat.FROM_HTML_MODE_LEGACY)
-            if (model.rejected){
+            itemView.tvSoraw.text =
+                HtmlCompat.fromHtml(model.soraw, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            if (model.rejected) {
                 itemView.tvCheck.setBackgroundResource(R.drawable.background_no_answer)
-                itemView.tvCheck.text=context.getString(R.string.answer_no)
-            }else{
-                if (model.juwap.isNotEmpty()){
+                itemView.tvCheck.text = context.getString(R.string.answer_no)
+            } else {
+                if (model.juwap.isNotEmpty()) {
                     itemView.tvCheck.setBackgroundResource(R.drawable.background_yes_answer)
-                    itemView.tvCheck.text=context.getString(R.string.answer_show)
+                    itemView.tvCheck.text = context.getString(R.string.answer_show)
                     itemView.onClick {
                         onClickQuestion.invoke(model.soraw, model.juwap)
                     }
-                }else{
+                } else {
                     itemView.tvCheck.setBackgroundResource(R.drawable.background_waiting_answer)
-                    itemView.tvCheck.text=context.getString(R.string.answer_waiting)
+                    itemView.tvCheck.text = context.getString(R.string.answer_waiting)
                 }
             }
         }
     }
 
     private var onClickQuestion: (question: String, answer: String) -> Unit =
-        { _,_ -> }
+        { _, _ -> }
 
-    fun setOnClickQuestion(onQuestionMoreClicked: ( question: String, answer: String) -> Unit) {
+    fun setOnClickQuestion(onQuestionMoreClicked: (question: String, answer: String) -> Unit) {
         this.onClickQuestion = onQuestionMoreClicked
     }
 

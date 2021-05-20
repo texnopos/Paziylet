@@ -14,7 +14,7 @@ class FirebaseHelper(
     private val auth: FirebaseAuth
 ) {
 
-    var userId = auth.currentUser!!.uid
+    var userId = auth.currentUser?.uid ?: ""
 
     fun getQuestionCategories(
         onSuccess: (list: List<QuestionCategories>) -> Unit,
@@ -47,17 +47,15 @@ class FirebaseHelper(
             }
     }
 
-    @SuppressLint("SimpleDateFormat")
     fun addQuestion(
         question: String,
-        userId: String,
         onSuccess: (msg: String) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         val map: MutableMap<String, Any> = mutableMapOf()
         map["soraw"] = question
         map["userId"] = userId
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
         val date:Date=sdf.parse(sdf.format(Calendar.getInstance().time).toString())
         map["createdAt"]=(date.time)/1000
         map["rejected"]=false
@@ -72,7 +70,6 @@ class FirebaseHelper(
     }
 
     fun getPrivateQuestion(
-        userId: String,
         onSuccess: (list: List<Question>) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {

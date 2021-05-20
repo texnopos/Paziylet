@@ -7,9 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_my_questions.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,24 +16,21 @@ import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.toast
 import uz.texnopos.paziylet.core.extentions.visibility
-import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.auth.LoginActivity
-import java.util.*
 
 class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
 
     private val viewModel: MyQuestionsViewModel by viewModel()
     private val adapter: MyQuestionsAdapter by inject()
     private val settings: Settings by inject()
-    private val firebaseHelper:FirebaseHelper by inject()
-    lateinit var userId:String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
         swipeRefresh.setOnRefreshListener {
-            viewModel.getAllMyQuestions(userId)
-            swipeRefresh.isRefreshing=false
+            viewModel.getAllMyQuestions()
+            swipeRefresh.isRefreshing = false
         }
         if (settings.isAppFirstLaunched()) {
             val dialog = AlertDialog.Builder(requireContext())
@@ -45,25 +40,24 @@ class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
                     val intent = Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent)
                 }
-                .setNegativeButton(getString(R.string.sign_in_dialog_negative_button)) { _, _ ->
-                    userId = ""
+                .setNegativeButton(getString(R.string.sign_in_dialog_negative_button)) { dialog, _ ->
+                    dialog.dismiss()
                 }
             dialog.setCancelable(false).show()
-        } else {
-            userId=firebaseHelper.userId
         }
         adapter.setOnClickQuestion { q, a ->
-            val bundle = bundleOf( "question" to q, "answer" to a)
-            Navigation.findNavController(view).navigate(R.id.action_questionsFragment_to_questionAnswerFragment, bundle)
+            val bundle = bundleOf("question" to q, "answer" to a)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_questionsFragment_to_questionAnswerFragment, bundle)
         }
         setUpObserver()
-        viewModel.getAllMyQuestions(userId)
+        viewModel.getAllMyQuestions()
         btnSend.onClick {
             if (etSoraw.text.isNotEmpty()) {
                 val question = etSoraw.text.toString()
-                viewModel.addQuestion(question, userId)
+                viewModel.addQuestion(question)
                 etSoraw.text.clear()
-                viewModel.getAllMyQuestions(userId)
+                viewModel.getAllMyQuestions()
             } else {
                 etSoraw.error = getString(R.string.please_fill_all_the_fields)
             }
