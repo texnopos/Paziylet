@@ -18,6 +18,7 @@ import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.toast
 import uz.texnopos.paziylet.core.extentions.visibility
+import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.auth.LoginActivity
 import java.util.*
@@ -27,12 +28,15 @@ class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
     private val viewModel: MyQuestionsViewModel by viewModel()
     private val adapter: MyQuestionsAdapter by inject()
     private val settings: Settings by inject()
-    private var userId = ""
-    private val auth: FirebaseAuth by inject()
-
+    private val firebaseHelper:FirebaseHelper by inject()
+    lateinit var userId:String
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
+        swipeRefresh.setOnRefreshListener {
+            viewModel.getAllMyQuestions(userId)
+            swipeRefresh.isRefreshing=false
+        }
         if (settings.isAppFirstLaunched()) {
             val dialog = AlertDialog.Builder(requireContext())
             dialog.setTitle(getString(R.string.sign_in_dialog_title))
@@ -42,11 +46,11 @@ class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
                     startActivity(intent)
                 }
                 .setNegativeButton(getString(R.string.sign_in_dialog_negative_button)) { _, _ ->
-                    userId = UUID.randomUUID().toString()
+                    userId = ""
                 }
             dialog.setCancelable(false).show()
         } else {
-            userId = auth.currentUser!!.uid
+            userId=firebaseHelper.userId
         }
         adapter.setOnClickQuestion { q, a ->
             val bundle = bundleOf( "question" to q, "answer" to a)

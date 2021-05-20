@@ -1,6 +1,6 @@
 package uz.texnopos.paziylet.data.firebase
 
-import android.content.Context
+import android.annotation.SuppressLint
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.firestore.FirebaseFirestore
@@ -13,6 +13,8 @@ class FirebaseHelper(
     private val db: FirebaseFirestore,
     private val auth: FirebaseAuth
 ) {
+
+    var userId = auth.currentUser!!.uid
 
     fun getQuestionCategories(
         onSuccess: (list: List<QuestionCategories>) -> Unit,
@@ -45,6 +47,7 @@ class FirebaseHelper(
             }
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun addQuestion(
         question: String,
         userId: String,
