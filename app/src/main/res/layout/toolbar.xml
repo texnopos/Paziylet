@@ -21,9 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Пайғамбарымыз тарийхы ҳәм сийрат"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/standard_16sp"
+        android:textSize="@dimen/standard_toolbar_text_size"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginEnd="@dimen/margin_standard"
@@ -31,7 +30,7 @@
         app:layout_constraintStart_toEndOf="@id/btnHome"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivMechet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
