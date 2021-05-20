@@ -87,10 +87,21 @@
     </fragment>
     <fragment
         android:id="@+id/definiteCategory"
-        android:name="uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategory"
+        android:name="uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategoryFragment"
         android:label="DefiniteCategory" >
         <argument
             android:name="path"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_definiteCategory_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="uz.texnopos.paziylet.ui.categories.definitecategory.webview.WebViewFragment"
+        android:label="WebViewFragment" >
+        <argument
+            android:name="text"
             app:argType="string" />
     </fragment>
 </navigation>
