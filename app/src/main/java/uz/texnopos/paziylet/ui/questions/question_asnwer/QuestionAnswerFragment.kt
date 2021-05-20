@@ -3,6 +3,7 @@ package uz.texnopos.paziylet.ui.questions.question_asnwer
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -15,13 +16,11 @@ class QuestionAnswerFragment : Fragment(R.layout.fragment_question_answer) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        val id = arguments?.getString("id")!!.toString()
         val question = arguments?.getString("question")!!.toString()
         val answer = arguments?.getString("answer")!!.toString()
-        val categoryName = arguments?.getString("categoryName")!!.toString()
-        tvQuestion.text = Html.fromHtml(question)
-        tvAnswer.text = Html.fromHtml(answer)
-        toolbar.ivCategoryName.text = categoryName
+        tvQuestion.text = HtmlCompat.fromHtml(question, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        tvAnswer.text = HtmlCompat.fromHtml(answer,HtmlCompat.FROM_HTML_MODE_LEGACY)
+        toolbar.ivCategoryName.text =getString(R.string.full_answer)
         toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }

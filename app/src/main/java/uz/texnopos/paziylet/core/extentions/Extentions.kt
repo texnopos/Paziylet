@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
@@ -86,6 +87,14 @@ val String.ifContainsLatin: Boolean
         }
         return false
     }
+
+fun Fragment.toast(msg: String?) {
+    Toast.makeText(this.requireContext(), msg, Toast.LENGTH_SHORT).show()
+}
+
+fun Activity.toast(msg: String?) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
 
 fun Fragment.hideKeyboard() {
     view?.let { requireActivity().hideKeyboard(it) }

@@ -4,24 +4,19 @@ import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.auth.LoginViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
+import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
+import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsAdapter
+import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsViewModel
 import uz.texnopos.paziylet.ui.questions.question.QuestionAdapter
 import uz.texnopos.paziylet.ui.questions.question.QuestionFragmentViewModel
-import java.util.concurrent.TimeUnit
-
-private const val baseUrl: String = "http://api.paziylet.texnopos.uz/"
 
 val sharedPreferencesModule = module {
     single {
@@ -32,20 +27,28 @@ val sharedPreferencesModule = module {
     }
 }
 
+
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
     single { FirebaseAuth.getInstance() }
-    single { FirebaseHelper(androidApplication().applicationContext, get(), get()) }
+    single { FirebaseHelper(
+            get(),
+            get()
+        )
+    }
 }
 
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
+    single { MyQuestionsAdapter(androidApplication().applicationContext) }
+    single { Settings(androidApplication().applicationContext) }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { MyQuestionsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel() }
 }

@@ -1,4 +1,3 @@
-/*
 package uz.texnopos.paziylet.ui.questions.myQuestions
 
 import android.app.AlertDialog
@@ -6,57 +5,61 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_my_questions.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_my_questions.*
 import uz.texnopos.paziylet.R
-import uz.texnopos.paziylet.core.extentions.addVertDivider
+import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.onClick
+import uz.texnopos.paziylet.core.extentions.toast
 import uz.texnopos.paziylet.core.extentions.visibility
-import uz.texnopos.paziylet.di.ResourceState
-import uz.texnopos.paziylet.setting.Setting
-import uz.texnopos.paziylet.ui.mAuth.LoginActivity
-import java.util.*
+import uz.texnopos.paziylet.settings.Settings
+import uz.texnopos.paziylet.ui.auth.LoginActivity
 
-class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
+class MyQuestionsFragment : Fragment(R.layout.fragment_my_questions) {
 
-    private val viewModel:MyQuestionsViewModel by viewModel()
-    private val adapter:MyQuestionsAdapter by inject()
-    private val settings: Setting by inject()
-    private var userId=""
-    private val mAuth:FirebaseAuth by inject()
+    private val viewModel: MyQuestionsViewModel by viewModel()
+    private val adapter: MyQuestionsAdapter by inject()
+    private val settings: Settings by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView.adapter=adapter
-        if (settings.isAppFirstLaunched()){
-            val dialog=AlertDialog.Builder(requireContext())
-            dialog.setTitle("Дыққат")
-                .setMessage("Сораў бериў ушин дизимнен өтиң!")
-                .setPositiveButton("Дизимнен өтиў"){_,_->
-                    val intent=Intent(requireContext(),LoginActivity::class.java)
+        recyclerView.adapter = adapter
+        swipeRefresh.setOnRefreshListener {
+            viewModel.getAllMyQuestions()
+            swipeRefresh.isRefreshing = false
+        }
+        if (settings.isAppFirstLaunched()) {
+            val dialog = AlertDialog.Builder(requireContext())
+            dialog.setTitle(getString(R.string.sign_in_dialog_title))
+                .setMessage(getString(R.string.sign_in_dialog_message))
+                .setPositiveButton(getString(R.string.sign_in_dialog_positive_button)) { _, _ ->
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent)
                 }
-                .setNegativeButton("Анонимно сораў бериў"){_,_->
-                    userId= UUID.randomUUID().toString()
+                .setNegativeButton(getString(R.string.sign_in_dialog_negative_button)) { dialog, _ ->
+                    dialog.dismiss()
                 }
             dialog.setCancelable(false).show()
-        }else{
-            userId=mAuth.currentUser!!.uid
         }
-        recyclerView.addVertDivider(requireContext())
+        adapter.setOnClickQuestion { q, a ->
+            val bundle = bundleOf("question" to q, "answer" to a)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_questionsFragment_to_questionAnswerFragment, bundle)
+        }
         setUpObserver()
-        viewModel.getAllMyQuestions(userId)
+        viewModel.getAllMyQuestions()
         btnSend.onClick {
-            if (etSoraw.text.isNotEmpty()){
-                val question=etSoraw.text.toString()
-                viewModel.addQuestion(question,userId)
+            if (etSoraw.text.isNotEmpty()) {
+                val question = etSoraw.text.toString()
+                viewModel.addQuestion(question)
                 etSoraw.text.clear()
-                viewModel.getAllMyQuestions(userId)
-            }else{
-                etSoraw.error="please fill the field"
+                viewModel.getAllMyQuestions()
+            } else {
+                etSoraw.error = getString(R.string.please_fill_all_the_fields)
             }
         }
     }
@@ -74,18 +77,13 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
                 ResourceState.ERROR -> progressBarQuestion.visibility(false)
             }
         })
-    }
-    private fun setUpObserverAddQuestion() {
+
         viewModel.addQuestion.observe(viewLifecycleOwner, {
             when (it.status) {
                 ResourceState.LOADING -> progressBarQuestion.visibility(true)
                 ResourceState.SUCCESS -> {
                     progressBarQuestion.visibility(false)
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.success_add_question),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    toast(getString(R.string.your_questions_sended))
                 }
                 ResourceState.ERROR -> {
                     progressBarQuestion.visibility(false)
@@ -94,4 +92,4 @@ class MyQuestionsFragment: Fragment(R.layout.fragment_my_questions) {
             }
         })
     }
-}*/
+}

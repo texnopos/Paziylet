@@ -29,7 +29,7 @@ class QuestionAdapter : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>
     }
 
     private var onQuestionMoreClicked: (questionMoreClicked: String, question: String, answer: String) -> Unit =
-        { i, q, a -> }
+        { _, _, _ -> }
 
     fun setOnQuestionMoreClicked(onQuestionMoreClicked: (questionMoreClicked: String, question: String, answer: String) -> Unit) {
         this.onQuestionMoreClicked = onQuestionMoreClicked

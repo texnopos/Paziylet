@@ -99,4 +99,7 @@ dependencies {
 
     //automatically moves your text to next line
     implementation "com.github.fraggjkee:sms-confirmation-view:1.2"
+
+    //Swipe
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

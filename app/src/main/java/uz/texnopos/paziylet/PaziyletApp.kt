@@ -12,7 +12,7 @@ class PaziyletApp : Application() {
     override fun onCreate() {
         super.onCreate()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val modules = listOf(firebaseModule, viewModelModule, adapterModule, sharedPreferencesModule)
+        val modules = listOf(firebaseModule, viewModelModule, adapterModule)
         startKoin { // use AndroidLogger as Koin Logger - default Level.INFO
             androidLogger()
 
