@@ -11,6 +11,8 @@ import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.auth.LoginViewModel
 import uz.texnopos.paziylet.ui.categories.CategoryAdapter
 import uz.texnopos.paziylet.ui.categories.CategoryViewModel
+import uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategoryAdapter
+import uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategoryViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
@@ -46,6 +48,7 @@ val adapterModule = module {
     single { CategoryAdapter() }
     single { MyQuestionsAdapter(androidApplication().applicationContext) }
     single { Settings(androidApplication().applicationContext) }
+    single { DefiniteCategoryAdapter() }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
@@ -54,6 +57,7 @@ val viewModelModule = module {
     viewModel { MyQuestionsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel() }
+    viewModel { DefiniteCategoryViewModel(get()) }
 }
 
 

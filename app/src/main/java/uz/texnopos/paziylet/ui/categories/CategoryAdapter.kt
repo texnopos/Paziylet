@@ -21,9 +21,15 @@ class CategoryAdapter:RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>()
         fun populateModel(model:QuestionCategories){
             itemView.tvCategory.text=model.name
             itemView.onClick {
-
+                onItemClick.invoke(model.name)
             }
         }
+    }
+
+
+    private var onItemClick:(path:String)->Unit = {}
+    fun onItemClickListener(onItemClick:(path:String)->Unit){
+        this.onItemClick=onItemClick
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {

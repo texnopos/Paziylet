@@ -77,5 +77,20 @@
         android:id="@+id/categoryFragment"
         tools:layout="@layout/fragment_category"
         android:name="uz.texnopos.paziylet.ui.categories.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_definiteCategory"
+            app:destination="@id/definiteCategory" />
+        <argument
+            android:name="path"
+            app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/definiteCategory"
+        android:name="uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategory"
+        android:label="DefiniteCategory" >
+        <argument
+            android:name="path"
+            app:argType="string" />
+    </fragment>
 </navigation>
