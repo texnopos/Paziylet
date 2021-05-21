@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_definite_category.view.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
@@ -26,11 +28,14 @@ class DefiniteCategoryAdapter:RecyclerView.Adapter<DefiniteCategoryAdapter.Defin
             val date=sdf.format(model.createdAt*1000).toString()
             itemView.tvDate.text=date
             itemView.tvViews.text="views ${model.views}"
+            itemView.ivImg.clipToOutline = true
             itemView.onClick {
                 onItemClick.invoke(model.text)
             }
+
             Glide.with(itemView)
                 .load(model.image)
+                .centerCrop()
                 .into(itemView.ivImg)
         }
     }

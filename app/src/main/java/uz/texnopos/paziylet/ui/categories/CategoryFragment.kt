@@ -20,6 +20,7 @@ class CategoryFragment:Fragment(R.layout.fragment_category) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        naqis.visibility(true)
         navController=Navigation.findNavController(view)
         recyclerViewCategory.adapter=adapter
         viewModel.getCategories()

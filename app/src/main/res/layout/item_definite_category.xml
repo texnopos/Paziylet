@@ -11,42 +11,48 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:text="ORAZANIN TURLERI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:text="ORAZANIN TURLERI"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvDate"
-        android:textColor="@color/black"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:textSize="16sp"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:text="14 aprel, 2021"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="14 aprel, 2021"/>
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <TextView
         android:id="@+id/tvViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvDate"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="@dimen/margin_standard"
-        android:text="views 98"/>
+        android:text="views 98"
+        app:layout_constraintStart_toEndOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivImg"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="@dimen/margin_standard"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

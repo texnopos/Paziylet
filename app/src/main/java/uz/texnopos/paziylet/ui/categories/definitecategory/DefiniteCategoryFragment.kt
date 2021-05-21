@@ -11,6 +11,7 @@ import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.visibility
 
 class DefiniteCategoryFragment:Fragment(R.layout.fragment_category) {
@@ -27,6 +28,10 @@ class DefiniteCategoryFragment:Fragment(R.layout.fragment_category) {
         tvTitle.text=safeArgs.path
         viewModel.getData(safeArgs.path)
         setUpObserver()
+        btnBack.visibility(true)
+        btnBack.onClick {
+            navController.popBackStack()
+        }
         adapter.onItemClickListener {
             val action=DefiniteCategoryFragmentDirections.actionDefiniteCategoryToWebViewFragment(it)
             navController.navigate(action)

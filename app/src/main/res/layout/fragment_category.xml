@@ -16,12 +16,24 @@
         android:background="@color/colorAppBar">
 
         <ImageView
+            android:id="@+id/btnBack"
+            android:src="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/margin_standard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_standard"
+            android:id="@+id/naqis"
             android:background="@drawable/ic_nagis"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
         <ImageView
             android:layout_width="wrap_content"
