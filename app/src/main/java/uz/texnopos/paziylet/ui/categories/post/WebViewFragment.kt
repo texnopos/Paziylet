@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.categories.definitecategory.webview
+package uz.texnopos.paziylet.ui.categories.post
 
 import android.os.Bundle
 import android.view.View
