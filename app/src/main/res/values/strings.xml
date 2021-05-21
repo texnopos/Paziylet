@@ -4,7 +4,7 @@
     <string name="favourite">Сайландылар</string>
     <string name="time_namaz">Намаз ўақты</string>
     <string name="questions_answers">Сораў-Жуўап</string>
-    <string name="compass">Компас</string>
+    <string name="categories">Бөлимлер</string>
     <string name="question_answer">Сораў жуўап</string>
     <string name="questions">Сораўлар</string>
     <string name="my_questions">Мениң сораўларым</string>
@@ -29,12 +29,12 @@
     <string name="confirmation_code_error">Киритилген санларды тескерип шығың</string>
     <string name="input_sms_code">Смс кодты киритиң</string>
     <string name="input_phone_number">Телефон номериңизди толық киритиң</string>
-    <string name="fajr">Tań</string>
-    <string name="sunrise">Quyash</string>
-    <string name="dhuhr">Pesin</string>
-    <string name="asr">Namazlıger</string>
-    <string name="maghrib">Sham</string>
-    <string name="isha">Quptan</string>
+    <string name="fajr">Таң</string>
+    <string name="sunrise">Қуяш</string>
+    <string name="dhuhr">Песин</string>
+    <string name="asr">Намазлыгер</string>
+    <string name="maghrib">Шам</string>
+    <string name="isha">Қуптан</string>
     <string name="answer_waiting">Жуўап кутилмекте</string>
     <string name="answer_show">Жуўапты көриў</string>
     <string name="answer_no">Жуўап жоқ</string>

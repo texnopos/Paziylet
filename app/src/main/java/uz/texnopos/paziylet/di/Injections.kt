@@ -9,6 +9,8 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import uz.texnopos.paziylet.data.firebase.FirebaseHelper
 import uz.texnopos.paziylet.ui.auth.LoginViewModel
+import uz.texnopos.paziylet.ui.categories.CategoryAdapter
+import uz.texnopos.paziylet.ui.categories.CategoryViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
@@ -27,7 +29,6 @@ val sharedPreferencesModule = module {
     }
 }
 
-
 val firebaseModule = module {
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
@@ -42,12 +43,14 @@ val firebaseModule = module {
 val adapterModule = module {
     single { QuestionsCategoriesAdapter() }
     single { QuestionAdapter() }
+    single { CategoryAdapter() }
     single { MyQuestionsAdapter(androidApplication().applicationContext) }
     single { Settings(androidApplication().applicationContext) }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
     viewModel { QuestionFragmentViewModel(get()) }
+    viewModel { CategoryViewModel(get()) }
     viewModel { MyQuestionsViewModel(get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel() }

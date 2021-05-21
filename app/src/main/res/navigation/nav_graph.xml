@@ -73,5 +73,9 @@
             android:id="@+id/action_myQuestionsFragment_to_questionAnswerFragment"
             app:destination="@id/questionAnswerFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/categoryFragment"
+        tools:layout="@layout/fragment_category"
+        android:name="uz.texnopos.paziylet.ui.categories.CategoryFragment"
+        android:label="CategoryFragment" />
 </navigation>

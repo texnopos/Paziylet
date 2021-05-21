@@ -98,4 +98,16 @@ class FirebaseHelper(
         }
     }
 
+    fun getCategories(onSuccess: (list: List<QuestionCategories>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection("Bolimler").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map { doc->
+                    doc.toObject(QuestionCategories::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+
 }
