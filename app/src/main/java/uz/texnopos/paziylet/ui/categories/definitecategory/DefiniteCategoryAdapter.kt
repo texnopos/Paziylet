@@ -28,7 +28,6 @@ class DefiniteCategoryAdapter:RecyclerView.Adapter<DefiniteCategoryAdapter.Defin
             val date=sdf.format(model.createdAt*1000).toString()
             itemView.tvDate.text=date
             itemView.tvViews.text="views ${model.views}"
-            itemView.ivImg.clipToOutline = true
             itemView.onClick {
                 onItemClick.invoke(model.text)
             }
