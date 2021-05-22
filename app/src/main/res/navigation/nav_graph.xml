@@ -103,5 +103,11 @@
         <argument
             android:name="text"
             app:argType="string" />
+        <argument
+            android:name="path"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -9,26 +9,18 @@
     android:layout_marginBottom="@dimen/margin_4dp"
     android:background="@drawable/shape">
 
-    <ImageView
-        android:id="@+id/ivRamadan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/ic_ramadan"/>
-
     <TextView
         android:id="@+id/tvCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/ivRamadan"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/black"
+        android:drawablePadding="@dimen/margin_standard"
         android:layout_marginStart="@dimen/margin_standard"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_ramadan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

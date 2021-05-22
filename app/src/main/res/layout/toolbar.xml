@@ -24,10 +24,9 @@
         android:textColor="#FFFFFF"
         android:textSize="@dimen/standard_toolbar_text_size"
         android:textStyle="bold"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView

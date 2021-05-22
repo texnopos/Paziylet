@@ -112,7 +112,7 @@ class FirebaseHelper(
     }
 
     fun getData(path:String,onSuccess: (list: List<Patwa>) -> Unit,onFailure: (msg: String?) -> Unit){
-        db.collection("Bolimler").document(path).collection("content").get()
+        db.collection("Bolimler/$path/content").get()
             .addOnSuccessListener {
                 onSuccess.invoke(it.documents.map{doc->
                     doc.toObject(Patwa::class.java)!!

@@ -41,5 +41,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_questions_category" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

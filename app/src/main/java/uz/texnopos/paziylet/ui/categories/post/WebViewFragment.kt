@@ -3,18 +3,27 @@ package uz.texnopos.paziylet.ui.categories.post
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_webview.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import uz.texnopos.paziylet.R
+import uz.texnopos.paziylet.core.extentions.onClick
 
-class WebViewFragment:Fragment(R.layout.fragment_webview) {
+class WebViewFragment : Fragment(R.layout.fragment_webview) {
 
-    private val safeArgs:WebViewFragmentArgs by navArgs()
-
+    private val safeArgs: WebViewFragmentArgs by navArgs()
+    private lateinit var navController: NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        webView.loadData(safeArgs.text,"text/html","UTF-8")
+        navController = Navigation.findNavController(view)
+        toolbar.ivCategoryName.text = safeArgs.path
+        toolbar.btnHome.onClick {
+            navController.popBackStack()
+        }
+        tvTitle.text = safeArgs.title
+        webView.loadData(safeArgs.text, "text/html", "UTF-8")
     }
-
 
 }
