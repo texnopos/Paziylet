@@ -39,8 +39,8 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
                 ResourceState.LOADING -> progressBarCategory.visibility(true)
                 ResourceState.SUCCESS -> {
                     progressBarCategory.visibility(false)
-                    it.data.let { i ->
-                        adapter.models = i!!
+                    it.data?.let { i ->
+                        adapter.models = i
                     }
                 }
                 ResourceState.ERROR -> progressBarCategory.visibility(false)
