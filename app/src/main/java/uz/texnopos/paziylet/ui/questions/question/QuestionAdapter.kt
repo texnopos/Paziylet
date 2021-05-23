@@ -4,7 +4,6 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_question.view.*
 import uz.texnopos.paziylet.R
@@ -41,7 +40,7 @@ class QuestionAdapter : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>
         viewType: Int
     ): QuestionAdapter.QuestionViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_question, parent, false)
+              LayoutInflater.from(parent.context).inflate(R.layout.item_question, parent, false)
         return QuestionViewHolder(itemView)
     }
 
