@@ -36,14 +36,14 @@ class QuestionCategoriesFragment : Fragment(R.layout.fragment_questions_categori
     private fun setUpObserver() {
         viewModel.questionCategories.observe(viewLifecycleOwner, {
             when (it.status) {
-                ResourceState.LOADING -> progressBarQuestionsCategories.visibility(true)
+                ResourceState.LOADING -> progressBarCategory.visibility(true)
                 ResourceState.SUCCESS -> {
                     viewModel.questionCategories.observe(viewLifecycleOwner, { i ->
                         adapter.models = i.data!!
-                        progressBarQuestionsCategories.visibility(false)
+                        progressBarCategory.visibility(false)
                     })
                 }
-                ResourceState.ERROR -> progressBarQuestionsCategories.visibility(false)
+                ResourceState.ERROR -> progressBarCategory.visibility(false)
             }
 
         })

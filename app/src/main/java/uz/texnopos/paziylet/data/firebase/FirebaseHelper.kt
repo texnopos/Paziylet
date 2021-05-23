@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.firestore.FirebaseFirestore
+import uz.texnopos.paziylet.data.model.Patwa
 import uz.texnopos.paziylet.data.model.Question
 import uz.texnopos.paziylet.data.model.QuestionCategories
 import java.text.SimpleDateFormat
@@ -98,4 +99,27 @@ class FirebaseHelper(
         }
     }
 
+    fun getCategories(onSuccess: (list: List<QuestionCategories>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection("Bolimler").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map { doc->
+                    doc.toObject(QuestionCategories::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+
+    fun getData(path:String,onSuccess: (list: List<Patwa>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection("Bolimler/$path/content").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map{doc->
+                    doc.toObject(Patwa::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }

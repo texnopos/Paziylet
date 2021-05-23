@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_compos"
+        android:src="@drawable/ic_compass"
         android:backgroundTint="@color/colorAppBar"/>
 
     <TextClock
@@ -197,7 +197,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tvNamazliger"
             android:background="@drawable/background_tv_time"
             android:textColor="@color/white"
-            android:padding="8dp"
+            android:padding="12dp"
             android:text="00:00"/>
         <TextView
             android:id="@+id/tvSham"
