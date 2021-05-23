@@ -111,8 +111,7 @@ class CompassFragment : LocationFragment(R.layout.compass_fragment) {
     private fun getCountryName(onSuccess:(address: String) -> Unit, onFailure:(msg: String?) -> Unit , context: Context?, latitude: Double, longitude: Double){
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
-        onSuccess.invoke("${addresses[0].locality} , ${addresses[0].countryName}")
-        onFailure.invoke("произошла ошибка")
+        onSuccess.invoke("${addresses[0].locality}, ${addresses[0].countryName}")
     }
 
     private fun getCurrentDateAndTime(): Any {
