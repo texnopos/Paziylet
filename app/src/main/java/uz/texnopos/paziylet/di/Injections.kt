@@ -13,6 +13,8 @@ import uz.texnopos.paziylet.ui.categories.CategoryAdapter
 import uz.texnopos.paziylet.ui.categories.CategoryViewModel
 import uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategoryAdapter
 import uz.texnopos.paziylet.ui.categories.definitecategory.DefiniteCategoryViewModel
+import uz.texnopos.paziylet.ui.news.NewsAdapter
+import uz.texnopos.paziylet.ui.news.NewsViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
@@ -49,6 +51,7 @@ val adapterModule = module {
     single { MyQuestionsAdapter(androidApplication().applicationContext) }
     single { Settings(androidApplication().applicationContext) }
     single { DefiniteCategoryAdapter() }
+    single { NewsAdapter() }
 }
 val viewModelModule = module {
     viewModel { QuestionsCategoriesViewModel(get()) }
@@ -58,6 +61,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
     viewModel { PrayTimeViewModel() }
     viewModel { DefiniteCategoryViewModel(get()) }
+    viewModel { NewsViewModel(get()) }
 }
 
 

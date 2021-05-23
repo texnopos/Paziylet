@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="uz.texnopos.paziylet.ui.home.HomeFragment"
+        android:name="uz.texnopos.paziylet.ui.news.NewsFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_homeFragment_to_newsWebViewFragment"
+            app:destination="@id/newsWebViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/questionsFragment"
         android:name="uz.texnopos.paziylet.ui.questions.QuestionsFragment"
@@ -84,6 +88,15 @@
         <argument
             android:name="path"
             app:argType="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/newsWebViewFragment"
+        android:name="uz.texnopos.paziylet.ui.news.NewsWebViewFragment"
+        android:label="NewsWebViewFragment"
+        tools:layout="@layout/news_web_view_fragment">
+        <argument
+            android:name="objectToJson"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/definiteCategory"

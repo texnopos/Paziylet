@@ -1,14 +1,15 @@
 package uz.texnopos.paziylet.data.firebase
 
-import android.annotation.SuppressLint
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.firestore.FirebaseFirestore
-import uz.texnopos.paziylet.data.model.Patwa
 import uz.texnopos.paziylet.data.model.Question
 import uz.texnopos.paziylet.data.model.QuestionCategories
-import java.text.SimpleDateFormat
 import java.util.*
+import uz.texnopos.paziylet.data.model.News
+import uz.texnopos.paziylet.data.model.Patwa
+import java.text.SimpleDateFormat
 
 class FirebaseHelper(
     private val db: FirebaseFirestore,
@@ -99,6 +100,17 @@ class FirebaseHelper(
         }
     }
 
+    fun getNews(onSuccess: (list: List<News>) -> Unit, onFailure: (msg: String?) -> Unit) {
+        db.collection("news").document("Janaliqlar").collection("news").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map { doc ->
+                    doc.toObject(News::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
     fun getCategories(onSuccess: (list: List<QuestionCategories>) -> Unit,onFailure: (msg: String?) -> Unit){
         db.collection("Bolimler").get()
             .addOnSuccessListener {

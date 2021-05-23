@@ -38,10 +38,8 @@ class QuestionCategoriesFragment : Fragment(R.layout.fragment_questions_categori
             when (it.status) {
                 ResourceState.LOADING -> progressBarCategory.visibility(true)
                 ResourceState.SUCCESS -> {
-                    viewModel.questionCategories.observe(viewLifecycleOwner, { i ->
-                        adapter.models = i.data!!
-                        progressBarCategory.visibility(false)
-                    })
+                    adapter.models = it.data!!
+                    progressBarCategory.visibility(false)
                 }
                 ResourceState.ERROR -> progressBarCategory.visibility(false)
             }
