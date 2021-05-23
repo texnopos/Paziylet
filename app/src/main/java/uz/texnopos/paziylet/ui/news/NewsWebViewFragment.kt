@@ -22,6 +22,7 @@ class NewsWebViewFragment : Fragment(R.layout.news_web_view_fragment) {
         val safeArgs = gson.fromJson(safeArgs.objectToJson, News::class.java)
         webView.loadData(safeArgs.description, "text/html", "UTF-8")
         tvTitle.text = safeArgs.title
+        toolbar.tvToolbarTitle.text = getString(R.string.news)
         toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }

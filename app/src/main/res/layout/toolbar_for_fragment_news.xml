@@ -5,7 +5,6 @@
     android:layout_height="?actionBarSize"
     android:background="@color/colorAppBar">
 
-
     <TextView
         android:id="@+id/ivNews"
         android:layout_width="wrap_content"
@@ -15,13 +14,13 @@
         android:gravity="center"
         android:text="@string/news"
         android:textColor="@color/white"
-        android:textSize="@dimen/standard_16sp"
+        android:textSize="@dimen/standard_toolbar_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivMechet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

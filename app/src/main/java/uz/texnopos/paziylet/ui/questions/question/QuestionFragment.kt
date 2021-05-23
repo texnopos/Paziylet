@@ -39,7 +39,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
             Navigation.findNavController(view)
                 .navigate(R.id.action_questionFragment_to_questionAnswerFragment, bundle)
         }
-        toolbar.ivCategoryName.text = categoryName
+        toolbar.tvToolbarTitle.text = categoryName
         toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }

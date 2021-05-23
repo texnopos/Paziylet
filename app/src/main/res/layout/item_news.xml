@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivNewsImg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             app:layout_constraintBottom_toTopOf="@id/tvTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +26,8 @@
             android:layout_marginTop="8dp"
             android:maxLines="4"
             android:text="Qaraqalapqstan Respubikasinin' joqari kenesinin' baslig'i Murat Kamalov putkul musilman xalqlardi hayt bayramimenen shin jurekteten qutliqladi."
-            android:textColor="#AB000000"
-            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standard_16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/vLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,6 @@
             android:background="#19000000"
             app:layout_constraintBottom_toTopOf="@id/tvCategory"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
 
         <TextView
             android:id="@+id/tvCategory"

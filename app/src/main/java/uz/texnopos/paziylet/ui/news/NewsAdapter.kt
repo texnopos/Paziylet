@@ -41,6 +41,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             }
             Glide.with(itemView.context)
                 .load(news.img)
+                .centerCrop()
                 .into(itemView.ivNewsImg)
         }
     }
