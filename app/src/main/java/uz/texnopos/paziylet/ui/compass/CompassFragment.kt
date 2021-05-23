@@ -9,9 +9,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import kotlinx.android.synthetic.main.compass_fragment.*
+import kotlinx.android.synthetic.main.fragment_compass.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.ui.location.LocationFragment
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.381" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivMechet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_path_mechet"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_standard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gd1"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnCompass"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorAppBar"
+        android:src="@drawable/ic_compass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextClock
+        android:id="@+id/tvDateClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/white"
+        android:textSize="55dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivMechet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
+        android:layout_marginBottom="@dimen/margin_small"/>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/tvRegion"/>
+
+    <TextView
+        android:id="@+id/tvRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintBottom_toBottomOf="@id/ivMechet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMechet" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivBackground"
+        android:background="@drawable/background_card"
+        android:backgroundTint="@color/grey">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_group_253"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTan"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin_standard"
+                android:text="@string/fajr"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvQuyash"
+                app:layout_constraintEnd_toStartOf="@id/tvTimeTan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTimeTan"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvTan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvTan" />
+
+            <TextView
+                android:id="@+id/tvQuyash"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="@dimen/margin_standard"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:text="@string/sunrise"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvPesin"
+                app:layout_constraintEnd_toStartOf="@id/tvTimeQuyash"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTan" />
+
+            <TextView
+                android:id="@+id/tvTimeQuyash"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvQuyash"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvQuyash" />
+
+            <TextView
+                android:id="@+id/tvPesin"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:paddingStart="@dimen/margin_standard"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:text="@string/dhuhr"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvNamazliger"
+                app:layout_constraintEnd_toStartOf="@id/tvTimePesin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQuyash" />
+
+            <TextView
+                android:id="@+id/tvTimePesin"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvPesin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvPesin" />
+
+            <TextView
+                android:id="@+id/tvNamazliger"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:paddingStart="@dimen/margin_standard"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:text="@string/asr"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvSham"
+                app:layout_constraintEnd_toStartOf="@id/tvTimeNamazliger"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPesin" />
+
+            <TextView
+                android:id="@+id/tvTimeNamazliger"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvNamazliger"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvNamazliger" />
+
+            <TextView
+                android:id="@+id/tvSham"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:paddingStart="@dimen/margin_standard"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:text="@string/maghrib"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tvQuptan"
+                app:layout_constraintEnd_toStartOf="@id/tvTimeSham"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNamazliger" />
+
+            <TextView
+                android:id="@+id/tvTimeSham"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="32dp"
+                android:paddingHorizontal="8dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvSham"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvSham" />
+
+            <TextView
+                android:id="@+id/tvQuptan"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="@dimen/margin_standard"
+                android:background="@drawable/background_tv"
+                android:gravity="center_vertical"
+                android:text="@string/isha"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvTimeQuptan"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="@dimen/margin_standard"
+                app:layout_constraintTop_toBottomOf="@id/tvSham" />
+
+            <TextView
+                android:id="@+id/tvTimeQuptan"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="32dp"
+                android:paddingHorizontal="8dp"
+                android:background="@drawable/background_tv_time"
+                android:gravity="center_vertical"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvQuptan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTan"
+                app:layout_constraintTop_toTopOf="@id/tvQuptan" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <com.tuyenmonkey.mkloader.MKLoader
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:elevation="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mk_color="@color/colorAppBar"
+        app:mk_type="LineSpinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

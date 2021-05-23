@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_namazwaqti.*
+import kotlinx.android.synthetic.main.fragment_compass.progressBar
+import kotlinx.android.synthetic.main.fragment_compass.tvDate
+import kotlinx.android.synthetic.main.fragment_compass.tvRegion
+import kotlinx.android.synthetic.main.fragment_pray_time.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
@@ -17,7 +20,7 @@ import uz.texnopos.paziylet.ui.location.LocationFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PrayTimeFragment : LocationFragment(R.layout.fragment_namazwaqti) {
+class PrayTimeFragment : LocationFragment(R.layout.fragment_pray_time) {
 
     private val viewModel: PrayTimeViewModel by viewModel()
 
