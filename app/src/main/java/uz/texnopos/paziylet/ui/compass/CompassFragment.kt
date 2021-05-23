@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
+import android.widget.Toast
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
@@ -43,8 +44,15 @@ class CompassFragment : LocationFragment(R.layout.compass_fragment) {
                     it.data?.let { location ->
                         progressBar.visibility(false)
                         initQiblaDirection(location.latitude, location.longitude)
-                        tvRegion.text =
-                            getCountryName(requireContext(), location.latitude, location.longitude)
+                        getCountryName(
+                            { county->
+                                tvRegion.text = county
+                            },
+                            { e->
+                            }
+                        , requireContext(), location.latitude, location.longitude
+
+                        )
                     }
                 }
                 else -> {}
@@ -100,10 +108,10 @@ class CompassFragment : LocationFragment(R.layout.compass_fragment) {
         }, sensor, SensorManager.SENSOR_DELAY_GAME)
     }
 
-    private fun getCountryName(context: Context?, latitude: Double, longitude: Double): String {
+    private fun getCountryName(onSuccess:(address: String) -> Unit, onFailure:(msg: String?) -> Unit , context: Context?, latitude: Double, longitude: Double){
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
-        return "${addresses[0].locality} , ${addresses[0].countryName}"
+        onSuccess.invoke("${addresses[0].locality}, ${addresses[0].countryName}")
     }
 
     private fun getCurrentDateAndTime(): Any {

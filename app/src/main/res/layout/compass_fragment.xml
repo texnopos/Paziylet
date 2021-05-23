@@ -1,100 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="#37B899"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#37B899"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="286dp"
         android:id="@+id/ivMechet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_path_mechet"
+        app:layout_constraintBottom_toBottomOf="@id/gd1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_path_mechet"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextClock
         android:id="@+id/tvDateClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:text="22:11"
         android:textColor="@color/white"
         android:textSize="55dp"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/ivMechet"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/no_permission_for_location"
         android:textColor="@color/white"
         android:textSize="21dp"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/no_permission_for_location"
+        app:layout_constraintBottom_toTopOf="@id/tvRegion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDateClock"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:textColor="@color/white"
         android:textSize="18dp"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintBottom_toBottomOf="@id/gd1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
-        android:layout_height="wrap_content"
-        app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        app:layout_constraintTop_toBottomOf="@id/ivMechet"
-        android:layout_width="match_parent"
         android:id="@+id/ivBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/background_for_compass"/>
-    <androidx.appcompat.widget.AppCompatImageView
-        app:layout_constraintStart_toStartOf="@id/ivCompass"
-        app:layout_constraintEnd_toEndOf="@id/ivCompass"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="@id/ivStrelka"
-        app:layout_constraintTop_toTopOf="@id/ivStrelka"
-        android:src="@drawable/ic_group_283"
-        android:layout_width="155dp"
-        android:layout_height="155dp"/>
+        android:layout_marginTop="8dp"
+        android:src="@drawable/background_for_compass"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gd1" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="300dp"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_group_283"
+        app:layout_constraintBottom_toBottomOf="@id/ivStrelka"
+        app:layout_constraintEnd_toEndOf="@id/ivCompass"
+        app:layout_constraintStart_toStartOf="@id/ivCompass"
+        app:layout_constraintTop_toTopOf="@id/ivStrelka" />
+
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivCompass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_group_292"
-        app:layout_constraintTop_toTopOf="@id/ivBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="300dp"/>
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivBackground"
+        app:layout_constraintVertical_bias="0.469" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivStrelka"
         android:layout_width="wrap_content"
-        android:layout_marginEnd="2dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="@id/ivCompass"
-        app:layout_constraintEnd_toEndOf="@id/ivCompass"
-        app:layout_constraintTop_toTopOf="@id/ivCompass"
-        app:layout_constraintBottom_toBottomOf="@id/ivCompass"
+        android:layout_marginEnd="2dp"
         android:src="@drawable/ic_group_strelka"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintBottom_toBottomOf="@id/ivCompass"
+        app:layout_constraintEnd_toEndOf="@id/ivCompass"
+        app:layout_constraintStart_toStartOf="@id/ivCompass"
+        app:layout_constraintTop_toTopOf="@id/ivCompass" />
 
     <com.tuyenmonkey.mkloader.MKLoader
         android:id="@+id/progressBar"
