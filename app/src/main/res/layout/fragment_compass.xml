@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
-
+        app:layout_constraintGuide_percent="0.381" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -23,12 +22,12 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivMechet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:padding="8dp"
-        android:scaleType="centerCrop"
         android:src="@drawable/ic_path_mechet"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/gd1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -97,10 +96,8 @@
         android:src="@drawable/ic_group_292"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivBackground"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintTop_toTopOf="@id/ivBackground" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivStrelka"

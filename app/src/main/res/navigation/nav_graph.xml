@@ -58,7 +58,7 @@
         android:id="@+id/compassFragment"
         android:name="uz.texnopos.paziylet.ui.compass.CompassFragment"
         android:label="CompassFragment"
-        tools:layout="@layout/compass_fragment" />
+        tools:layout="@layout/fragment_compass" />
     <fragment
         android:id="@+id/signInFragment"
         android:name="uz.texnopos.paziylet.ui.signin.SignInFragment"

@@ -9,17 +9,15 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
-import android.widget.Toast
 import kotlinx.android.synthetic.main.compass_fragment.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
-import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.ui.location.LocationFragment
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-class CompassFragment : LocationFragment(R.layout.compass_fragment) {
+class CompassFragment : LocationFragment(R.layout.fragment_compass) {
     companion object {
         const val QIBLA_LATITUDE = 21.38908
         const val QIBLA_LONGITUDE = 39.85791
