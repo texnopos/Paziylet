@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:id="@+id/gd1"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"/>
+
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,10 +22,13 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
-        android:layout_height="286dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         android:id="@+id/ivMechet"
+        app:layout_constraintBottom_toBottomOf="@id/gd1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_path_mechet"/>
@@ -27,11 +38,11 @@
         android:layout_marginTop="80dp"
         android:textColor="@color/white"
         android:textSize="55dp"
+        android:text="22:11"
         android:layout_width="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/ivMechet"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
         android:layout_height="wrap_content"/>
 
     <TextView
@@ -39,10 +50,11 @@
         android:textColor="@color/white"
         android:textSize="21dp"
         android:layout_width="wrap_content"
+        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/no_permission_for_location"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDateClock"
+        app:layout_constraintBottom_toTopOf="@id/tvRegion"
         android:layout_height="wrap_content"/>
 
     <TextView
@@ -50,16 +62,19 @@
         android:textColor="@color/white"
         android:textSize="18dp"
         android:layout_width="wrap_content"
+        android:text="Nukus, Uzbekistan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintBottom_toBottomOf="@id/gd1"
+        android:layout_marginBottom="8dp"
         android:layout_height="wrap_content"
         app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        app:layout_constraintTop_toBottomOf="@id/ivMechet"
+        app:layout_constraintTop_toTopOf="@id/gd1"
         android:layout_width="match_parent"
         android:id="@+id/ivBackground"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp"
         android:src="@drawable/background_for_compass"/>
@@ -74,7 +89,7 @@
         android:layout_height="155dp"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:id="@+id/ivCompass"
         android:paddingTop="8dp"
         android:scaleType="fitCenter"
