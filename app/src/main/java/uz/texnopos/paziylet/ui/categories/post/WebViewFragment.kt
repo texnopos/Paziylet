@@ -18,7 +18,7 @@ class WebViewFragment : Fragment(R.layout.fragment_webview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        toolbar.ivCategoryName.text = safeArgs.path
+        toolbar.tvToolbarTitle.text = safeArgs.path
         toolbar.btnHome.onClick {
             navController.popBackStack()
         }

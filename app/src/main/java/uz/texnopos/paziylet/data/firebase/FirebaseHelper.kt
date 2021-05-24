@@ -111,6 +111,15 @@ class FirebaseHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
+    fun updatedToViews(news: News, onSuccess: (msg: String) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection("news").document("Janaliqlar").collection("news").document(news.id).update("views",news.views)
+            .addOnSuccessListener {
+                onSuccess.invoke("Success")
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
     fun getCategories(onSuccess: (list: List<QuestionCategories>) -> Unit,onFailure: (msg: String?) -> Unit){
         db.collection("Bolimler").get()
             .addOnSuccessListener {

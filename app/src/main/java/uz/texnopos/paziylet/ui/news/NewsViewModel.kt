@@ -22,5 +22,18 @@ class NewsViewModel(private val firebaseHelper: FirebaseHelper) : ViewModel() {
             }
         )
     }
+    private var _updated: MutableLiveData<Resource<String>> = MutableLiveData()
+    val updated: LiveData<Resource<String>>
+        get() = _updated
+    fun updated(news: News){
+        firebaseHelper.updatedToViews(news,
+            {
+             _updated.value = Resource.success(it)
+        },
+            {
+            _updated.value = Resource.error(it)
+            }
+        )
+    }
 
 }

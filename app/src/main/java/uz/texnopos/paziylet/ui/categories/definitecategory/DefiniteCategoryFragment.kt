@@ -26,7 +26,7 @@ class DefiniteCategoryFragment : Fragment(R.layout.fragment_category) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         recyclerViewCategory.adapter = adapter
-        toolbar.ivCategoryName.text = safeArgs.path
+        toolbar.tvToolbarTitle.text = safeArgs.path
         viewModel.getData(safeArgs.path)
         setUpObserver()
         toolbar.btnHome.onClick {

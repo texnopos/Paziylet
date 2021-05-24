@@ -25,7 +25,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         recyclerViewCategory.adapter = adapter
         viewModel.getCategories()
         toolbar.btnHome.visibility(false)
-        toolbar.ivCategoryName.text = getString(R.string.categories)
+        toolbar.tvToolbarTitle.text = getString(R.string.categories)
         adapter.onItemClickListener {
             val action = CategoryFragmentDirections.actionCategoryFragmentToDefiniteCategory(it)
             navController.navigate(action)
