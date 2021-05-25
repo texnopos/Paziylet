@@ -1,168 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDF1F4"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <View
+    android:background="@color/questions_categories_fragment_main_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#37B899"
-        app:layout_constraintBottom_toBottomOf="@id/gd1"
-        />
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_intersection_3"
-         />
+        android:layout_height="180dp"
+        android:id="@+id/appBarLayout"
+        android:elevation="32dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:elevation="32dp"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_intersection_3"
+                android:layout_gravity="end"/>
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_gravity="center_horizontal"
+     android:layout_marginTop="25dp"
+     android:textSize="21dp"
+     android:layout_height="wrap_content"
+     android:text="Paziylet.uz"/>
 
-    <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Paziylet.uz"
-        android:textSize="21dp"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/btnIman"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/iyman"
+                app:layout_constraintEnd_toStartOf="@id/btnNamaz"
+                android:layout_width="70dp"
+                android:layout_height="90dp"
+                />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="match_parent"
-        android:id="@+id/gd1"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
 
-    <ImageView
-        android:id="@+id/btnIman"
-        android:elevation="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="@id/gd1"
-        android:layout_marginStart="40dp"
-        android:src="@drawable/ic_iman_icon"
-        app:layout_constraintEnd_toStartOf="@id/btnNamaz"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        />
+            <ImageView
+                android:id="@+id/btnNamaz"
+                android:elevation="10dp"
+                app:layout_constraintStart_toEndOf="@id/btnIman"
+                app:layout_constraintTop_toTopOf="@id/btnIman"
+                app:layout_constraintBottom_toBottomOf="@id/btnIman"
+                android:src="@drawable/namaz"
+                app:layout_constraintEnd_toStartOf="@id/btnZakat"
+                android:layout_width="70dp"
+                android:layout_height="90dp"/>
+            <ImageView
+                android:id="@+id/btnZakat"
+                android:elevation="10dp"
+                app:layout_constraintStart_toEndOf="@id/btnNamaz"
+                app:layout_constraintTop_toTopOf="@id/btnNamaz"
+                app:layout_constraintBottom_toBottomOf="@id/btnNamaz"
+                android:src="@drawable/zakat"
+                app:layout_constraintEnd_toStartOf="@id/btnOraza"
+                android:layout_width="70dp"
+                android:layout_height="90dp"/>
+            <ImageView
+                android:id="@+id/btnOraza"
+                android:elevation="10dp"
+                app:layout_constraintStart_toEndOf="@id/btnZakat"
+                app:layout_constraintTop_toTopOf="@id/btnZakat"
+                app:layout_constraintBottom_toBottomOf="@id/btnZakat"
+                android:src="@drawable/oraza"
+                app:layout_constraintEnd_toStartOf="@id/btnHaj"
+                android:layout_width="70dp"
+                android:layout_height="90dp"/>
+                <ImageView
+                android:id="@+id/btnHaj"
+                android:elevation="10dp"
+                app:layout_constraintStart_toEndOf="@id/btnOraza"
+                app:layout_constraintTop_toTopOf="@id/btnOraza"
+                app:layout_constraintBottom_toBottomOf="@id/btnOraza"
+                android:src="@drawable/xaj"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="70dp"
+                android:layout_height="90dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:elevation="32dp"
+                android:layout_height="110dp"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/btnIman"
-        app:layout_constraintTop_toBottomOf="@id/btnIman"
-        app:layout_constraintEnd_toEndOf="@id/btnIman"
-        android:text="@string/iyman"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/btnNamaz"
-        android:elevation="10dp"
-        app:layout_constraintStart_toEndOf="@id/btnIman"
-        app:layout_constraintTop_toTopOf="@id/btnIman"
-        app:layout_constraintBottom_toBottomOf="@id/btnIman"
-        android:src="@drawable/ic_namaz_icon"
-        app:layout_constraintEnd_toStartOf="@id/btnZakat"
-        android:layout_width="70dp"
-        android:layout_height="70dp"/>
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/btnNamaz"
-        app:layout_constraintTop_toBottomOf="@id/btnNamaz"
-        app:layout_constraintEnd_toEndOf="@id/btnNamaz"
-        android:text="@string/Namaz"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/btnZakat"
-        android:elevation="10dp"
-        app:layout_constraintStart_toEndOf="@id/btnNamaz"
-        app:layout_constraintTop_toTopOf="@id/btnNamaz"
-        app:layout_constraintBottom_toBottomOf="@id/btnNamaz"
-        android:src="@drawable/ic_zakat"
-        app:layout_constraintEnd_toStartOf="@id/btnOraza"
-        android:layout_width="70dp"
-        android:layout_height="70dp"/>
-
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/btnZakat"
-        app:layout_constraintTop_toBottomOf="@id/btnZakat"
-        app:layout_constraintEnd_toEndOf="@id/btnZakat"
-        android:text="@string/Zakat"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/btnOraza"
-        android:elevation="10dp"
-        app:layout_constraintStart_toEndOf="@id/btnZakat"
-        app:layout_constraintTop_toTopOf="@id/btnZakat"
-        app:layout_constraintBottom_toBottomOf="@id/btnZakat"
-        android:src="@drawable/ic_oraza"
-        app:layout_constraintEnd_toStartOf="@id/btnHaj"
-        android:layout_width="70dp"
-        android:layout_height="70dp"/>
-
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/btnOraza"
-        app:layout_constraintTop_toBottomOf="@id/btnOraza"
-        app:layout_constraintEnd_toEndOf="@id/btnOraza"
-        android:text="@string/Oraza"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/btnHaj"
-        android:elevation="10dp"
-        app:layout_constraintStart_toEndOf="@id/btnOraza"
-        app:layout_constraintTop_toTopOf="@id/btnOraza"
-        app:layout_constraintBottom_toBottomOf="@id/btnOraza"
-        android:src="@drawable/ic_haj"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="70dp"
-        android:layout_height="70dp"/>
-
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/btnHaj"
-        app:layout_constraintTop_toBottomOf="@id/btnHaj"
-        app:layout_constraintEnd_toEndOf="@id/btnHaj"
-        android:text="@string/Haj"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNews"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gd1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_news" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
     <ProgressBar
         android:id="@+id/progressBarNews"
         android:layout_width="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
