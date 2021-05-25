@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_news.*
@@ -11,7 +12,10 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.toast
 import uz.texnopos.paziylet.core.extentions.visibility
+import uz.texnopos.paziylet.data.model.News
+import uz.texnopos.paziylet.data.model.UpdatedNews
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
     private val adapter: NewsAdapter by inject()
@@ -38,6 +42,9 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 }
                 ResourceState.SUCCESS -> {
                     adapter.models = it.data!!
+                    viewModel.updated.observe(viewLifecycleOwner,{i->
+                        adapter.models = it.data
+                    })
                     progressBarNews.visibility(false)
                 }
                 ResourceState.ERROR -> {

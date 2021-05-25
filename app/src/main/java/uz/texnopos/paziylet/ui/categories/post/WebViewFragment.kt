@@ -8,6 +8,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_webview.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import kotlinx.android.synthetic.main.toolbar.view.btnHome
+import kotlinx.android.synthetic.main.toolbar.view.tvToolbarTitle
+import kotlinx.android.synthetic.main.toolbar_for_backspace.view.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
 
@@ -18,7 +21,7 @@ class WebViewFragment : Fragment(R.layout.fragment_webview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        toolbar.ivCategoryName.text = safeArgs.path
+        toolbar.tvToolbarTitle.text = safeArgs.path
         toolbar.btnHome.onClick {
             navController.popBackStack()
         }

@@ -9,10 +9,12 @@ import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.news_web_view_fragment.*
 import kotlinx.android.synthetic.main.toolbar_for_backspace.view.*
+import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.data.model.News
 
 class NewsWebViewFragment : Fragment(R.layout.news_web_view_fragment) {
+    private val viewModel: NewsViewModel by inject()
     private val safeArgs: NewsWebViewFragmentArgs by navArgs()
     lateinit var navController: NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,5 +28,6 @@ class NewsWebViewFragment : Fragment(R.layout.news_web_view_fragment) {
         toolbar.btnHome.setOnClickListener {
             navController.popBackStack()
         }
+        viewModel.updated(safeArgs)
     }
 }

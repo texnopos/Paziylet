@@ -7,6 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import kotlinx.android.synthetic.main.toolbar.view.btnHome
+import kotlinx.android.synthetic.main.toolbar.view.tvToolbarTitle
+import kotlinx.android.synthetic.main.toolbar_for_backspace.view.*
 import uz.texnopos.paziylet.R
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -25,7 +28,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
         recyclerViewCategory.adapter = adapter
         viewModel.getCategories()
         toolbar.btnHome.visibility(false)
-        toolbar.ivCategoryName.text = getString(R.string.categories)
+        toolbar.tvToolbarTitle.text = getString(R.string.categories)
         adapter.onItemClickListener {
             val action = CategoryFragmentDirections.actionCategoryFragmentToDefiniteCategory(it)
             navController.navigate(action)

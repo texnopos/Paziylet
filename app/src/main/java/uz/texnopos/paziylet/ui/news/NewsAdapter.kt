@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.item_news.view.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.data.model.News
+import uz.texnopos.paziylet.data.model.UpdatedNews
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     var models: List<News> = listOf()
@@ -22,7 +23,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(news: News) {
             itemView.tvTitle.text = news.title
-            itemView.tvViews.text = news.views
+            itemView.tvViews.text = news.views.toString()
             itemView.tvCategory.text = news.category
             val gsonPretty = GsonBuilder().setPrettyPrinting().create()
             val gsonString = gsonPretty.toJson(
@@ -33,7 +34,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                     news.id,
                     news.img,
                     news.title,
-                    news.views
+                    (news.views+1L)
                 )
             )
             itemView.onClick {

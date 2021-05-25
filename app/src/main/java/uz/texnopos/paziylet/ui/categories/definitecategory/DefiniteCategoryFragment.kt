@@ -8,6 +8,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import kotlinx.android.synthetic.main.toolbar.view.btnHome
+import kotlinx.android.synthetic.main.toolbar.view.tvToolbarTitle
+import kotlinx.android.synthetic.main.toolbar_for_backspace.view.*
 import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,7 +29,7 @@ class DefiniteCategoryFragment : Fragment(R.layout.fragment_category) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         recyclerViewCategory.adapter = adapter
-        toolbar.ivCategoryName.text = safeArgs.path
+        toolbar.tvToolbarTitle.text = safeArgs.path
         viewModel.getData(safeArgs.path)
         setUpObserver()
         toolbar.btnHome.onClick {
