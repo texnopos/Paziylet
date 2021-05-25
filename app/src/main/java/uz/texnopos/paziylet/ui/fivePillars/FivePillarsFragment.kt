@@ -28,8 +28,13 @@ class FivePillarsFragment : Fragment(R.layout.five_pillars_fragment) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         recyclerViewPillars.adapter = adapter
-        val title = safeArgs.text.substring(0,1).toUpperCase() + safeArgs.text.substring(1)
-        toolbar.tvToolbarTitle.text = title
+        when(safeArgs.text){
+           "iyman" -> {toolbar.tvToolbarTitle.text = "Ийман"}
+           "namaz" -> {toolbar.tvToolbarTitle.text = "Намаз"}
+           "zakat" -> {toolbar.tvToolbarTitle.text = "Закат"}
+           "oraza" -> {toolbar.tvToolbarTitle.text = "Ораза"}
+           "xaj"   -> {toolbar.tvToolbarTitle.text = "Хаж"}
+        }
         viewModel.getPillarsData(safeArgs.text)
         setUpObserver()
         toolbar.btnHome.onClick {
