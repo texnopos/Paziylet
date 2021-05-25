@@ -31,5 +31,6 @@
     <activity android:name=".ui.auth.LoginActivity"
         android:screenOrientation="portrait"
         />
+        <activity android:name=".ui.media.recyclerviewyoutubeplayer.youtubeView.activity.YouTubeActivity"/>
     </application>
 </manifest>

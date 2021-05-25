@@ -12,7 +12,7 @@
     <item android:id="@+id/categoryFragment"
         android:title="@string/categories"
         android:icon="@drawable/ic_categories"/>
-    <item android:id="@+id/favourite"
+    <item android:id="@+id/mediaFragment"
         android:title="@string/favourite"
         android:icon="@drawable/ic_favourite"/>
 

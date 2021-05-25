@@ -1,15 +1,15 @@
 package uz.texnopos.paziylet.data.firebase
 
-import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.firestore.FirebaseFirestore
-import uz.texnopos.paziylet.data.model.Question
-import uz.texnopos.paziylet.data.model.QuestionCategories
-import java.util.*
 import uz.texnopos.paziylet.data.model.News
 import uz.texnopos.paziylet.data.model.Patwa
+import uz.texnopos.paziylet.data.model.Question
+import uz.texnopos.paziylet.data.model.QuestionCategories
+import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.VideoModel
 import java.text.SimpleDateFormat
+import java.util.*
 
 class FirebaseHelper(
     private val db: FirebaseFirestore,
@@ -58,9 +58,9 @@ class FirebaseHelper(
         map["soraw"] = question
         map["userId"] = userId
         val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
-        val date:Date=sdf.parse(sdf.format(Calendar.getInstance().time).toString())
-        map["createdAt"]=(date.time)/1000
-        map["rejected"]=false
+        val date: Date = sdf.parse(sdf.format(Calendar.getInstance().time).toString())
+        map["createdAt"] = (date.time) / 1000
+        map["rejected"] = false
         map["id"] = UUID.randomUUID().toString()
         db.collection("questions").document(map["id"].toString()).set(map)
             .addOnSuccessListener {
@@ -111,8 +111,14 @@ class FirebaseHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
-    fun updatedToViews(news: News, onSuccess: (msg: String) -> Unit,onFailure: (msg: String?) -> Unit){
-        db.collection("news").document("Janaliqlar").collection("news").document(news.id).update("views",news.views)
+
+    fun updatedToViews(
+        news: News,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        db.collection("news").document("Janaliqlar").collection("news").document(news.id)
+            .update("views", news.views)
             .addOnSuccessListener {
                 onSuccess.invoke("Success")
             }
@@ -120,10 +126,14 @@ class FirebaseHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
-    fun getCategories(onSuccess: (list: List<QuestionCategories>) -> Unit,onFailure: (msg: String?) -> Unit){
+
+    fun getCategories(
+        onSuccess: (list: List<QuestionCategories>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
         db.collection("Bolimler").get()
             .addOnSuccessListener {
-                onSuccess.invoke(it.documents.map { doc->
+                onSuccess.invoke(it.documents.map { doc ->
                     doc.toObject(QuestionCategories::class.java)!!
                 })
             }
@@ -132,10 +142,14 @@ class FirebaseHelper(
             }
     }
 
-    fun getData(path:String,onSuccess: (list: List<Patwa>) -> Unit,onFailure: (msg: String?) -> Unit){
+    fun getData(
+        path: String,
+        onSuccess: (list: List<Patwa>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
         db.collection("Bolimler/$path/content").get()
             .addOnSuccessListener {
-                onSuccess.invoke(it.documents.map{doc->
+                onSuccess.invoke(it.documents.map { doc ->
                     doc.toObject(Patwa::class.java)!!
                 })
             }
@@ -143,4 +157,17 @@ class FirebaseHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
+
+    fun getVideos(onSuccess: (list: List<VideoModel>) -> Unit, onFailure: (msg: String?) -> Unit) {
+        db.collection("media/media/media").whereEqualTo("category", "video").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map { doc ->
+                    doc.toObject(VideoModel::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+
 }
