@@ -7,7 +7,7 @@ import uz.texnopos.paziylet.data.model.News
 import uz.texnopos.paziylet.data.model.Patwa
 import uz.texnopos.paziylet.data.model.Question
 import uz.texnopos.paziylet.data.model.QuestionCategories
-import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.VideoModel
+import uz.texnopos.paziylet.ui.media.VideoModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -158,8 +158,8 @@ class FirebaseHelper(
             }
     }
 
-    fun getVideos(onSuccess: (list: List<VideoModel>) -> Unit, onFailure: (msg: String?) -> Unit) {
-        db.collection("media/media/media").whereEqualTo("category", "video").get()
+    fun getVideos(onSuccess: (list: List<VideoModel>) -> Unit, onFailure: (msg: String?) -> Unit){
+        db.collection("media/media/media").whereEqualTo("category","video").get()
             .addOnSuccessListener {
                 onSuccess.invoke(it.documents.map { doc ->
                     doc.toObject(VideoModel::class.java)!!

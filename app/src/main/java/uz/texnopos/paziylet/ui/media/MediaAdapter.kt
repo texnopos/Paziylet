@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.Adapters
+package uz.texnopos.paziylet.ui.media
 
 import android.os.Build
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +9,6 @@ import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.VideoModel
 import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.YouTubePlayerView
 import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.listener.YouTubeEventListener
 import com.example.recyclerviewyoutubeplayer.youtubeView.models.YouTubePlayerType

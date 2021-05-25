@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer
+package uz.texnopos.paziylet.ui.media
 
 data class VideoModel(
     var category: String="",

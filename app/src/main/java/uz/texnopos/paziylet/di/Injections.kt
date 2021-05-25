@@ -17,8 +17,8 @@ import uz.texnopos.paziylet.ui.news.NewsAdapter
 import uz.texnopos.paziylet.ui.news.NewsViewModel
 import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.settings.Settings
-import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.Adapters.MediaAdapter
-import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.MediaViewModel
+import uz.texnopos.paziylet.ui.media.MediaAdapter
+import uz.texnopos.paziylet.ui.media.MediaViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsAdapter

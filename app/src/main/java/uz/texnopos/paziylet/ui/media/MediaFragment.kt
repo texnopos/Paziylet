@@ -1,4 +1,4 @@
-package uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer
+package uz.texnopos.paziylet.ui.media
 
 import android.graphics.Point
 import android.os.Build
@@ -13,14 +13,14 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
-import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.Adapters.MediaAdapter
+import uz.texnopos.paziylet.core.extentions.visibility
 
 
 class MediaFragment : Fragment(R.layout.fragment_media) {
     private var screenDefaultHeight: Int=0
     private var videoSurfaceDefaultHeight: Int =0
     private val adapter : MediaAdapter by inject()
-    private val viewModel:MediaViewModel by viewModel()
+    private val viewModel: MediaViewModel by viewModel()
     private lateinit var layoutManager : LinearLayoutManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,11 +61,12 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
     private fun setUpObserver() {
         viewModel.video.observe(viewLifecycleOwner,{
             when(it.status){
-                ResourceState.LOADING->{}
+                ResourceState.LOADING->progressBarMedia.visibility(true)
                 ResourceState.SUCCESS->{
+                    progressBarMedia.visibility(false)
                     adapter.models=it.data!!
                 }
-                ResourceState.ERROR->{}
+                ResourceState.ERROR->progressBarMedia.visibility(false)
             }
         })
     }
@@ -81,12 +82,10 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
                 endPosition = startPosition + 1;
             }
 
-            // something is wrong. return.
             if (startPosition < 0 || endPosition < 0) {
                 return;
             }
 
-            // if there is more than 1 list-item on the screen
             targetPosition = if (startPosition != endPosition) {
                 val startPositionVideoHeight = getVisibleVideoSurfaceHeight(startPosition);
                 val endPositionVideoHeight = getVisibleVideoSurfaceHeight(endPosition);

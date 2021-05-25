@@ -13,7 +13,7 @@
         android:title="@string/categories"
         android:icon="@drawable/ic_categories"/>
     <item android:id="@+id/mediaFragment"
-        android:title="@string/favourite"
-        android:icon="@drawable/ic_favourite"/>
+        android:title="@string/media"
+        android:icon="@drawable/ic_media"/>
 
 </menu>

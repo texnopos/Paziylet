@@ -10,6 +10,7 @@
     android:background="#fff">
 
     <FrameLayout
+        android:id="@+id/layoutYoutube"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
@@ -17,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.YouTubePlayerView
             android:id="@+id/youtube_view"
@@ -39,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/layoutYoutube">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -67,7 +69,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:text="This is the title"/>
 
 
