@@ -11,7 +11,6 @@ import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.liste
 import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.models.PlayerStateList
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import android.app.Activity.RESULT_OK
 import android.app.PendingIntent.getActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
@@ -57,7 +56,7 @@ class YouTubeFragment : YouTubePlayerSupportFragment(), YouTubePlayer.OnInitiali
 
     override fun onInitializationSuccess(provider: YouTubePlayer.Provider, player: YouTubePlayer, restored: Boolean) {
 
-        fullscreenView.setOnClickListener { v -> openFullScreenAvrivity(v) }
+        fullscreenView.setOnClickListener { v -> openFullScreenActivity(v) }
 
         youTubePlayer = player
         youTubePlayer!!.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT)
@@ -142,9 +141,9 @@ class YouTubeFragment : YouTubePlayerSupportFragment(), YouTubePlayer.OnInitiali
         }
     }
 
-    private fun openFullScreenAvrivity(v: View) {
+    private fun openFullScreenActivity(v: View) {
         assert(getArguments() != null)
-        assert(youTubePlayer != null)
+        //assert(youTubePlayer != null)
         if (getActivity() != null)
             startActivityForResult(
                 Intent(getActivity(), YouTubeActivity::class.java)

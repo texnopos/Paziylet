@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.YouTubePlayerView
 import uz.texnopos.paziylet.ui.media.recyclerviewyoutubeplayer.youtubeView.listener.YouTubeEventListener
 import com.example.recyclerviewyoutubeplayer.youtubeView.models.YouTubePlayerType
@@ -36,6 +37,10 @@ class MediaAdapter() : RecyclerView.Adapter<MediaAdapter.VideoPlayerViewHolder>(
 
         fun populateModel(model: VideoModel) {
             itemView.title.text = model.title
+            Glide.with(itemView)
+                .load(itemView.context.resources.getIdentifier("paziylet","drawable",itemView.context.packageName))
+                .circleCrop()
+                .into(itemView.ivPaziylet)
             val listner : YouTubeEventListener =object : YouTubeEventListener {
                 override fun onInitializationFailure(error: String) {
                 }

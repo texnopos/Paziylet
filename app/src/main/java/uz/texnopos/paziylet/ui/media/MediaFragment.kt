@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_media.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.addVertDivider
 import uz.texnopos.paziylet.core.extentions.visibility
 
 
@@ -32,9 +34,12 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
         screenDefaultHeight = point.y
         layoutManager = LinearLayoutManager(requireContext())
         recycler_view.layoutManager = layoutManager
+        recycler_view.addVertDivider(requireContext())
         recycler_view.adapter = adapter
         viewModel.getVideos()
         setUpObserver()
+        toolbar.btnHome.visibility(false)
+        toolbar.tvToolbarTitle.text=getString(R.string.media)
         recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -89,7 +94,6 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
             targetPosition = if (startPosition != endPosition) {
                 val startPositionVideoHeight = getVisibleVideoSurfaceHeight(startPosition);
                 val endPositionVideoHeight = getVisibleVideoSurfaceHeight(endPosition);
-
                 if( startPositionVideoHeight > endPositionVideoHeight)
                     startPosition
                 else
@@ -106,12 +110,9 @@ class MediaFragment : Fragment(R.layout.fragment_media) {
 
     private fun getVisibleVideoSurfaceHeight(playPosition: Int): Int {
         val at = playPosition - layoutManager.findFirstVisibleItemPosition()
-
         val child = recycler_view.getChildAt(at) ?: return 0
-
         val location = IntArray(2)
         child.getLocationInWindow(location)
-
         return if (location[1] < 0) {
             location[1] + videoSurfaceDefaultHeight
         } else {

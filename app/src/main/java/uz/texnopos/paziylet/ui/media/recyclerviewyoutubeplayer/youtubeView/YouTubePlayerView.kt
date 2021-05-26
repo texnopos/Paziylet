@@ -122,27 +122,15 @@ class YouTubePlayerView : FrameLayout {
         thumbnailImageView = itemView.findViewById(R.id.video_thumbnail_image)
         playIcon = itemView.findViewById(R.id.play_btn)
 
-        val progressBar = itemView.findViewById<ProgressBar>(R.id.recycler_progressbar)
+        itemView.findViewById<ProgressBar>(R.id.recycler_progressbar)
         // For else case there is a layout defined for v21 and above
-        if (progressBar != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            val color = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                context.resources.getColor(R.color.white, null)
-            } else {
-                context.resources.getColor(R.color.white)
-            }
-            progressBar.indeterminateDrawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
-        }
 
         setListeners()
     }
 
     private fun setListeners() {
         val onClickListener = OnClickListener { handleBindPlayer() }
-
-        //        thumbnailImageView.setOnClickListener(onClickListener);
         playIcon.setOnClickListener(onClickListener)
-        playIcon.visibility = View.INVISIBLE
-
     }
 
     private fun handleBindPlayer() {
