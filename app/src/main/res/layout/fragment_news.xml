@@ -1,39 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/questions_categories_fragment_main_color">
 
-    <include
-        android:id="@+id/toolbarForNews"
-        layout="@layout/toolbar_for_fragment_news"
-        app:layout_constraintBottom_toTopOf="@id/rvNews"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:elevation="32dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="32dp"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_intersection_3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:text="@string/paziylet_uz"
+                android:textSize="21dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/btnIman"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/iyman"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnNamaz"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/btnNamaz"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/namaz"
+                    app:layout_constraintBottom_toBottomOf="@id/btnIman"
+                    app:layout_constraintEnd_toStartOf="@id/btnZakat"
+                    app:layout_constraintStart_toEndOf="@id/btnIman"
+                    app:layout_constraintTop_toTopOf="@id/btnIman" />
+
+                <ImageView
+                    android:id="@+id/btnZakat"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/zakat"
+                    app:layout_constraintBottom_toBottomOf="@id/btnNamaz"
+                    app:layout_constraintEnd_toStartOf="@id/btnOraza"
+                    app:layout_constraintStart_toEndOf="@id/btnNamaz"
+                    app:layout_constraintTop_toTopOf="@id/btnNamaz" />
+
+                <ImageView
+                    android:id="@+id/btnOraza"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/oraza"
+                    app:layout_constraintBottom_toBottomOf="@id/btnZakat"
+                    app:layout_constraintEnd_toStartOf="@id/btnHaj"
+                    app:layout_constraintStart_toEndOf="@id/btnZakat"
+                    app:layout_constraintTop_toTopOf="@id/btnZakat" />
+
+                <ImageView
+                    android:id="@+id/btnHaj"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:layout_marginEnd="40dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/xaj"
+                    app:layout_constraintBottom_toBottomOf="@id/btnOraza"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnOraza"
+                    app:layout_constraintTop_toTopOf="@id/btnOraza" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:elevation="32dp" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
     <ProgressBar
         android:id="@+id/progressBarNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNews"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarForNews"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_news" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

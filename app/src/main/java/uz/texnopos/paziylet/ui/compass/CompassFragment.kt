@@ -9,9 +9,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_compass.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.ui.location.LocationFragment
 import java.text.SimpleDateFormat
@@ -30,10 +33,12 @@ class CompassFragment : LocationFragment(R.layout.fragment_compass) {
     private lateinit var sensor: Sensor
     lateinit var userLocation: Location
     lateinit var needleAnimation: RotateAnimation
+    private lateinit var navController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvDate.text = getCurrentDateAndTime().toString()
+        navController = Navigation.findNavController(view)
         location.observe(viewLifecycleOwner, {
             when (it.status) {
                 ResourceState.LOADING -> {
@@ -47,9 +52,8 @@ class CompassFragment : LocationFragment(R.layout.fragment_compass) {
                             { county->
                                 tvRegion.text = county
                             },
-                            { e->
-                            }
-                        , requireContext(), location.latitude, location.longitude
+                            requireContext()
+                        , location.latitude, location.longitude
 
                         )
                     }
@@ -57,6 +61,9 @@ class CompassFragment : LocationFragment(R.layout.fragment_compass) {
                 else -> {}
             }
         })
+        btnBackCompass.onClick {
+            navController.popBackStack()
+        }
     }
 
     private fun initQiblaDirection(latitude: Double, longitude: Double) {
@@ -107,7 +114,12 @@ class CompassFragment : LocationFragment(R.layout.fragment_compass) {
         }, sensor, SensorManager.SENSOR_DELAY_GAME)
     }
 
-    private fun getCountryName(onSuccess:(address: String) -> Unit, onFailure:(msg: String?) -> Unit , context: Context?, latitude: Double, longitude: Double){
+    private fun getCountryName(
+        onSuccess: (address: String) -> Unit,
+        context: Context?,
+        latitude: Double,
+        longitude: Double
+    ){
         val geoCoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> = geoCoder.getFromLocation(latitude, longitude, 1)
         onSuccess.invoke("${addresses[0].locality}, ${addresses[0].countryName}")

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_newsWebViewFragment"
             app:destination="@id/newsWebViewFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fivePillarsFragment"
+            app:destination="@id/fivePillarsFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
@@ -122,6 +125,33 @@
         <argument
             android:name="title"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fivePillarsWebViewFragment"
+        tools:layout="@layout/fivepillars_web_view_fragment"
+        android:name="uz.texnopos.paziylet.ui.fivePillars.post.FivePillarsWebViewFragment"
+        android:label="FivePillarsWebViewFragment">
+        <argument
+            android:name="text"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fivePillarsFragment"
+        android:name="uz.texnopos.paziylet.ui.fivePillars.FivePillarsFragment"
+        android:label="FivePillarsFragment"
+        tools:layout="@layout/five_pillars_fragment"
+        >
+        <action
+            android:id="@+id/action_fivePillarsFragment_to_fivePillarsWebViewFragment"
+            app:destination="@id/fivePillarsWebViewFragment" />
+        <argument
+            android:name="text"
+            app:argType="string" />
+
     </fragment>
     <fragment
         android:id="@+id/mediaFragment"

@@ -13,4 +13,5 @@
     <color name="yellow">#D0D94D</color>
     <color name="colorDarkBLue">#1e22e5</color>
     <color name="grey">#edf1f4</color>
+    <color name="collapsble_toolbar_bg">#37B899</color>
 </resources>

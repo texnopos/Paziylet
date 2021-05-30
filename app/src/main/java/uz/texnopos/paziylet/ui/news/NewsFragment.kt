@@ -12,6 +12,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
+import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.toast
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.data.model.News
@@ -32,6 +33,33 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             val action = NewsFragmentDirections.actionHomeFragmentToNewsWebViewFragment(it)
             navController.navigate(action)
         }
+
+        btnIman.onClick {
+                val action = NewsFragmentDirections.actionHomeFragmentToFivePillarsFragment(getString(
+                                    R.string.iyman_eng))
+                navController.navigate(action)
+            }
+            btnNamaz.onClick {
+                val action = NewsFragmentDirections.actionHomeFragmentToFivePillarsFragment(getString(
+                                    R.string.namaz_eng))
+                navController.navigate(action)
+            }
+            btnZakat.onClick {
+                val action = NewsFragmentDirections.actionHomeFragmentToFivePillarsFragment(getString(
+                                    R.string.zakat_eng))
+                navController.navigate(action)
+            }
+            btnOraza.onClick {
+                val action = NewsFragmentDirections.actionHomeFragmentToFivePillarsFragment(getString(
+                                    R.string.oraza_eng))
+                navController.navigate(action)
+            }
+            btnHaj.onClick {
+                val action = NewsFragmentDirections.actionHomeFragmentToFivePillarsFragment(getString(
+                                    R.string.xaj_eng))
+                navController.navigate(action)
+        }
+
     }
 
     private fun setUpObserver() {

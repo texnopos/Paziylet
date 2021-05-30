@@ -18,15 +18,15 @@
 
     <TextView
         android:id="@+id/tvToolbarTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="start"
+        android:layout_marginStart="64dp"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/standard_toolbar_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView

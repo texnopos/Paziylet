@@ -40,4 +40,15 @@
     <string name="answer_no">Жуўап жоқ</string>
     <string name="full_answer">Толық жуўап</string>
     <string name="news">Жаңалықлар</string>
+    <string name="iyman">Ийман</string>
+    <string name="Namaz">Намаз</string>
+    <string name="Zakat">Закат</string>
+    <string name="Oraza">Ораза</string>
+    <string name="Haj">Хаж</string>
+    <string name="iyman_eng">iyman</string>
+    <string name="namaz_eng">namaz</string>
+    <string name="zakat_eng">zakat</string>
+    <string name="oraza_eng">oraza</string>
+    <string name="xaj_eng">xaj</string>
+    <string name="paziylet_uz">Paziylet.uz</string>
 </resources>
