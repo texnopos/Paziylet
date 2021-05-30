@@ -8,6 +8,8 @@ import uz.texnopos.paziylet.data.model.Patwa
 import uz.texnopos.paziylet.data.model.Question
 import uz.texnopos.paziylet.data.model.QuestionCategories
 import uz.texnopos.paziylet.ui.media.VideoModel
+import uz.texnopos.paziylet.data.model.*
+import java.util.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -151,6 +153,17 @@ class FirebaseHelper(
             .addOnSuccessListener {
                 onSuccess.invoke(it.documents.map { doc ->
                     doc.toObject(Patwa::class.java)!!
+                })
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+    fun getFivePillars(path: String, onSuccess: (list: List<FivePillars>) -> Unit,onFailure: (msg: String?) -> Unit){
+        db.collection("fivePillars/$path/content").get()
+            .addOnSuccessListener {
+                onSuccess.invoke(it.documents.map { doc->
+                    doc.toObject(FivePillars::class.java)!!
                 })
             }
             .addOnFailureListener {
