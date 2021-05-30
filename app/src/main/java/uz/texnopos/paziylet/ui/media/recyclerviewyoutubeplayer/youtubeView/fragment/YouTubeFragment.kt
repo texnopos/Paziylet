@@ -201,16 +201,6 @@ class YouTubeFragment : YouTubePlayerSupportFragment(), YouTubePlayer.OnInitiali
         return youTubePlayer!!
     }
 
-
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            seekedTime = data.getIntExtra("seeked_time", 0)
-        }
-
-    }*/
-
     companion object {
 
         private val ARG_VIDEO_ID = "videoId"
