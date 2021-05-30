@@ -84,8 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPaziylet"
         app:layout_constraintTop_toTopOf="@id/ivPaziylet"
-        app:layout_constraintBottom_toBottomOf="@id/ivPaziylet"
-        android:text="This is the title"/>
+        app:layout_constraintBottom_toBottomOf="@id/ivPaziylet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

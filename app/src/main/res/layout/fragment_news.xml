@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btnIman"
                     android:layout_width="70dp"
                     android:layout_height="90dp"
@@ -51,7 +51,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btnNamaz"
                     android:layout_width="70dp"
                     android:layout_height="90dp"
@@ -62,7 +62,7 @@
                     app:layout_constraintStart_toEndOf="@id/btnIman"
                     app:layout_constraintTop_toTopOf="@id/btnIman" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btnZakat"
                     android:layout_width="70dp"
                     android:layout_height="90dp"
@@ -73,7 +73,7 @@
                     app:layout_constraintStart_toEndOf="@id/btnNamaz"
                     app:layout_constraintTop_toTopOf="@id/btnNamaz" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btnOraza"
                     android:layout_width="70dp"
                     android:layout_height="90dp"
@@ -84,7 +84,7 @@
                     app:layout_constraintStart_toEndOf="@id/btnZakat"
                     app:layout_constraintTop_toTopOf="@id/btnZakat" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btnHaj"
                     android:layout_width="70dp"
                     android:layout_height="90dp"

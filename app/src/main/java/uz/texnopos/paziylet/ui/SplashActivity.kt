@@ -1,13 +1,12 @@
 package uz.texnopos.paziylet.ui
 
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_splash_screen.*
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.settings.Settings
-import uz.texnopos.paziylet.ui.auth.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     lateinit var settings: Settings
@@ -16,16 +15,22 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         supportActionBar?.hide()
         settings = Settings(this)
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (settings.isAppFirstLaunched()) {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+        lottieView.setMaxProgress(0.6f)
+        lottieView.addAnimatorListener(object: Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finish()
             }
-        }, 1000)
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+        })
+
     }
 }
