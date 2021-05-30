@@ -11,5 +11,6 @@
     <color name="questions_categories_fragment_main_color">#edf1f4</color>
     <color name="green">#4EB9A0</color>
     <color name="yellow">#D0D94D</color>
+    <color name="colorDarkBLue">#1e22e5</color>
     <color name="grey">#edf1f4</color>
 </resources>

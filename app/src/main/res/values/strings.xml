@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Paziylet</string>
     <string name="home">Бас бет</string>
-    <string name="favourite">Сайландылар</string>
+    <string name="media">Медиа</string>
     <string name="time_namaz">Намаз ўақты</string>
     <string name="questions_answers">Сораў-Жуўап</string>
     <string name="categories">Бөлимлер</string>
