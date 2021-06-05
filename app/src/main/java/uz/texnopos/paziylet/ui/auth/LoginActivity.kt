@@ -20,6 +20,7 @@ import org.koin.android.ext.android.inject
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.hideKeyboard
+import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.core.extentions.visibility
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.MainActivity
@@ -32,11 +33,16 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mCallBacks: OnVerificationStateChangedCallbacks
     lateinit var mCodeS: String
     private val viewModel: LoginViewModel by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setUpObserver()
         settings = Settings(this)
+        btnAnonymous.onClick {
+            val intent=Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
         btnSignIn.setOnClickListener {
             progressBar.visibility = View.VISIBLE
             hideKeyboard()
