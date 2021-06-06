@@ -61,7 +61,7 @@ class FirebaseHelper(
         map["userId"] = userId
         val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ROOT)
         val date: Date = sdf.parse(sdf.format(Calendar.getInstance().time).toString())
-        map["createdAt"] = date.time
+        map["createdAt"] = (date.time)/1000
         map["rejected"] = false
         map["id"] = UUID.randomUUID().toString()
         db.collection("questions").document(map["id"].toString()).set(map)
