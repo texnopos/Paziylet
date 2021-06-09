@@ -22,7 +22,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(news: News) {
-            itemView.tvTitle.text = news.title
+            itemView.tvTitle.text = news.titleCyr
             itemView.tvViews.text = news.views.toString()
             itemView.tvCategory.text = news.category
             val gsonPretty = GsonBuilder().setPrettyPrinting().create()
@@ -30,10 +30,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 News(
                     news.category,
                     news.createdAt,
-                    news.description,
+                    news.descriptionCyr,
                     news.id,
                     news.img,
-                    news.title,
+                    news.titleCyr,
                     (news.views+1L)
                 )
             )

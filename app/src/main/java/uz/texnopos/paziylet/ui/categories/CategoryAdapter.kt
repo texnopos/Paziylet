@@ -19,9 +19,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun populateModel(model: QuestionCategories) {
-            itemView.tvCategory.text = model.name
+            itemView.tvCategory.text = model.nameCyr
             itemView.onClick {
-                onItemClick.invoke(model.name)
+                onItemClick.invoke(model.nameCyr)
             }
         }
     }

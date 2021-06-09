@@ -6,6 +6,7 @@ data class VideoModel(
     var description:String="",
     var id: String="",
     var title: String="",
+    var titleCyr:String="",
     var url: String="",
     var seekTime: Int = 0
 )

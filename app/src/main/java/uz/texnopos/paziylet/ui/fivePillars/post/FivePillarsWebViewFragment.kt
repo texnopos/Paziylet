@@ -8,6 +8,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_webview.*
 import kotlinx.android.synthetic.main.fragment_webview.toolbar
+import kotlinx.android.synthetic.main.fragment_webview.webView
+import kotlinx.android.synthetic.main.news_web_view_fragment.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import uz.texnopos.paziylet.R
@@ -29,7 +31,8 @@ class FivePillarsWebViewFragment : Fragment(R.layout.fivepillars_web_view_fragme
             navController.popBackStack()
         }
         setUpObserver()
-        webView.loadData(safeArgs.text, "text/html", "UTF-8")
+        webView.settings.defaultTextEncodingName = "UTF-8"
+        webView.loadDataWithBaseURL(null, safeArgs.text, "text/html; charset=utf-8", null,null)
     }
 
 

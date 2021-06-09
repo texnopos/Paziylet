@@ -36,7 +36,7 @@ class MediaAdapter() : RecyclerView.Adapter<MediaAdapter.VideoPlayerViewHolder>(
         val API_KEY_YOUTUBE = "AIzaSyAVeTsyAjfpfBBbUQq4E7jooWwtV2D_tjE"
 
         fun populateModel(model: VideoModel) {
-            itemView.title.text = model.title
+            itemView.title.text = model.titleCyr
             Glide.with(itemView)
                 .load(itemView.context.resources.getIdentifier("paziylet","drawable",itemView.context.packageName))
                 .circleCrop()
