@@ -8,6 +8,7 @@ import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.extentions.inflate
 import uz.texnopos.paziylet.core.extentions.onClick
 import uz.texnopos.paziylet.data.model.QuestionCategories
+import java.io.IOException
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 

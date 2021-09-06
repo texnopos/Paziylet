@@ -153,9 +153,5 @@
             app:argType="string" />
 
     </fragment>
-    <fragment
-        android:id="@+id/mediaFragment"
-        android:name="uz.texnopos.paziylet.ui.media.MediaFragment"
-        android:label="MediaFragment" />
 
 </navigation>

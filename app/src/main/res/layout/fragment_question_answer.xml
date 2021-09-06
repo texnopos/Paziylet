@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_standard"
                 android:layout_marginEnd="@dimen/margin_standard"
-                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_marginBottom="64dp"
                 android:padding="@dimen/margin_4dp"
                 android:text=""
                 android:textColor="@color/black"

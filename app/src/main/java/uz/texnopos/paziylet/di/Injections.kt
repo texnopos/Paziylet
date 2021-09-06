@@ -19,8 +19,6 @@ import uz.texnopos.paziylet.ui.praytime.PrayTimeViewModel
 import uz.texnopos.paziylet.settings.Settings
 import uz.texnopos.paziylet.ui.fivePillars.FivePillarsAdapter
 import uz.texnopos.paziylet.ui.fivePillars.FivePillarsViewModel
-import uz.texnopos.paziylet.ui.media.MediaAdapter
-import uz.texnopos.paziylet.ui.media.MediaViewModel
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesAdapter
 import uz.texnopos.paziylet.ui.questions.category.QuestionsCategoriesViewModel
 import uz.texnopos.paziylet.ui.questions.myQuestions.MyQuestionsAdapter
@@ -56,7 +54,6 @@ val adapterModule = module {
     single { Settings(androidApplication().applicationContext) }
     single { DefiniteCategoryAdapter() }
     single { NewsAdapter() }
-    single { MediaAdapter() }
     single { FivePillarsAdapter() }
 }
 val viewModelModule = module {
@@ -68,7 +65,6 @@ val viewModelModule = module {
     viewModel { PrayTimeViewModel() }
     viewModel { DefiniteCategoryViewModel(get()) }
     viewModel { NewsViewModel(get()) }
-    viewModel { MediaViewModel(get()) }
     viewModel { FivePillarsViewModel(get()) }
 }
 

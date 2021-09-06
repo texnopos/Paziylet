@@ -78,9 +78,9 @@
         app:layout_constraintTop_toTopOf="@id/gd1" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="155dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/ic_group_283"
         app:layout_constraintBottom_toBottomOf="@id/ivStrelka"
         app:layout_constraintEnd_toEndOf="@id/ivCompass"
@@ -89,8 +89,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivCompass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="280dp"
         android:paddingTop="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_group_292"
@@ -101,9 +101,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivStrelka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="60dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="2dp"
         android:src="@drawable/ic_group_strelka"
         app:layout_constraintBottom_toBottomOf="@id/ivCompass"
