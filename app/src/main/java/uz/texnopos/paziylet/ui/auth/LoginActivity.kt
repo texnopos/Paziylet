@@ -17,7 +17,6 @@ import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import kotlinx.android.synthetic.main.activity_auth.*
 import org.koin.android.ext.android.inject
-import uz.texnopos.modme.core.extensions.MaskWatcher
 import uz.texnopos.paziylet.R
 import uz.texnopos.paziylet.core.ResourceState
 import uz.texnopos.paziylet.core.extentions.hideKeyboard
@@ -51,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
             if (user != null) {
                 sendToMain()
             }
-            etPhoneNumber.addTextChangedListener(MaskWatcher.phoneNumber())
             val phone = etPhoneNumber.text.toString()
             if (phone.isNotEmpty()) {
                 val options = PhoneAuthOptions.newBuilder(auth)
