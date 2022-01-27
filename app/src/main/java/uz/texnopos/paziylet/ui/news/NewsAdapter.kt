@@ -25,19 +25,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             itemView.tvTitle.text = news.titleCyr
             itemView.tvViews.text = news.views.toString()
             itemView.tvCategory.text = news.category
+            news.views=news.views+1
             val gsonPretty = GsonBuilder().setPrettyPrinting().create()
-            val gsonString = gsonPretty.toJson(
-                News(
-                    news.category,
-                    news.createdAt,
-                    news.descriptionCyr,
-                    news.id,
-                    news.img,
-                    news.titleCyr,
-                    (news.views+1L)
-                )
-            )
             itemView.onClick {
+                val gsonString = gsonPretty.toJson(news)
                 onItemClicked.invoke(gsonString)
             }
             Glide.with(itemView.context)

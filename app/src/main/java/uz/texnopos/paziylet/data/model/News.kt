@@ -11,7 +11,7 @@ data class News(
     val id : String = "",
     val img: String = "",
     val title: String = "",
-    val views: Long = 0L,
+    var views: Long = 0L,
     val titleCyr:String="",
     val descriptionCyr: String=""
 )

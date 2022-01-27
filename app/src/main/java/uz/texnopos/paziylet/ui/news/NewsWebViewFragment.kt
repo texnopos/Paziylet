@@ -22,9 +22,10 @@ class NewsWebViewFragment : Fragment(R.layout.news_web_view_fragment) {
         navController = Navigation.findNavController(view)
         val gson = Gson()
         val safeArgs = gson.fromJson(safeArgs.objectToJson, News::class.java)
-        //webView.loadData(safeArgs.description, "text/html", "UTF-8")
         webView.settings.defaultTextEncodingName = "UTF-8"
-        webView.loadDataWithBaseURL(null, safeArgs.description, "text/html; charset=utf-8", null,null)
+        var htmlText=safeArgs.description
+        if(htmlText.isNullOrEmpty()) htmlText=safeArgs.descriptionCyr
+        webView.loadDataWithBaseURL(null, htmlText, "text/html; charset=utf-8", null,null)
         tvTitle.text = safeArgs.title
         toolbar.tvToolbarTitle.text = getString(R.string.news)
         toolbar.btnHome.setOnClickListener {

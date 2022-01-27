@@ -9,8 +9,14 @@ import org.koin.core.context.startKoin
 import uz.texnopos.paziylet.di.*
 
 class PaziyletApp : Application() {
+
+    companion object {
+        lateinit var instance: PaziyletApp
+    }
+
     override fun onCreate() {
         super.onCreate()
+        instance = this
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val modules = listOf(firebaseModule, viewModelModule, adapterModule, sharedPreferencesModule)
         startKoin { // use AndroidLogger as Koin Logger - default Level.INFO

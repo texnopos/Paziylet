@@ -3,34 +3,43 @@
     package="uz.texnopos.paziylet">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name=".PaziyletApp"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:screenOrientation="portrait"
-        android:hardwareAccelerated="false"
         android:largeHeap="true"
-        android:theme="@style/Theme.Paziylet"
-        android:name=".PaziyletApp">
-        <activity android:name=".ui.SplashActivity"
-            android:screenOrientation="portrait"
-            >
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Paziylet">
+
+        <receiver android:name="uz.texnopos.paziylet.settings.NetworkChangeReceiver">
+
+        </receiver>
+
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity"
-            android:screenOrientation="portrait"
-            />
-    <activity android:name=".ui.auth.LoginActivity"
-        android:screenOrientation="portrait"
-        />
-        <activity android:name=".ui.media.recyclerviewyoutubeplayer.youtubeView.activity.YouTubeActivity"/>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>
